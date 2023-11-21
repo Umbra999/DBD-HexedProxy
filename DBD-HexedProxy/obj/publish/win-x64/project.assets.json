@@ -11,21 +11,6 @@
           "lib/netstandard2.0/BCMakeCert.dll": {}
         }
       },
-      "ClickableTransparentOverlay/9.1.0": {
-        "type": "package",
-        "dependencies": {
-          "ImGui.NET": "1.90.0.1",
-          "SixLabors.ImageSharp": "3.0.2",
-          "Vortice.D3DCompiler": "3.3.4",
-          "Vortice.Direct3D11": "3.3.4"
-        },
-        "compile": {
-          "lib/net7.0/ClickableTransparentOverlay.dll": {}
-        },
-        "runtime": {
-          "lib/net7.0/ClickableTransparentOverlay.dll": {}
-        }
-      },
       "DotNetZip/1.13.4": {
         "type": "package",
         "dependencies": {
@@ -220,7 +205,7 @@
           }
         },
         "build": {
-          "build/_._": {}
+          "build/SixLabors.ImageSharp.props": {}
         }
       },
       "System.Buffers/4.4.0": {
@@ -434,12 +419,12 @@
           }
         }
       },
-      "Vortice.D3DCompiler/3.3.4": {
+      "Vortice.D3DCompiler/3.4.1-beta": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
           "SharpGen.Runtime.COM": "2.1.2-beta",
-          "Vortice.DirectX": "3.3.4",
+          "Vortice.DirectX": "3.4.1-beta",
           "Vortice.Mathematics": "1.7.2"
         },
         "compile": {
@@ -453,18 +438,18 @@
           }
         },
         "build": {
-          "build/_._": {}
+          "build/Vortice.D3DCompiler.props": {}
         },
         "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
+          "buildMultiTargeting/Vortice.D3DCompiler.props": {}
         }
       },
-      "Vortice.Direct3D11/3.3.4": {
+      "Vortice.Direct3D11/3.4.1-beta": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
           "SharpGen.Runtime.COM": "2.1.2-beta",
-          "Vortice.DXGI": "3.3.4",
+          "Vortice.DXGI": "3.4.1-beta",
           "Vortice.Mathematics": "1.7.2"
         },
         "compile": {
@@ -478,13 +463,13 @@
           }
         },
         "build": {
-          "build/_._": {}
+          "build/Vortice.Direct3D11.props": {}
         },
         "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
+          "buildMultiTargeting/Vortice.Direct3D11.props": {}
         }
       },
-      "Vortice.DirectX/3.3.4": {
+      "Vortice.DirectX/3.4.1-beta": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
@@ -508,12 +493,12 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "Vortice.DXGI/3.3.4": {
+      "Vortice.DXGI/3.4.1-beta": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
           "SharpGen.Runtime.COM": "2.1.2-beta",
-          "Vortice.DirectX": "3.3.4",
+          "Vortice.DirectX": "3.4.1-beta",
           "Vortice.Mathematics": "1.7.2"
         },
         "compile": {
@@ -555,21 +540,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/BCMakeCert.dll": {}
-        }
-      },
-      "ClickableTransparentOverlay/9.1.0": {
-        "type": "package",
-        "dependencies": {
-          "ImGui.NET": "1.90.0.1",
-          "SixLabors.ImageSharp": "3.0.2",
-          "Vortice.D3DCompiler": "3.3.4",
-          "Vortice.Direct3D11": "3.3.4"
-        },
-        "compile": {
-          "lib/net7.0/ClickableTransparentOverlay.dll": {}
-        },
-        "runtime": {
-          "lib/net7.0/ClickableTransparentOverlay.dll": {}
         }
       },
       "DotNetZip/1.13.4": {
@@ -767,7 +737,7 @@
           }
         },
         "build": {
-          "build/_._": {}
+          "build/SixLabors.ImageSharp.props": {}
         }
       },
       "System.Buffers/4.4.0": {
@@ -966,12 +936,12 @@
           }
         }
       },
-      "Vortice.D3DCompiler/3.3.4": {
+      "Vortice.D3DCompiler/3.4.1-beta": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
           "SharpGen.Runtime.COM": "2.1.2-beta",
-          "Vortice.DirectX": "3.3.4",
+          "Vortice.DirectX": "3.4.1-beta",
           "Vortice.Mathematics": "1.7.2"
         },
         "compile": {
@@ -985,18 +955,18 @@
           }
         },
         "build": {
-          "build/_._": {}
+          "build/Vortice.D3DCompiler.props": {}
         },
         "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
+          "buildMultiTargeting/Vortice.D3DCompiler.props": {}
         }
       },
-      "Vortice.Direct3D11/3.3.4": {
+      "Vortice.Direct3D11/3.4.1-beta": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
           "SharpGen.Runtime.COM": "2.1.2-beta",
-          "Vortice.DXGI": "3.3.4",
+          "Vortice.DXGI": "3.4.1-beta",
           "Vortice.Mathematics": "1.7.2"
         },
         "compile": {
@@ -1010,13 +980,13 @@
           }
         },
         "build": {
-          "build/_._": {}
+          "build/Vortice.Direct3D11.props": {}
         },
         "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
+          "buildMultiTargeting/Vortice.Direct3D11.props": {}
         }
       },
-      "Vortice.DirectX/3.3.4": {
+      "Vortice.DirectX/3.4.1-beta": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
@@ -1040,12 +1010,12 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "Vortice.DXGI/3.3.4": {
+      "Vortice.DXGI/3.4.1-beta": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
           "SharpGen.Runtime.COM": "2.1.2-beta",
-          "Vortice.DirectX": "3.3.4",
+          "Vortice.DirectX": "3.4.1-beta",
           "Vortice.Mathematics": "1.7.2"
         },
         "compile": {
@@ -1095,19 +1065,6 @@
         "icon.png",
         "lib/net40/BCMakeCert.dll",
         "lib/netstandard2.0/BCMakeCert.dll"
-      ]
-    },
-    "ClickableTransparentOverlay/9.1.0": {
-      "sha512": "YkQVrzx5pBlkDPb498S/a3/oQLpfVpvF34XTqM7pEBLT5OZK4vZ85AOwHZGf23w6KBxwSx78lOfY+zzzEBEhGA==",
-      "type": "package",
-      "path": "clickabletransparentoverlay/9.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE",
-        "clickabletransparentoverlay.9.1.0.nupkg.sha512",
-        "clickabletransparentoverlay.nuspec",
-        "lib/net7.0/ClickableTransparentOverlay.dll"
       ]
     },
     "DotNetZip/1.13.4": {
@@ -2072,10 +2029,10 @@
         "telerik.networkconnections.nuspec"
       ]
     },
-    "Vortice.D3DCompiler/3.3.4": {
-      "sha512": "G0yAN1us091ulIzPfMVJeJf8JX3Tu/Wu0l4zip4HPLfVUWWxsBJF0eaEdwSPrUyz97LEG6zjHruL4sZoNRBHcA==",
+    "Vortice.D3DCompiler/3.4.1-beta": {
+      "sha512": "SyQberIk5aJdM9E13TukztrHlM/qO1eSB9nPhPHi+8RvyO0VUwX9pfYub9ZDbb5XX9Aqi263FYD6PdmaafXmrA==",
       "type": "package",
-      "path": "vortice.d3dcompiler/3.3.4",
+      "path": "vortice.d3dcompiler/3.4.1-beta",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2088,14 +2045,14 @@
         "lib/net8.0/Vortice.D3DCompiler.dll",
         "lib/net8.0/Vortice.D3DCompiler.pdb",
         "lib/net8.0/Vortice.D3DCompiler.xml",
-        "vortice.d3dcompiler.3.3.4.nupkg.sha512",
+        "vortice.d3dcompiler.3.4.1-beta.nupkg.sha512",
         "vortice.d3dcompiler.nuspec"
       ]
     },
-    "Vortice.Direct3D11/3.3.4": {
-      "sha512": "ma8ysRo7WBmJwt+nNpFi0icHKIgNud6Nb0rz6XPN4V/X93nkVZiN3t96cqdy0kC0QtzYlpFccQ2d/JPrvHt6og==",
+    "Vortice.Direct3D11/3.4.1-beta": {
+      "sha512": "L9t5BmKoRaTUym+j/aaLvUpH1qk194632t+8HPHHSqkWD7I8MtXfMZ7MQkAduxM2/5ePSMQeUAWsqawKMW/3DA==",
       "type": "package",
-      "path": "vortice.direct3d11/3.3.4",
+      "path": "vortice.direct3d11/3.4.1-beta",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2108,14 +2065,14 @@
         "lib/net8.0/Vortice.Direct3D11.dll",
         "lib/net8.0/Vortice.Direct3D11.pdb",
         "lib/net8.0/Vortice.Direct3D11.xml",
-        "vortice.direct3d11.3.3.4.nupkg.sha512",
+        "vortice.direct3d11.3.4.1-beta.nupkg.sha512",
         "vortice.direct3d11.nuspec"
       ]
     },
-    "Vortice.DirectX/3.3.4": {
-      "sha512": "HWvIGYz8XtWZpJW8xGYq5gex/HUPf5u3kDY7w/5WLCXzuR+hqLB7p6tInYePnuVLvfuI/rKMMhlzmnceoP3tIw==",
+    "Vortice.DirectX/3.4.1-beta": {
+      "sha512": "Nj+/GfMG7GwVwSZhVe/Nh8ohWt9dc58gXy32FyWWvtuXzjl2Vt+mYedC8lFPB2nxpsFEFI86mZAP36VRMBiEBA==",
       "type": "package",
-      "path": "vortice.directx/3.3.4",
+      "path": "vortice.directx/3.4.1-beta",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2131,14 +2088,14 @@
         "lib/net8.0/Vortice.DirectX.dll",
         "lib/net8.0/Vortice.DirectX.pdb",
         "lib/net8.0/Vortice.DirectX.xml",
-        "vortice.directx.3.3.4.nupkg.sha512",
+        "vortice.directx.3.4.1-beta.nupkg.sha512",
         "vortice.directx.nuspec"
       ]
     },
-    "Vortice.DXGI/3.3.4": {
-      "sha512": "toya4AmKpcVJyaZzDJnrZlYsVSQxHTTrwWYee3G4Dzthww5HTgtGluN5ciQKl0KOChbR9xjgSK8+flkw6RNdTg==",
+    "Vortice.DXGI/3.4.1-beta": {
+      "sha512": "umhExc5HMufrOJXf5G5eoRZ23RdLxwrcLQmZbemNi8gfexos1VMM3zrIeWUpzeJdh+O50nSBLyhJcsJSTiB9NA==",
       "type": "package",
-      "path": "vortice.dxgi/3.3.4",
+      "path": "vortice.dxgi/3.4.1-beta",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2154,7 +2111,7 @@
         "lib/net8.0/Vortice.DXGI.dll",
         "lib/net8.0/Vortice.DXGI.pdb",
         "lib/net8.0/Vortice.DXGI.xml",
-        "vortice.dxgi.3.3.4.nupkg.sha512",
+        "vortice.dxgi.3.4.1-beta.nupkg.sha512",
         "vortice.dxgi.nuspec"
       ]
     },
@@ -2181,10 +2138,13 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "ClickableTransparentOverlay >= 9.1.0",
       "FiddlerCore.Trial >= 5.0.2",
+      "ImGui.NET >= 1.90.0.1",
       "Microsoft.NET.ILLink.Tasks >= 8.0.0",
-      "Newtonsoft.Json >= 13.0.3"
+      "Newtonsoft.Json >= 13.0.3",
+      "SixLabors.ImageSharp >= 3.0.2",
+      "Vortice.D3DCompiler >= 3.4.1-beta",
+      "Vortice.Direct3D11 >= 3.4.1-beta"
     ]
   },
   "packageFolders": {
@@ -2232,13 +2192,13 @@
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
         "dependencies": {
-          "ClickableTransparentOverlay": {
-            "target": "Package",
-            "version": "[9.1.0, )"
-          },
           "FiddlerCore.Trial": {
             "target": "Package",
             "version": "[5.0.2, )"
+          },
+          "ImGui.NET": {
+            "target": "Package",
+            "version": "[1.90.0.1, )"
           },
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
@@ -2249,6 +2209,18 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
+          },
+          "SixLabors.ImageSharp": {
+            "target": "Package",
+            "version": "[3.0.2, )"
+          },
+          "Vortice.D3DCompiler": {
+            "target": "Package",
+            "version": "[3.4.1-beta, )"
+          },
+          "Vortice.Direct3D11": {
+            "target": "Package",
+            "version": "[3.4.1-beta, )"
           }
         },
         "imports": [

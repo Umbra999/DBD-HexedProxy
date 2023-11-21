@@ -1,4 +1,5 @@
 ﻿using ClickableTransparentOverlay;
+using Fiddler;
 using ImGuiNET;
 using System.Numerics;
 
@@ -8,7 +9,14 @@ namespace HexedProxy.Core
     {
         private void AddStyles()
         {
-            var colors = ImGui.GetStyle().Colors;
+            ImGuiStylePtr style = ImGui.GetStyle();
+
+            style.FrameRounding = 4.0f;
+            style.WindowBorderSize = 2.0f;
+            style.PopupBorderSize = 0.0f;
+            style.GrabRounding = 4.0f;
+
+            var colors = style.Colors;
 
             colors[(int)ImGuiCol.Text] = new Vector4(1.00f, 1.00f, 1.00f, 1.00f);
             colors[(int)ImGuiCol.TextDisabled] = new Vector4(0.73f, 0.75f, 0.74f, 1.00f);
@@ -73,7 +81,7 @@ namespace HexedProxy.Core
             ImGui.BeginChild("Categories", new Vector2(150, 0));
 
             if (ImGui.Selectable("GENERAL", InternalSettings.SelectedGuiCategory == 0)) InternalSettings.SelectedGuiCategory = 0;
-            if (ImGui.Selectable("UNLOCKER", InternalSettings.SelectedGuiCategory == 1)) InternalSettings.SelectedGuiCategory = 1;
+            if (ImGui.Selectable("TOOLS", InternalSettings.SelectedGuiCategory == 1)) InternalSettings.SelectedGuiCategory = 1;
             if (ImGui.Selectable("INFO", InternalSettings.SelectedGuiCategory == 2)) InternalSettings.SelectedGuiCategory = 2;
 
             ImGui.EndChild();
@@ -93,12 +101,15 @@ namespace HexedProxy.Core
                         ProxyManager.Disconnect();
                         Close();
                     }
+                    ImGui.Text($"Proxy is {(FiddlerApplication.IsStarted() ? "RUNNING" : "NOT RUNNING")}");
                     break;
 
-                case 1: // UNLOCKER
+                case 1: // TOOLS
                     ImGui.Checkbox("Cosmetic Unlock", ref InternalSettings.UnlockCosmetics);
                     ImGui.Checkbox("Item Unlock", ref InternalSettings.UnlockItems);
                     ImGui.Checkbox("Level Unlock", ref InternalSettings.UnlockLevel);
+
+                    ImGui.Checkbox("Spoof Offline", ref InternalSettings.SpoofOffline);
 
                     ImGui.Checkbox("Change Rank", ref InternalSettings.SpoofRank);
                     if (InternalSettings.SpoofRank)
@@ -113,10 +124,18 @@ namespace HexedProxy.Core
                         ImGui.SameLine(0, 10f);
                         ImGui.ListBox("", ref InternalSettings.TargetQueueRegion, InternalSettings.AvailableRegions, InternalSettings.AvailableRegions.Length);
                     }
+
+                    if (ImGui.Button("Add Friend")) Task.Run(() => RequestSender.SendFriendRequest(InternalSettings.AddFriendId));
+                    ImGui.SameLine(0, 10f);
+                    ImGui.InputTextMultiline("UserID", ref InternalSettings.AddFriendId, 100, new Vector2(200, 20));
+
                     break;
 
                 case 2: // INFO
                     ImGui.Text($"Player: {InternalSettings.PlayerName}");
+                    ImGui.Text($"Killer: {InternalSettings.KillerId}");
+                    ImGui.Text($"MatchId: {InternalSettings.MatchId}");
+                    ImGui.Text($"Region: {InternalSettings.MatchRegion}");
                     break;
             }
             ImGui.EndChild();

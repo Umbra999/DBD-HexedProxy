@@ -45,13 +45,13 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
-            "ClickableTransparentOverlay": {
-              "target": "Package",
-              "version": "[9.1.0, )"
-            },
             "FiddlerCore.Trial": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "ImGui.NET": {
+              "target": "Package",
+              "version": "[1.90.0.1, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
@@ -62,6 +62,18 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "SixLabors.ImageSharp": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
+            "Vortice.D3DCompiler": {
+              "target": "Package",
+              "version": "[3.4.1-beta, )"
+            },
+            "Vortice.Direct3D11": {
+              "target": "Package",
+              "version": "[3.4.1-beta, )"
             }
           },
           "imports": [

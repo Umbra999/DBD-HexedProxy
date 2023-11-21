@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "WqAup4slY7dljx1NsaERvO2NbJ0gfzfDrzxWNmfGgiiM4hSWxOgJic0DqzHWOMJhtnEsPEzuoyPY2c/BFvitmA==",
+  "dgSpecHash": "wGu8Vre6K0AS7wvuoSW7z2WamwVtREIAxYVtmbri/0f8uXAivdo+wRlUH5o7IzEqFZcnzP3oqYxCiyDKlH7ldw==",
   "success": true,
   "projectFilePath": "D:\\Github Repos\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Umbra\\.nuget\\packages\\bcmakecert\\2.0.9\\bcmakecert.2.0.9.nupkg.sha512",
-    "C:\\Users\\Umbra\\.nuget\\packages\\clickabletransparentoverlay\\9.1.0\\clickabletransparentoverlay.9.1.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\dotnetzip\\1.13.4\\dotnetzip.1.13.4.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\fiddlercore.trial\\5.0.2\\fiddlercore.trial.5.0.2.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\imgui.net\\1.90.0.1\\imgui.net.1.90.0.1.nupkg.sha512",
@@ -35,10 +34,10 @@
     "C:\\Users\\Umbra\\.nuget\\packages\\system.text.encoding.codepages\\4.5.0\\system.text.encoding.codepages.4.5.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\telerik.networkconnections\\0.2.0\\telerik.networkconnections.0.2.0.nupkg.sha512",
-    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.d3dcompiler\\3.3.4\\vortice.d3dcompiler.3.3.4.nupkg.sha512",
-    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.direct3d11\\3.3.4\\vortice.direct3d11.3.3.4.nupkg.sha512",
-    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.directx\\3.3.4\\vortice.directx.3.3.4.nupkg.sha512",
-    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.dxgi\\3.3.4\\vortice.dxgi.3.3.4.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.d3dcompiler\\3.4.1-beta\\vortice.d3dcompiler.3.4.1-beta.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.direct3d11\\3.4.1-beta\\vortice.direct3d11.3.4.1-beta.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.directx\\3.4.1-beta\\vortice.directx.3.4.1-beta.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.dxgi\\3.4.1-beta\\vortice.dxgi.3.4.1-beta.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\vortice.mathematics\\1.7.2\\vortice.mathematics.1.7.2.nupkg.sha512"
   ],
   "logs": []

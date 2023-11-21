@@ -42,6 +42,7 @@ namespace HexedProxy.Core
 
             foreach (DBDObjects.Character Char in PlayerProfile.list)
             {
+                Char.isEntitled = true;
                 Char.prestigeLevel = 100;
                 Char.legacyPrestigeLevel = 3;
                 Char.bloodWebLevel = 50;

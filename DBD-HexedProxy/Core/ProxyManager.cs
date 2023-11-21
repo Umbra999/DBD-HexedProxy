@@ -52,7 +52,7 @@ namespace HexedProxy.Core
                     {
                         e.utilDecodeRequest();
 
-                        DBDObjects.DBDQueueReq Queue = JsonConvert.DeserializeObject<DBDObjects.DBDQueueReq>(e.GetRequestBodyAsString());
+                        DBDObjects.DBDQueue Queue = JsonConvert.DeserializeObject<DBDObjects.DBDQueue>(e.GetRequestBodyAsString());
 
                         if (InternalSettings.SpoofRank)
                         {
@@ -65,6 +65,21 @@ namespace HexedProxy.Core
                         }
 
                         e.utilSetRequestBody(JsonConvert.SerializeObject(Queue));
+                    }
+                    break;
+
+                case "/api/v1/me/richPresence":
+                    {
+                        if (InternalSettings.SpoofOffline)
+                        {
+                            e.utilDecodeRequest();
+
+                            DBDObjects.DBDRichPresence Presence = JsonConvert.DeserializeObject<DBDObjects.DBDRichPresence>(e.GetRequestBodyAsString());
+
+                            Presence.online = false;
+
+                            e.utilSetRequestBody(JsonConvert.SerializeObject(Presence));
+                        }
                     }
                     break;
             }
@@ -80,98 +95,105 @@ namespace HexedProxy.Core
 
             if (!url.Contains("bhvrdbd")) return;
 
-            switch (e.PathAndQuery)
+            if (e.PathAndQuery.Contains("/api/v1/match/"))
             {
-                case "/api/v1/inventories":
-                    {
-                        if (InternalSettings.UnlockCosmetics)
+                e.utilDecodeResponse();
+
+                DBDObjects.DBDMatch MatchInfo = JsonConvert.DeserializeObject<DBDObjects.DBDMatch>(e.GetResponseBodyAsString());
+
+                InternalSettings.KillerId = MatchInfo.sideA[0]; // add check for multiple killers
+                InternalSettings.MatchRegion = MatchInfo.region;
+                InternalSettings.MatchId = MatchInfo.matchId;
+            }
+            else
+            {
+                switch (e.PathAndQuery)
+                {
+                    case "/api/v1/inventories":
                         {
-                            e.utilDecodeResponse();
-                            e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedInventory));
+                            if (InternalSettings.UnlockCosmetics)
+                            {
+                                e.utilDecodeResponse();
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedInventory));
+                            }
                         }
-                    }
-                    break;
+                        break;
 
-                case "/api/v1/dbd-character-data/get-all":
-                    {
-                        if (InternalSettings.UnlockItems)
+                    case "/api/v1/dbd-character-data/get-all":
                         {
-                            e.utilDecodeResponse();
-                            e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedProfile)); // check if userId is needed
+                            if (InternalSettings.UnlockItems)
+                            {
+                                e.utilDecodeResponse();
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedProfile)); // check if userId is needed
+                            }
                         }
-                    }
-                    break;
+                        break;
 
-                case "/api/v1/dbd-character-data/bloodweb":
-                    {
-                        if (InternalSettings.UnlockItems)
+                    case "/api/v1/dbd-character-data/bloodweb":
                         {
-                            e.utilDecodeResponse();
-                            e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedBloodweb)); // check if userId is needed
+                            if (InternalSettings.UnlockItems)
+                            {
+                                e.utilDecodeResponse();
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedBloodweb));
+                            }
                         }
-                    }
-                    break;
+                        break;
 
-                case "/api/v1/playername":
-                    {
-                        e.utilDecodeResponse();
-
-                        DBDObjects.DBDPlayerName PlayerName = JsonConvert.DeserializeObject<DBDObjects.DBDPlayerName>(e.GetResponseBodyAsString());
-
-                        SaveEditor.cachedInventory.data.playerId = PlayerName.userId;
-                        InternalSettings.PlayerName = PlayerName.playerName;
-                    }
-                    break;
-
-                case "/api/v1/players/ban/decayAndGetDisconnectionPenaltyPoints":
-                    {
-                        e.utilDecodeResponse();
-                        e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.DBDPenaltyPoints() { penaltyPoints = 0 }));
-                    }
-                    break;
-
-                case "/api/v1/extensions/playerLevels/getPlayerLevel":
-                    {
-                        if (InternalSettings.UnlockLevel)
-                        {
-                            e.utilDecodeResponse();
-                            e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.DBDPlayerLevel() { currentXp = 999, currentXpUpperBound = 999, level = 999, levelVersion = 1, prestigeLevel = 999, totalXp = 99999 }));
-                        }
-                    }
-                    break;
-
-                case "/api/v1/ranks/reset-get-pips-v2":
-                    {
-                        if (InternalSettings.SpoofRank)
+                    case "/api/v1/playername":
                         {
                             e.utilDecodeResponse();
 
-                            DBDObjects.DBDPipReset PipReset = JsonConvert.DeserializeObject<DBDObjects.DBDPipReset>(e.GetResponseBodyAsString());
+                            DBDObjects.DBDPlayerName PlayerName = JsonConvert.DeserializeObject<DBDObjects.DBDPlayerName>(e.GetResponseBodyAsString());
 
-                            int Pips = Utils.GetPipsForRank(InternalSettings.TargetRank);
+                            SaveEditor.cachedInventory.data.playerId = PlayerName.userId;
+                            InternalSettings.PlayerName = PlayerName.playerName;
 
-                            PipReset.pips.survivorPips = Pips;
-                            PipReset.pips.killerPips = Pips;
-
-                            e.utilSetResponseBody(JsonConvert.SerializeObject(PipReset));
+                            RequestSender.headers = e.RequestHeaders;
                         }
-                    }
-                    break;
+                        break;
 
-                case "/api/v1/queue":
-                    {
-                        //e.utilDecodeResponse();
+                    case "/api/v1/players/ban/decayAndGetDisconnectionPenaltyPoints":
+                        {
+                            e.utilDecodeResponse();
+                            e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.DBDPenaltyPoints() { penaltyPoints = 0 }));
+                        }
+                        break;
 
-                        //DBDObjects.DBDQueueResp Queue = JsonConvert.DeserializeObject<DBDObjects.DBDQueueResp>(e.GetResponseBodyAsString());
-                    }
-                    break;
+                    case "/api/v1/extensions/playerLevels/getPlayerLevel":
+                        {
+                            if (InternalSettings.UnlockLevel)
+                            {
+                                e.utilDecodeResponse();
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.DBDPlayerLevel() { currentXp = 999, currentXpUpperBound = 999, level = 999, levelVersion = 1, prestigeLevel = 999, totalXp = 99999 }));
+                            }
+                        }
+                        break;
 
-                case "/v1/players/ban/status":
-                    {
-                        e.utilDecodeResponse();
-                        e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.DBDBanStatus() { isBanned = false }));
-                    }
-                    break;
+                    case "/api/v1/ranks/reset-get-pips-v2":
+                        {
+                            if (InternalSettings.SpoofRank)
+                            {
+                                e.utilDecodeResponse();
+
+                                DBDObjects.DBDPipReset PipReset = JsonConvert.DeserializeObject<DBDObjects.DBDPipReset>(e.GetResponseBodyAsString());
+
+                                int Pips = Utils.GetPipsForRank(InternalSettings.TargetRank);
+
+                                PipReset.pips.survivorPips = Pips;
+                                PipReset.pips.killerPips = Pips;
+
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(PipReset));
+                            }
+                        }
+                        break;
+
+                    case "/v1/players/ban/status":
+                        {
+                            e.utilDecodeResponse();
+                            e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.DBDBanStatus() { isBanned = false }));
+                        }
+                        break;
+                }
             }
         }
     }
