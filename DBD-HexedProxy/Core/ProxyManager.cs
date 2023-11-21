@@ -124,7 +124,7 @@ namespace HexedProxy.Core
                             if (InternalSettings.UnlockItems)
                             {
                                 e.utilDecodeResponse();
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedProfile)); // check if userId is needed
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedProfile));
                             }
                         }
                         break;
@@ -165,7 +165,7 @@ namespace HexedProxy.Core
                             if (InternalSettings.UnlockLevel)
                             {
                                 e.utilDecodeResponse();
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.DBDPlayerLevel() { currentXp = 999, currentXpUpperBound = 999, level = 999, levelVersion = 1, prestigeLevel = 999, totalXp = 99999 }));
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.DBDPlayerLevel() { currentXp = 999, currentXpUpperBound = 999, level = 99, levelVersion = 1, prestigeLevel = 999, totalXp = 99999 }));
                             }
                         }
                         break;

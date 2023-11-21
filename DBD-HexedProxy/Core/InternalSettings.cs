@@ -2,8 +2,8 @@
 {
     internal class InternalSettings
     {
-        public static string PlayerName = "NOT NAME";
-        public static string PlayerId = "NOT ID";
+        public static string PlayerName = "NO NAME";
+        public static string PlayerId = "NO PLAYER";
         public static string KillerId = "NO KILLER";
         public static string MatchRegion = "NO REGION";
         public static string MatchId = "NO MATCH";

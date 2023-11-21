@@ -11,6 +11,8 @@ namespace HexedProxy.Core
 
         public static async Task<bool> SendFriendRequest(string uid)
         {
+            if (headers == null) return false; 
+
             HttpClient Client = new(new HttpClientHandler { UseCookies = false, AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }, true);
 
             foreach (var ogHeader in headers)
@@ -29,6 +31,7 @@ namespace HexedProxy.Core
             Payload.Content.Headers.ContentType.CharSet = "";
 
             HttpResponseMessage Response = await Client.SendAsync(Payload);
+
             return Response.IsSuccessStatusCode;
         }
     }
