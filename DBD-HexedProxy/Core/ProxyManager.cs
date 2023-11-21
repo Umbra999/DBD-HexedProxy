@@ -147,6 +147,7 @@ namespace HexedProxy.Core
 
                             SaveEditor.cachedInventory.data.playerId = PlayerName.userId;
                             InternalSettings.PlayerName = PlayerName.playerName;
+                            InternalSettings.PlayerId = PlayerName.userId;
 
                             RequestSender.headers = e.RequestHeaders;
                         }
