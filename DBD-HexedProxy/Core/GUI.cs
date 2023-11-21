@@ -52,14 +52,14 @@ namespace HexedProxy.Core
                     if (InternalSettings.SpoofRank)
                     {
                         ImGui.SameLine(0, 10f);
-                        ImGui.SliderInt("", ref InternalSettings.TargetRank, 1, 20);
+                        ImGui.SliderInt("Rank", ref InternalSettings.TargetRank, 1, 20);
                     }
 
                     ImGui.Checkbox("Change Region", ref InternalSettings.SpoofRegion);
                     if (InternalSettings.SpoofRegion) 
                     {
                         ImGui.SameLine(0, 10f);
-                        ImGui.ListBox("", ref InternalSettings.TargetQueueRegion, InternalSettings.AvailableRegions, InternalSettings.AvailableRegions.Length);
+                        ImGui.Combo("Region", ref InternalSettings.TargetQueueRegion, InternalSettings.AvailableRegions, InternalSettings.AvailableRegions.Length);
                     }
 
                     if (ImGui.Button("Add Friend")) Task.Run(() => RequestSender.SendFriendRequest(InternalSettings.AddFriendId));
