@@ -1,4 +1,4 @@
-﻿namespace HexedUnlocker.Wrappers
+﻿namespace HexedProxy.Wrappers
 {
     internal class DBDObjects
     {
@@ -116,7 +116,7 @@
         }
 
 
-        public class DBDQueue
+        public class DBDQueueReq
         {
             public object[] additionalUserIds { get; set; }
             public string category { get; set; }

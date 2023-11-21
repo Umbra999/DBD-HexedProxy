@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HexedProxy.Wrappers
+﻿namespace HexedProxy.Wrappers
 {
     internal class Logger
     {

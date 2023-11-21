@@ -44,3 +44,15 @@ D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64
 D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\System.Security.Cryptography.ProtectedData.dll
 D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\System.Security.Permissions.dll
 D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\Telerik.NetworkConnections.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\ClickableTransparentOverlay.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\ImGui.NET.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\SharpGen.Runtime.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\SharpGen.Runtime.COM.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\SixLabors.ImageSharp.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\Vortice.D3DCompiler.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\Vortice.Direct3D11.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\Vortice.DirectX.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\Vortice.DXGI.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\Vortice.Mathematics.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\cimgui.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.sourcelink.json

@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "G8d3Nl8qwr5KqAKugZfzlM0MdxckIWoxLM/QNbNP7uhvxc1iZ/LPSKxxU7UBnjAH/ebSMylzu2lG6kBMMIz9ow==",
+  "dgSpecHash": "WqAup4slY7dljx1NsaERvO2NbJ0gfzfDrzxWNmfGgiiM4hSWxOgJic0DqzHWOMJhtnEsPEzuoyPY2c/BFvitmA==",
   "success": true,
   "projectFilePath": "D:\\Github Repos\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Umbra\\.nuget\\packages\\bcmakecert\\2.0.9\\bcmakecert.2.0.9.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\clickabletransparentoverlay\\9.1.0\\clickabletransparentoverlay.9.1.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\dotnetzip\\1.13.4\\dotnetzip.1.13.4.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\fiddlercore.trial\\5.0.2\\fiddlercore.trial.5.0.2.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\imgui.net\\1.90.0.1\\imgui.net.1.90.0.1.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.0\\microsoft.net.illink.tasks.8.0.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
@@ -15,8 +17,13 @@
     "C:\\Users\\Umbra\\.nuget\\packages\\runtime.any.system.runtime\\4.3.0\\runtime.any.system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\runtime.any.system.text.encoding\\4.3.0\\runtime.any.system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\runtime.any.system.text.encoding.extensions\\4.3.0\\runtime.any.system.text.encoding.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\sharpgen.runtime\\2.1.2-beta\\sharpgen.runtime.2.1.2-beta.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\sharpgen.runtime.com\\2.1.2-beta\\sharpgen.runtime.com.2.1.2-beta.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\sixlabors.imagesharp\\3.0.2\\sixlabors.imagesharp.3.0.2.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.componentmodel.composition\\4.6.0\\system.componentmodel.composition.4.6.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.0\\system.configuration.configurationmanager.4.4.0.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.private.uri\\4.3.0\\system.private.uri.4.3.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.0\\system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512",
@@ -27,7 +34,12 @@
     "C:\\Users\\Umbra\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.text.encoding.codepages\\4.5.0\\system.text.encoding.codepages.4.5.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
-    "C:\\Users\\Umbra\\.nuget\\packages\\telerik.networkconnections\\0.2.0\\telerik.networkconnections.0.2.0.nupkg.sha512"
+    "C:\\Users\\Umbra\\.nuget\\packages\\telerik.networkconnections\\0.2.0\\telerik.networkconnections.0.2.0.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.d3dcompiler\\3.3.4\\vortice.d3dcompiler.3.3.4.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.direct3d11\\3.3.4\\vortice.direct3d11.3.3.4.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.directx\\3.3.4\\vortice.directx.3.3.4.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.dxgi\\3.3.4\\vortice.dxgi.3.3.4.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\vortice.mathematics\\1.7.2\\vortice.mathematics.1.7.2.nupkg.sha512"
   ],
   "logs": []
 }

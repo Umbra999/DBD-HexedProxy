@@ -1,2 +1,3 @@
 D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\win-x64\DBD-HexedProxy.pdb
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\win-x64\cimgui.dll
 D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\win-x64\DBD-HexedProxy.exe

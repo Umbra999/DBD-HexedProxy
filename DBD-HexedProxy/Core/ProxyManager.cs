@@ -1,7 +1,5 @@
 ﻿using Fiddler;
 using HexedProxy.Wrappers;
-using HexedUnlocker.Core;
-using HexedUnlocker.Wrappers;
 using Newtonsoft.Json;
 
 namespace HexedProxy.Core
@@ -54,16 +52,16 @@ namespace HexedProxy.Core
                     {
                         e.utilDecodeRequest();
 
-                        DBDObjects.DBDQueue Queue = JsonConvert.DeserializeObject<DBDObjects.DBDQueue>(e.GetRequestBodyAsString());
+                        DBDObjects.DBDQueueReq Queue = JsonConvert.DeserializeObject<DBDObjects.DBDQueueReq>(e.GetRequestBodyAsString());
 
                         if (InternalSettings.SpoofRank)
                         {
-                            Queue.rank = InternalSettings.TargetQueueRank;
+                            Queue.rank = InternalSettings.TargetRank;
                         }
 
                         if (InternalSettings.SpoofRegion)
                         {
-                            Queue.region = InternalSettings.TargetQueueRegion;
+                            Queue.region = InternalSettings.AvailableRegions[InternalSettings.TargetQueueRegion];
                         }
 
                         e.utilSetRequestBody(JsonConvert.SerializeObject(Queue));
@@ -86,29 +84,42 @@ namespace HexedProxy.Core
             {
                 case "/api/v1/inventories":
                     {
-                        e.utilDecodeResponse();
-                        e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedInventory));
+                        if (InternalSettings.UnlockCosmetics)
+                        {
+                            e.utilDecodeResponse();
+                            e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedInventory));
+                        }
                     }
                     break;
 
                 case "/api/v1/dbd-character-data/get-all":
                     {
-                        e.utilDecodeResponse();
-                        e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedProfile)); // check if userId is needed
+                        if (InternalSettings.UnlockItems)
+                        {
+                            e.utilDecodeResponse();
+                            e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedProfile)); // check if userId is needed
+                        }
                     }
                     break;
 
                 case "/api/v1/dbd-character-data/bloodweb":
                     {
-                        e.utilDecodeResponse();
-                        e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedBloodweb)); // check if userId is needed
+                        if (InternalSettings.UnlockItems)
+                        {
+                            e.utilDecodeResponse();
+                            e.utilSetResponseBody(JsonConvert.SerializeObject(SaveEditor.cachedBloodweb)); // check if userId is needed
+                        }
                     }
                     break;
 
                 case "/api/v1/playername":
                     {
                         e.utilDecodeResponse();
-                        SaveEditor.cachedInventory.data.playerId = JsonConvert.DeserializeObject<DBDObjects.DBDPlayerName>(e.GetResponseBodyAsString()).userId;
+
+                        DBDObjects.DBDPlayerName PlayerName = JsonConvert.DeserializeObject<DBDObjects.DBDPlayerName>(e.GetResponseBodyAsString());
+
+                        SaveEditor.cachedInventory.data.playerId = PlayerName.userId;
+                        InternalSettings.PlayerName = PlayerName.playerName;
                     }
                     break;
 
@@ -121,8 +132,11 @@ namespace HexedProxy.Core
 
                 case "/api/v1/extensions/playerLevels/getPlayerLevel":
                     {
-                        e.utilDecodeResponse();
-                        e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.DBDPlayerLevel() { currentXp = 999, currentXpUpperBound = 999, level = 999, levelVersion = 1, prestigeLevel = 999, totalXp = 99999 }));
+                        if (InternalSettings.UnlockLevel)
+                        {
+                            e.utilDecodeResponse();
+                            e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.DBDPlayerLevel() { currentXp = 999, currentXpUpperBound = 999, level = 999, levelVersion = 1, prestigeLevel = 999, totalXp = 99999 }));
+                        }
                     }
                     break;
 
@@ -134,11 +148,21 @@ namespace HexedProxy.Core
 
                             DBDObjects.DBDPipReset PipReset = JsonConvert.DeserializeObject<DBDObjects.DBDPipReset>(e.GetResponseBodyAsString());
 
-                            PipReset.pips.survivorPips = InternalSettings.TargetPips;
-                            PipReset.pips.killerPips = InternalSettings.TargetPips;
+                            int Pips = Utils.GetPipsForRank(InternalSettings.TargetRank);
+
+                            PipReset.pips.survivorPips = Pips;
+                            PipReset.pips.killerPips = Pips;
 
                             e.utilSetResponseBody(JsonConvert.SerializeObject(PipReset));
                         }
+                    }
+                    break;
+
+                case "/api/v1/queue":
+                    {
+                        //e.utilDecodeResponse();
+
+                        //DBDObjects.DBDQueueResp Queue = JsonConvert.DeserializeObject<DBDObjects.DBDQueueResp>(e.GetResponseBodyAsString());
                     }
                     break;
 

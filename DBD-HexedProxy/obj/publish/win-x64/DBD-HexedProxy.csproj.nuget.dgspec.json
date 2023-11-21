@@ -45,6 +45,10 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "ClickableTransparentOverlay": {
+              "target": "Package",
+              "version": "[9.1.0, )"
+            },
             "FiddlerCore.Trial": {
               "target": "Package",
               "version": "[5.0.2, )"

@@ -1,5 +1,4 @@
 ﻿using HexedProxy.Wrappers;
-using HexedUnlocker.Wrappers;
 using Newtonsoft.Json;
 
 namespace HexedProxy.Core
@@ -15,8 +14,6 @@ namespace HexedProxy.Core
             EditBloodweb();
             EditInventory();
             EditProfile();
-
-            Logger.LogSuccess("Save Editor finished");
         }
 
         private static void EditBloodweb()
@@ -48,6 +45,7 @@ namespace HexedProxy.Core
                 Char.prestigeLevel = 100;
                 Char.legacyPrestigeLevel = 3;
                 Char.bloodWebLevel = 50;
+
                 foreach (DBDObjects.Characteritem Item in Char.characterItems)
                 {
                     Item.quantity = 999;
