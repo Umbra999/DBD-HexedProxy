@@ -1,0 +1,2 @@
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\win-x64\DBD-HexedProxy.pdb
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\win-x64\DBD-HexedProxy.exe

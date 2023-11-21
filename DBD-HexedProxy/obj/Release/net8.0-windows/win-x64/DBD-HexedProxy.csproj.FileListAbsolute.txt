@@ -1,0 +1,46 @@
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\DBD-HexedProxy.exe
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\DBD-HexedProxy.deps.json
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\DBD-HexedProxy.runtimeconfig.json
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\DBD-HexedProxy.dll
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\DBD-HexedProxy.pdb
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\BouncyCastle.Cryptography.dll
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\BrotliSharpLib.dll
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\Newtonsoft.Json.dll
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\Titanium.Web.Proxy.dll
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.csproj.AssemblyReference.cache
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.AssemblyInfoInputs.cache
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.AssemblyInfo.cs
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.csproj.CoreCompileInputs.cache
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.csproj.CopyComplete
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.dll
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\refint\DBD-HexedProxy.dll
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.pdb
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.genruntimeconfig.cache
+C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\ref\DBD-HexedProxy.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\DBD-HexedProxy.exe
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\DBD-HexedProxy.deps.json
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\DBD-HexedProxy.runtimeconfig.json
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\DBD-HexedProxy.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\DBD-HexedProxy.pdb
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\Newtonsoft.Json.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.csproj.AssemblyReference.cache
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.AssemblyInfoInputs.cache
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.AssemblyInfo.cs
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.csproj.CoreCompileInputs.cache
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.csproj.CopyComplete
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\refint\DBD-HexedProxy.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.pdb
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.genruntimeconfig.cache
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\ref\DBD-HexedProxy.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\BasicFormatsForCore.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\BCMakeCert.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\DotNetZip.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\FiddlerCore.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\System.ComponentModel.Composition.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\System.Configuration.ConfigurationManager.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\System.Security.Cryptography.ProtectedData.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\System.Security.Permissions.dll
+D:\Github Repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\Telerik.NetworkConnections.dll

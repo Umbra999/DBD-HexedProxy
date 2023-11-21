@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>HexedProxy</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Bloodweb.json" />
+    <None Remove="Resources\GetAll.json" />
+    <None Remove="Resources\Market.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Bloodweb.json" />
+    <EmbeddedResource Include="Resources\GetAll.json" />
+    <EmbeddedResource Include="Resources\Market.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FiddlerCore.Trial" Version="5.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>
