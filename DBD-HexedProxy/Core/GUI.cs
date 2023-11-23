@@ -9,7 +9,7 @@ namespace HexedProxy.Core
     {
         protected override void Render()
         {
-            ImGui.SetNextWindowSize(new Vector2(700, 400), ImGuiCond.Appearing);
+            ImGui.SetNextWindowSize(new Vector2(750, 400), ImGuiCond.Appearing);
             ImGui.SetNextWindowPos(new Vector2(30, 30), ImGuiCond.Appearing);
 
             bool open = true;
@@ -19,7 +19,8 @@ namespace HexedProxy.Core
 
             if (ImGui.Selectable("GENERAL", InternalSettings.SelectedGuiCategory == 0)) InternalSettings.SelectedGuiCategory = 0;
             if (ImGui.Selectable("TOOLS", InternalSettings.SelectedGuiCategory == 1)) InternalSettings.SelectedGuiCategory = 1;
-            if (ImGui.Selectable("INFO", InternalSettings.SelectedGuiCategory == 2)) InternalSettings.SelectedGuiCategory = 2;
+            if (ImGui.Selectable("UNLOCKER", InternalSettings.SelectedGuiCategory == 2)) InternalSettings.SelectedGuiCategory = 2;
+            if (ImGui.Selectable("INFO", InternalSettings.SelectedGuiCategory == 3)) InternalSettings.SelectedGuiCategory = 3;
 
             ImGui.EndChild();
 
@@ -62,13 +63,35 @@ namespace HexedProxy.Core
                         ImGui.Combo("Region", ref InternalSettings.TargetQueueRegion, InternalSettings.AvailableRegions, InternalSettings.AvailableRegions.Length);
                     }
 
-                    if (ImGui.Button("Add Friend")) Task.Run(() => RequestSender.SendFriendRequest(InternalSettings.AddFriendId));
+                    if (ImGui.Button("Add Friend")) Task.Run(() => RequestSender.AddFriend(InternalSettings.TargetFriendId));
                     ImGui.SameLine(0, 10f);
-                    ImGui.InputTextWithHint("", "PlayerId", ref InternalSettings.AddFriendId, 36);
+                    if (ImGui.Button("Remove Friend")) Task.Run(() => RequestSender.RemoveFriend(InternalSettings.TargetFriendId));
+                    ImGui.SameLine(0, 10f);
+                    ImGui.InputTextWithHint("", "PlayerId", ref InternalSettings.TargetFriendId, 36);
 
                     break;
 
-                case 2: // INFO
+                case 2:
+                    if (ImGui.Button("Unlock Tutorial"))
+                    {
+                        Task.Run(async () =>
+                        {
+                            DBDObjects.OnboardingChallanges.ResponseRoot AllChallanges = await RequestSender.GetOnboardingChallenges();
+
+                            foreach (var Challenge in AllChallanges.progress)
+                            {
+                                foreach (var tutorial in Challenge.tutorials)
+                                {
+                                    if (!tutorial.completed) await RequestSender.FinishTutorial(Challenge.step, tutorial.tutorialId);
+                                }
+                            }
+                        });
+                    }
+
+                    ImGui.Checkbox("Instant Tomes", ref InternalSettings.InstantTomes);
+                    break;
+
+                case 3: // INFO
                     ImGui.Text($"Player: {InternalSettings.PlayerName}");
 
                     ImGui.Text($"PlayerId: {InternalSettings.PlayerId}");
@@ -78,6 +101,8 @@ namespace HexedProxy.Core
                     ImGui.Text($"KillerId: {InternalSettings.KillerId}");
                     ImGui.SameLine();
                     if (ImGui.Button("Copy KillerId")) WindowsClipboard.SetText(InternalSettings.KillerId);
+
+                    ImGui.Text($"Killer Platform: {InternalSettings.KillerPlatform} | {InternalSettings.KillerPlatformId}");
 
                     ImGui.Text($"MatchId: {InternalSettings.MatchId}");
                     ImGui.SameLine();

@@ -1,12 +1,17 @@
-﻿namespace HexedProxy.Core
+﻿using HexedProxy.Wrappers;
+using Newtonsoft.Json;
+
+namespace HexedProxy.Core
 {
     internal class InternalSettings
     {
-        public static string PlayerName = "NO NAME";
-        public static string PlayerId = "NO PLAYER";
-        public static string KillerId = "NO KILLER";
-        public static string MatchRegion = "NO REGION";
-        public static string MatchId = "NO MATCH";
+        public static string PlayerName;
+        public static string PlayerId;
+        public static string KillerId;
+        public static string KillerPlatform;
+        public static string KillerPlatformId;
+        public static string MatchRegion;
+        public static string MatchId;
 
         public static bool SpoofRegion = false;
         public static int TargetQueueRegion = 0;
@@ -30,12 +35,19 @@
 
         public static bool SpoofOffline = false;
 
-        public static string AddFriendId = "";
+        public static string TargetFriendId = "";
 
         public static bool UnlockCosmetics = false;
         public static bool UnlockItems = false;
         public static bool UnlockLevel = false;
 
+        public static bool InstantTomes = false;
+        public static DBDObjects.ActiveNode.ResponseRoot ActiveTomeData;
+
         public static int SelectedGuiCategory = 0;
+
+        public static DBDObjects.Bloodweb.ResponseRoot cachedBloodweb = JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(Utils.GetFromResource("Bloodweb.json"));
+        public static DBDObjects.Inventory.ResponseRoot cachedInventory = JsonConvert.DeserializeObject<DBDObjects.Inventory.ResponseRoot>(Utils.GetFromResource("Market.json"));
+        public static DBDObjects.Profile.ResponseRoot cachedProfile = JsonConvert.DeserializeObject<DBDObjects.Profile.ResponseRoot>(Utils.GetFromResource("GetAll.json"));
     }
 }

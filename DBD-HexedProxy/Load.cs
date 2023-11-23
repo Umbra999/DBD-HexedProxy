@@ -1,6 +1,5 @@
 ﻿using HexedProxy.Core;
 using HexedServer;
-using System.Runtime.InteropServices;
 
 namespace HexedProxy
 {
@@ -11,8 +10,6 @@ namespace HexedProxy
             Console.Title = Encryption.RandomString(20);
 
             //Task.Run(ServerHandler.Init).Wait();
-
-            SaveEditor.Init();
 
             new GUI("Hexed", true).Start().Wait();
         }
