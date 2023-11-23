@@ -27,6 +27,9 @@ namespace HexedServer
                 await Task.Delay(3000);
                 Environment.Exit(0);
             }
+
+            string EncodedAsset = await DownloadAsset("cimgui.dll");
+            File.WriteAllBytes("cimgui.dll", Convert.FromBase64String(EncodedAsset));
         }
 
         private static async Task<string> FetchCert()
@@ -69,6 +72,18 @@ namespace HexedServer
                 return JsonConvert.DeserializeObject<ServerObjects.UserData>(RawData);
             }
 
+            return null;
+        }
+
+        public static async Task<string> DownloadAsset(string Asset)
+        {
+            HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = Encryption.ValidateServerCertificate });
+            Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Hexed)");
+
+            HttpRequestMessage Payload = new(HttpMethod.Get, $"https://api.logout.rip/Server/GetAsset/{Asset}");
+            HttpResponseMessage Response = await Client.SendAsync(Payload);
+
+            if (Response.IsSuccessStatusCode) return await Response.Content.ReadAsStringAsync();
             return null;
         }
     }

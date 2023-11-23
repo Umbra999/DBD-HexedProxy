@@ -7,12 +7,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <ApplicationIcon>Resources\Kuromi.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\Bloodweb.json" />
     <None Remove="Resources\GetAll.json" />
     <None Remove="Resources\Market.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Kuromi.ico" />
   </ItemGroup>
 
   <ItemGroup>
