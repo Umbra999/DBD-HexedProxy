@@ -21,7 +21,7 @@ namespace HexedServer
             Encryption.ServerThumbprint = await FetchCert();
             UserData = await Login(Encryption.FromBase64(File.ReadAllText("Key.Hexed")));
 
-            if (UserData == null || !UserData.KeyAccess.Contains(ServerObjects.KeyPermissionType.VRChatBot))
+            if (UserData == null || !UserData.KeyAccess.Contains(ServerObjects.KeyPermissionType.DeadByDaylightUnlocker))
             {
                 Logger.LogError("Key is not Valid");
                 await Task.Delay(3000);

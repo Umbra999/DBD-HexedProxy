@@ -1,4 +1,5 @@
 ﻿using Fiddler;
+using HexedProxy.Modules;
 using HexedProxy.Wrappers;
 using Newtonsoft.Json;
 
@@ -38,11 +39,11 @@ namespace HexedProxy.Core
         {
             if (e == null || e.oRequest == null) return;
 
-            e.bBufferResponse = true;
-
             string url = e.fullUrl;
 
             if (!url.Contains("bhvrdbd")) return;
+
+            e.bBufferResponse = true;
 
             if (e.oRequest.headers["x-kraken-analytics-session-id"] != null) e.oRequest.headers.Remove("x-kraken-analytics-session-id");
 
@@ -93,32 +94,29 @@ namespace HexedProxy.Core
 
                             foreach (var QuestEvent in Quest.questEvents)
                             {
-                                if (InternalSettings.ActiveTomeData != null)
+                                QuestEvent.repetition = 999999;
+
+                                if (InternalSettings.ActiveTomeData?.activeNodesFull != null)
                                 {
-                                    try // needed?
+                                    foreach (var fullNode in InternalSettings.ActiveTomeData.activeNodesFull)
                                     {
-                                        foreach (var fullNode in InternalSettings.ActiveTomeData.activeNodesFull)
+                                        if (fullNode?.objectives == null) continue;
+
+                                        foreach (var objective in fullNode.objectives.Where(o => o?.questEvent != null))
                                         {
-                                            foreach (var objective in fullNode.objectives)
+                                            var cachedEvent = objective.questEvent.FirstOrDefault(e => e.questEventId == QuestEvent.questEventId);
+
+                                            if (cachedEvent != null)
                                             {
-                                                foreach (var questEvent in objective.questEvent)
-                                                {
-                                                    if (questEvent.questEventId == QuestEvent.questEventId)
-                                                    {
-                                                        QuestEvent.repetition = objective.neededProgression;
-                                                        Wrappers.Logger.LogDebug(QuestEvent.questEventId + "set to: " + objective.neededProgression);
-                                                    }
-                                                }
+                                                QuestEvent.repetition = objective.neededProgression;
+                                                Wrappers.Logger.LogDebug($"{QuestEvent.questEventId} set to: {objective.neededProgression}");
                                             }
                                         }
                                     }
-                                    catch { }
                                 }
-
-                                QuestEvent.repetition = 999999; // use as fallback only
                             }
 
-                            e.utilSetRequestBody(JsonConvert.SerializeObject(Quest));
+                            e.utilSetRequestBody(JsonConvert.SerializeObject(Quest, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                         }
                     }
                     break;
@@ -129,13 +127,13 @@ namespace HexedProxy.Core
         {
             if (e == null || e.oRequest == null) return;
 
-            e.bBufferResponse = true;
-
             string url = e.fullUrl;
 
             if (!url.Contains("bhvrdbd")) return;
 
-            if (e.PathAndQuery.Contains("/api/v1/match/"))
+            e.bBufferResponse = true;
+
+            if (e.PathAndQuery.StartsWith("/api/v1/match/"))
             {
                 e.utilDecodeResponse();
 
@@ -147,9 +145,12 @@ namespace HexedProxy.Core
                 Task.Run(async () =>
                 {
                     var Provider = await RequestSender.GetProvider(InternalSettings.KillerId);
-                    InternalSettings.KillerPlatform = Provider.provider;
-                    InternalSettings.KillerPlatformId = Provider.providerId;
-                });
+                    if (Provider != null)
+                    {
+                        InternalSettings.KillerPlatform = Provider.provider;
+                        InternalSettings.KillerPlatformId = Provider.providerId;
+                    }
+                }).Wait();
             }
             else
             {
@@ -180,7 +181,24 @@ namespace HexedProxy.Core
                             if (InternalSettings.UnlockItems)
                             {
                                 e.utilDecodeResponse();
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(InternalSettings.cachedBloodweb));
+                                //e.utilSetResponseBody(JsonConvert.SerializeObject(InternalSettings.cachedBloodweb));
+
+                                DBDObjects.Bloodweb.ResponseRoot Bloodweb = JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(e.GetResponseBodyAsString());
+
+                                Bloodweb.legacyPrestigeLevel = 3;
+                                Bloodweb.prestigeLevel = 100;
+                                Bloodweb.bloodWebLevel = 50;
+
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(Bloodweb));
+                            }
+
+                            if (InternalSettings.InstantPrestige)
+                            {
+                                e.utilDecodeResponse();
+
+                                DBDObjects.Bloodweb.ResponseRoot Bloodweb = JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(e.GetResponseBodyAsString());
+
+                                PrestigeManager.LevelUntilPrestige(Bloodweb, 100);
                             }
                         }
                         break;
@@ -208,6 +226,24 @@ namespace HexedProxy.Core
                         }
                         break;
 
+                    case "/api/v1/wallet/currencies":
+                        {
+                            if (InternalSettings.UnlockCurrencies)
+                            {
+                                e.utilDecodeResponse();
+
+                                DBDObjects.Currencies.ResponseRoot Currencies = JsonConvert.DeserializeObject<DBDObjects.Currencies.ResponseRoot>(e.GetResponseBodyAsString());
+
+                                foreach (var Currency in Currencies.list)
+                                {
+                                    Currency.balance = 9999999;
+                                }
+
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(Currencies));
+                            }
+                        }
+                        break;
+
                     case "/api/v1/ranks/reset-get-pips-v2": // maybe remove and make queue only spoof
                         {
                             if (InternalSettings.SpoofRank)
@@ -221,22 +257,36 @@ namespace HexedProxy.Core
                                 PipReset.pips.survivorPips = Pips;
                                 PipReset.pips.killerPips = Pips;
 
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(PipReset));
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(PipReset, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                             }
                         }
                         break;
 
-                    case "/v1/players/ban/status":
+                    case "api/v1/players/ban/status":
                         {
                             e.utilDecodeResponse();
                             e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.BanStatus.ResponseRoot() { isBanned = false }));
                         }
                         break;
 
-                    case "/v1/archives/stories/update/active-node-v3":
+                    case "/api/v1/archives/stories/update/active-node-v3":
                         {
                             e.utilDecodeResponse();
-                            InternalSettings.ActiveTomeData = JsonConvert.DeserializeObject<DBDObjects.ActiveNode.ResponseRoot>(e.GetResponseBodyAsString());
+                            try
+                            {
+                                InternalSettings.ActiveTomeData = JsonConvert.DeserializeObject<DBDObjects.ActiveNode.ResponseRoot>(e.GetResponseBodyAsString());
+                            }
+                            catch (Exception ex) { Wrappers.Logger.LogError(ex); }
+                        }
+                        break;
+
+                    case "/api/v1/queue":
+                        {
+                            InternalSettings.KillerId = "NONE";
+                            InternalSettings.MatchRegion = "NONE";
+                            InternalSettings.MatchId = "NONE";
+                            InternalSettings.KillerPlatform = "NONE";
+                            InternalSettings.KillerPlatformId = "NONE";
                         }
                         break;
                 }

@@ -146,5 +146,63 @@ namespace HexedProxy.Core
 
             return null;
         }
+
+        public static async Task<bool> FinishRituals(string[] IDs)
+        {
+            if (headers == null) return false;
+
+            HttpClient Client = new(new HttpClientHandler { UseCookies = false, AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }, true);
+
+            foreach (var ogHeader in headers)
+            {
+                if (!ogHeader.Name.StartsWith("x-") && ogHeader.Name != "Host" && ogHeader.Name != "User-Agent" && ogHeader.Name != "Cookie") continue;
+
+                Client.DefaultRequestHeaders.Add(ogHeader.Name, ogHeader.Value);
+            }
+
+            string Body = JsonConvert.SerializeObject(new { possibleRitualsToGenerate = new object[0], ritualsToClaim = IDs });
+
+            HttpRequestMessage Payload = new(HttpMethod.Post, $"https://{headers["Host"]}/api/v1/dbd-core-ritual/claim")
+            {
+                Content = new StringContent(Body, Encoding.UTF8, "application/json")
+            };
+            Payload.Content.Headers.ContentType.CharSet = "";
+
+            HttpResponseMessage Response = await Client.SendAsync(Payload);
+
+            return Response.IsSuccessStatusCode;
+        }
+
+        public static async Task<DBDObjects.Bloodweb.ResponseRoot> FinishBloodweb(string Character, string[] BlockedNodes, string[] SelectedNodes)
+        {
+            if (headers == null) return null;
+
+            HttpClient Client = new(new HttpClientHandler { UseCookies = false, AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }, true);
+
+            foreach (var ogHeader in headers)
+            {
+                if (!ogHeader.Name.StartsWith("x-") && ogHeader.Name != "Host" && ogHeader.Name != "User-Agent" && ogHeader.Name != "Cookie") continue;
+
+                Client.DefaultRequestHeaders.Add(ogHeader.Name, ogHeader.Value);
+            }
+
+            string Body = JsonConvert.SerializeObject(new { characterName = Character, entityBlockedNodeIds = BlockedNodes, selectedNodeIds = SelectedNodes });
+
+            HttpRequestMessage Payload = new(HttpMethod.Post, $"https://{headers["Host"]}/api/v1/dbd-character-data/bloodweb")
+            {
+                Content = new StringContent(Body, Encoding.UTF8, "application/json")
+            };
+            Payload.Content.Headers.ContentType.CharSet = "";
+
+            HttpResponseMessage Response = await Client.SendAsync(Payload);
+
+            if (Response.IsSuccessStatusCode)
+            {
+                string respBody = await Response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(respBody);
+            }
+
+            return null;
+        }
     }
 }

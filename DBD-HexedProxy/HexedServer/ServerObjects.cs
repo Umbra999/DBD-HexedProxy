@@ -4,12 +4,7 @@
     {
         public enum KeyPermissionType
         {
-            VRChat = 0,
-            SeaOfThieves = 1,
-            CSGO = 2,
-            Minecraft = 3,
-            VRChatBot = 4,
-            VRChatReuploader = 5
+            DeadByDaylightUnlocker = 8,
         }
 
         public class UserData

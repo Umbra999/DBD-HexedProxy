@@ -1,6 +1,7 @@
 ﻿using ClickableTransparentOverlay;
 using Fiddler;
 using ImGuiNET;
+using System.Diagnostics;
 using System.Numerics;
 
 namespace HexedProxy.Core
@@ -46,6 +47,7 @@ namespace HexedProxy.Core
                     ImGui.Checkbox("Cosmetic Unlock", ref InternalSettings.UnlockCosmetics);
                     ImGui.Checkbox("Item Unlock", ref InternalSettings.UnlockItems);
                     ImGui.Checkbox("Level Unlock", ref InternalSettings.UnlockLevel);
+                    ImGui.Checkbox("Currency Unlock", ref InternalSettings.UnlockCurrencies);
 
                     ImGui.Checkbox("Spoof Offline", ref InternalSettings.SpoofOffline);
 
@@ -89,6 +91,7 @@ namespace HexedProxy.Core
                     }
 
                     ImGui.Checkbox("Instant Tomes", ref InternalSettings.InstantTomes);
+                    ImGui.Checkbox("Instant Prestige", ref InternalSettings.InstantPrestige);
                     break;
 
                 case 3: // INFO
@@ -102,7 +105,12 @@ namespace HexedProxy.Core
                     ImGui.SameLine();
                     if (ImGui.Button("Copy KillerId")) WindowsClipboard.SetText(InternalSettings.KillerId);
 
-                    ImGui.Text($"Killer Platform: {InternalSettings.KillerPlatform} | {InternalSettings.KillerPlatformId}");
+                    ImGui.Text($"Killer Platform: {InternalSettings.KillerPlatform} [{InternalSettings.KillerPlatformId}]");
+                    if (InternalSettings.KillerPlatform == "steam")
+                    {
+                        ImGui.SameLine();
+                        if (ImGui.Button("Copy Profile")) WindowsClipboard.SetText($"https://steamcommunity.com/profiles/{InternalSettings.KillerPlatformId}");
+                    }
 
                     ImGui.Text($"MatchId: {InternalSettings.MatchId}");
                     ImGui.SameLine();

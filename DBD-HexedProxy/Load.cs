@@ -1,6 +1,5 @@
 ﻿using HexedProxy.Core;
 using HexedServer;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace HexedProxy

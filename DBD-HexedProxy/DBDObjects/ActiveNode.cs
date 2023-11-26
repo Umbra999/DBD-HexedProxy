@@ -6,8 +6,9 @@
         {
             public Node[] activeNode { get; set; }
             public FullNode[] activeNodesFull { get; set; }
-            public ListOfNode listOfNodes { get; set; }
-            public SurvivorActiveNode survivorActiveNode { get; set; }
+            //public ListOfNode listOfNodes { get; set; }
+            public Node survivorActiveNode { get; set; }
+            public Node killerActiveNode { get; set; }
         }
 
         public class Node
@@ -20,9 +21,9 @@
         public class FullNode
         {
             public string clientInfoId { get; set; }
-            public Coordinates coordinates { get; set; }
+            //public Coordinates coordinates { get; set; }
             public string[] neighbors { get; set; }
-            public NodeTreeCoordinate nodeTreeCoordinate { get; set; }
+            //public NodeTreeCoordinate nodeTreeCoordinate { get; set; }
             public string nodeType { get; set; }
             public Objective[] objectives { get; set; }
             public Reward[] rewards { get; set; }
@@ -73,12 +74,5 @@
             public string id { get; set; }
             public string type { get; set; }
         }  
-
-        public class SurvivorActiveNode
-        {
-            public int level { get; set; }
-            public string nodeId { get; set; }
-            public string storyId { get; set; }
-        }
     }
 }

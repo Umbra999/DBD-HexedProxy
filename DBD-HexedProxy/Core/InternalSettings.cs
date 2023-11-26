@@ -5,13 +5,13 @@ namespace HexedProxy.Core
 {
     internal class InternalSettings
     {
-        public static string PlayerName;
-        public static string PlayerId;
-        public static string KillerId;
-        public static string KillerPlatform;
-        public static string KillerPlatformId;
-        public static string MatchRegion;
-        public static string MatchId;
+        public static string PlayerName = "NONE";
+        public static string PlayerId = "NONE";
+        public static string KillerId = "NONE";
+        public static string KillerPlatform = "NONE";
+        public static string KillerPlatformId = "NONE";
+        public static string MatchRegion = "NONE";
+        public static string MatchId = "NONE";
 
         public static bool SpoofRegion = false;
         public static int TargetQueueRegion = 0;
@@ -40,9 +40,12 @@ namespace HexedProxy.Core
         public static bool UnlockCosmetics = false;
         public static bool UnlockItems = false;
         public static bool UnlockLevel = false;
+        public static bool UnlockCurrencies = false;
 
         public static bool InstantTomes = false;
         public static DBDObjects.ActiveNode.ResponseRoot ActiveTomeData;
+
+        public static bool InstantPrestige = false;
 
         public static int SelectedGuiCategory = 0;
 
