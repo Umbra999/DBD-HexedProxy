@@ -79,7 +79,7 @@ namespace HexedProxy.Core
 
                             Presence.online = false;
 
-                            e.utilSetRequestBody(JsonConvert.SerializeObject(Presence));
+                            e.utilSetRequestBody(JsonConvert.SerializeObject(Presence, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                         }
                     }
                     break;
@@ -106,11 +106,7 @@ namespace HexedProxy.Core
                                         {
                                             var cachedEvent = objective.questEvent.FirstOrDefault(e => e.questEventId == QuestEvent.questEventId);
 
-                                            if (cachedEvent != null)
-                                            {
-                                                QuestEvent.repetition = objective.neededProgression;
-                                                Wrappers.Logger.LogDebug($"{QuestEvent.questEventId} set to: {objective.neededProgression}");
-                                            }
+                                            if (cachedEvent != null) QuestEvent.repetition = objective.neededProgression;
                                         }
                                     }
                                 }
@@ -181,15 +177,13 @@ namespace HexedProxy.Core
                             if (InternalSettings.UnlockItems)
                             {
                                 e.utilDecodeResponse();
-                                //e.utilSetResponseBody(JsonConvert.SerializeObject(InternalSettings.cachedBloodweb));
-
                                 DBDObjects.Bloodweb.ResponseRoot Bloodweb = JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(e.GetResponseBodyAsString());
 
                                 Bloodweb.legacyPrestigeLevel = 3;
                                 Bloodweb.prestigeLevel = 100;
-                                Bloodweb.bloodWebLevel = 50;
+                                // add character items if needed to it?
 
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(Bloodweb));
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(Bloodweb, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                             }
 
                             if (InternalSettings.InstantPrestige)
@@ -271,12 +265,11 @@ namespace HexedProxy.Core
 
                     case "/api/v1/archives/stories/update/active-node-v3":
                         {
-                            e.utilDecodeResponse();
-                            try
+                            if (InternalSettings.InstantTomes)
                             {
+                                e.utilDecodeResponse();
                                 InternalSettings.ActiveTomeData = JsonConvert.DeserializeObject<DBDObjects.ActiveNode.ResponseRoot>(e.GetResponseBodyAsString());
                             }
-                            catch (Exception ex) { Wrappers.Logger.LogError(ex); }
                         }
                         break;
 

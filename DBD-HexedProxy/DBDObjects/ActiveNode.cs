@@ -22,7 +22,7 @@
         {
             public string clientInfoId { get; set; }
             //public Coordinates coordinates { get; set; }
-            public string[] neighbors { get; set; }
+            //public string[] neighbors { get; set; }
             //public NodeTreeCoordinate nodeTreeCoordinate { get; set; }
             public string nodeType { get; set; }
             public Objective[] objectives { get; set; }
@@ -52,7 +52,7 @@
 
         public class Objective
         {
-            public object[] conditions { get; set; }
+            //public object[] conditions { get; set; }
             public int currentProgress { get; set; }
             public bool incrementWithEventRepetitions { get; set; }
             public bool isCommunityObjective { get; set; }

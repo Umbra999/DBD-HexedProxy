@@ -14,7 +14,7 @@ namespace HexedProxy.Modules
                 List<string> BlockedNodes = new();
                 List<string> SelectedNodes = new();
 
-                while (currentBloodweb != null && currentBloodweb.prestigeLevel < TargetPrestige)
+                while (InternalSettings.InstantPrestige && currentBloodweb != null && currentBloodweb.prestigeLevel < TargetPrestige) // add check for updated wallets
                 {
                     BlockedNodes.Clear();
                     SelectedNodes.Clear();
