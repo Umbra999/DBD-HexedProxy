@@ -52,7 +52,7 @@
 
         public class Objective
         {
-            //public object[] conditions { get; set; }
+            public Condition[] conditions { get; set; }
             public int currentProgress { get; set; }
             public bool incrementWithEventRepetitions { get; set; }
             public bool isCommunityObjective { get; set; }
@@ -64,6 +64,7 @@
         public class QuestEvent
         {
             public string operation { get; set; }
+            public string parameters { get; set; }
             public string questEventId { get; set; }
             public int repetition { get; set; }
         }
@@ -73,6 +74,12 @@
             public int amount { get; set; }
             public string id { get; set; }
             public string type { get; set; }
-        }  
+        }
+
+        public class  Condition
+        {
+            public string key { get; set; }
+            public string[] value { get; set; }
+        }
     }
 }

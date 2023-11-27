@@ -49,9 +49,11 @@ namespace HexedProxy.Core
 
             switch (e.PathAndQuery)
             {
-                case "/api/v1/queue":
+                case "/api/v1/queue": // dont work on party, add support for the party call
                     {
                         e.utilDecodeRequest();
+
+                        InfoManager.OnQueueReceived();
 
                         DBDObjects.Queue.RequestRoot Queue = JsonConvert.DeserializeObject<DBDObjects.Queue.RequestRoot>(e.GetRequestBodyAsString());
 
@@ -65,7 +67,7 @@ namespace HexedProxy.Core
                             Queue.region = InternalSettings.AvailableRegions[InternalSettings.TargetQueueRegion];
                         }
 
-                        e.utilSetRequestBody(JsonConvert.SerializeObject(Queue));
+                        e.utilSetRequestBody(JsonConvert.SerializeObject(Queue, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                     }
                     break;
 
@@ -86,32 +88,42 @@ namespace HexedProxy.Core
 
                 case "/api/v1/archives/stories/update/quest-progress-v3":
                     {
+                        e.utilDecodeRequest();
+
+                        DBDObjects.QuestProgress.RequestRoot Quest = JsonConvert.DeserializeObject<DBDObjects.QuestProgress.RequestRoot>(e.GetRequestBodyAsString());
+
+                        TomeManager.OnNodeProgressSend(Quest);
+
                         if (InternalSettings.InstantTomes)
                         {
-                            e.utilDecodeRequest();
-
-                            DBDObjects.QuestProgress.RequestRoot Quest = JsonConvert.DeserializeObject<DBDObjects.QuestProgress.RequestRoot>(e.GetRequestBodyAsString());
-
-                            foreach (var QuestEvent in Quest.questEvents)
+                            var selectedNode = TomeManager.GetSelectedNode();
+                            if (selectedNode?.activeNodesFull != null)
                             {
-                                QuestEvent.repetition = 999999;
-
-                                if (InternalSettings.ActiveTomeData?.activeNodesFull != null)
+                                foreach (var QuestEvent in Quest.questEvents)
                                 {
-                                    foreach (var fullNode in InternalSettings.ActiveTomeData.activeNodesFull)
-                                    {
-                                        if (fullNode?.objectives == null) continue;
+                                    QuestEvent.repetition = 150000;
 
-                                        foreach (var objective in fullNode.objectives.Where(o => o?.questEvent != null))
+                                    foreach (var fullNode in selectedNode.activeNodesFull)
+                                    {
+                                        if (fullNode.objectives == null) continue;
+
+                                        foreach (var objective in fullNode.objectives.Where(o => o.questEvent != null))
                                         {
                                             var cachedEvent = objective.questEvent.FirstOrDefault(e => e.questEventId == QuestEvent.questEventId);
-
                                             if (cachedEvent != null) QuestEvent.repetition = objective.neededProgression;
                                         }
                                     }
                                 }
                             }
 
+                            e.utilSetRequestBody(JsonConvert.SerializeObject(Quest, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                        }
+                        else if (InternalSettings.BlockTomes)
+                        {
+                            foreach (var QuestEvent in Quest.questEvents)
+                            {
+                                QuestEvent.repetition = 0;
+                            }
                             e.utilSetRequestBody(JsonConvert.SerializeObject(Quest, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                         }
                     }
@@ -129,24 +141,13 @@ namespace HexedProxy.Core
 
             e.bBufferResponse = true;
 
-            if (e.PathAndQuery.StartsWith("/api/v1/match/"))
+            if (e.PathAndQuery.StartsWith("/api/v1/match/")) // maybe reset on CLOSE state instead queue check?
             {
                 e.utilDecodeResponse();
 
                 DBDObjects.Match.ResponseRoot MatchInfo = JsonConvert.DeserializeObject<DBDObjects.Match.ResponseRoot>(e.GetResponseBodyAsString());
 
-                InternalSettings.KillerId = MatchInfo.sideA[0]; // add check for multiple killers
-                InternalSettings.MatchRegion = MatchInfo.region;
-                InternalSettings.MatchId = MatchInfo.matchId;
-                Task.Run(async () =>
-                {
-                    var Provider = await RequestSender.GetProvider(InternalSettings.KillerId);
-                    if (Provider != null)
-                    {
-                        InternalSettings.KillerPlatform = Provider.provider;
-                        InternalSettings.KillerPlatformId = Provider.providerId;
-                    }
-                }).Wait();
+                InfoManager.OnMatchInfoReceived(MatchInfo);
             }
             else
             {
@@ -174,25 +175,18 @@ namespace HexedProxy.Core
 
                     case "/api/v1/dbd-character-data/bloodweb":
                         {
+                            e.utilDecodeResponse();
+                            DBDObjects.Bloodweb.ResponseRoot Bloodweb = JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(e.GetResponseBodyAsString());
+
+                            BloodwebManager.OnBloodwebReceived(Bloodweb);
+
                             if (InternalSettings.UnlockItems)
                             {
-                                e.utilDecodeResponse();
-                                DBDObjects.Bloodweb.ResponseRoot Bloodweb = JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(e.GetResponseBodyAsString());
-
                                 Bloodweb.legacyPrestigeLevel = 3;
                                 Bloodweb.prestigeLevel = 100;
                                 // add character items if needed to it?
 
                                 e.utilSetResponseBody(JsonConvert.SerializeObject(Bloodweb, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
-                            }
-
-                            if (InternalSettings.InstantPrestige)
-                            {
-                                e.utilDecodeResponse();
-
-                                DBDObjects.Bloodweb.ResponseRoot Bloodweb = JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(e.GetResponseBodyAsString());
-
-                                PrestigeManager.LevelUntilPrestige(Bloodweb, 100);
                             }
                         }
                         break;
@@ -203,10 +197,9 @@ namespace HexedProxy.Core
 
                             DBDObjects.PlayerName.ResponseRoot PlayerName = JsonConvert.DeserializeObject<DBDObjects.PlayerName.ResponseRoot>(e.GetResponseBodyAsString());
 
-                            InternalSettings.cachedInventory.data.playerId = PlayerName.userId;
-                            InternalSettings.PlayerName = PlayerName.playerName;
-                            InternalSettings.PlayerId = PlayerName.userId;
-                            RequestSender.headers = e.RequestHeaders;
+                            RequestSender.OnDefaultHeadersReceived(e.RequestHeaders);
+                            InfoManager.OnPlayerInfoReceived(PlayerName);
+                            InternalSettings.cachedInventory.data.playerId = PlayerName.userId; // add saveeditor module for this
                         }
                         break;
 
@@ -265,21 +258,11 @@ namespace HexedProxy.Core
 
                     case "/api/v1/archives/stories/update/active-node-v3":
                         {
-                            if (InternalSettings.InstantTomes)
-                            {
-                                e.utilDecodeResponse();
-                                InternalSettings.ActiveTomeData = JsonConvert.DeserializeObject<DBDObjects.ActiveNode.ResponseRoot>(e.GetResponseBodyAsString());
-                            }
-                        }
-                        break;
+                            e.utilDecodeResponse();
 
-                    case "/api/v1/queue":
-                        {
-                            InternalSettings.KillerId = "NONE";
-                            InternalSettings.MatchRegion = "NONE";
-                            InternalSettings.MatchId = "NONE";
-                            InternalSettings.KillerPlatform = "NONE";
-                            InternalSettings.KillerPlatformId = "NONE";
+                            DBDObjects.ActiveNode.ResponseRoot Node = JsonConvert.DeserializeObject<DBDObjects.ActiveNode.ResponseRoot>(e.GetResponseBodyAsString());
+
+                            TomeManager.OnActiveNodeReceived(Node);
                         }
                         break;
                 }

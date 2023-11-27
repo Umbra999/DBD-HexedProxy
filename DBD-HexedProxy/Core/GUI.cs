@@ -1,5 +1,6 @@
 ﻿using ClickableTransparentOverlay;
 using Fiddler;
+using HexedProxy.Modules;
 using ImGuiNET;
 using System.Diagnostics;
 using System.Numerics;
@@ -20,8 +21,9 @@ namespace HexedProxy.Core
 
             if (ImGui.Selectable("GENERAL", InternalSettings.SelectedGuiCategory == 0)) InternalSettings.SelectedGuiCategory = 0;
             if (ImGui.Selectable("TOOLS", InternalSettings.SelectedGuiCategory == 1)) InternalSettings.SelectedGuiCategory = 1;
-            if (ImGui.Selectable("UNLOCKER", InternalSettings.SelectedGuiCategory == 2)) InternalSettings.SelectedGuiCategory = 2;
-            if (ImGui.Selectable("INFO", InternalSettings.SelectedGuiCategory == 3)) InternalSettings.SelectedGuiCategory = 3;
+            if (ImGui.Selectable("TEMP MARKET", InternalSettings.SelectedGuiCategory == 2)) InternalSettings.SelectedGuiCategory = 2;
+            if (ImGui.Selectable("PERM UNLOCK", InternalSettings.SelectedGuiCategory == 3)) InternalSettings.SelectedGuiCategory = 3;
+            if (ImGui.Selectable("INFO", InternalSettings.SelectedGuiCategory == 4)) InternalSettings.SelectedGuiCategory = 4;
 
             ImGui.EndChild();
 
@@ -44,11 +46,8 @@ namespace HexedProxy.Core
                     break;
 
                 case 1: // TOOLS
-                    ImGui.Checkbox("Cosmetic Unlock", ref InternalSettings.UnlockCosmetics);
-                    ImGui.Checkbox("Item Unlock", ref InternalSettings.UnlockItems);
-                    ImGui.Checkbox("Level Unlock", ref InternalSettings.UnlockLevel);
-                    ImGui.Checkbox("Currency Unlock", ref InternalSettings.UnlockCurrencies);
-
+                    ImGui.Checkbox("Instant Tomes", ref InternalSettings.InstantTomes);
+                    ImGui.Checkbox("Block Tomes", ref InternalSettings.BlockTomes);
                     ImGui.Checkbox("Spoof Offline", ref InternalSettings.SpoofOffline);
 
                     ImGui.Checkbox("Change Rank", ref InternalSettings.SpoofRank);
@@ -59,7 +58,7 @@ namespace HexedProxy.Core
                     }
 
                     ImGui.Checkbox("Change Region", ref InternalSettings.SpoofRegion);
-                    if (InternalSettings.SpoofRegion) 
+                    if (InternalSettings.SpoofRegion)
                     {
                         ImGui.SameLine(0, 10f);
                         ImGui.Combo("Region", ref InternalSettings.TargetQueueRegion, InternalSettings.AvailableRegions, InternalSettings.AvailableRegions.Length);
@@ -69,54 +68,51 @@ namespace HexedProxy.Core
                     ImGui.SameLine(0, 10f);
                     if (ImGui.Button("Remove Friend")) Task.Run(() => RequestSender.RemoveFriend(InternalSettings.TargetFriendId));
                     ImGui.SameLine(0, 10f);
-                    ImGui.InputTextWithHint("", "PlayerId", ref InternalSettings.TargetFriendId, 36);
-
+                    ImGui.InputTextWithHint("Friend", "PlayerId", ref InternalSettings.TargetFriendId, 36);
                     break;
 
                 case 2:
-                    if (ImGui.Button("Unlock Tutorial"))
-                    {
-                        Task.Run(async () =>
-                        {
-                            DBDObjects.OnboardingChallanges.ResponseRoot AllChallanges = await RequestSender.GetOnboardingChallenges();
-
-                            foreach (var Challenge in AllChallanges.progress)
-                            {
-                                foreach (var tutorial in Challenge.tutorials)
-                                {
-                                    if (!tutorial.completed) await RequestSender.FinishTutorial(Challenge.step, tutorial.tutorialId);
-                                }
-                            }
-                        });
-                    }
-
-                    ImGui.Checkbox("Instant Tomes", ref InternalSettings.InstantTomes);
-                    ImGui.Checkbox("Instant Prestige", ref InternalSettings.InstantPrestige);
+                    ImGui.Checkbox("Cosmetic Unlock", ref InternalSettings.UnlockCosmetics);
+                    ImGui.Checkbox("Item Unlock", ref InternalSettings.UnlockItems);
+                    ImGui.Checkbox("Level Unlock", ref InternalSettings.UnlockLevel);
+                    ImGui.Checkbox("Currency Unlock", ref InternalSettings.UnlockCurrencies);
                     break;
 
-                case 3: // INFO
-                    ImGui.Text($"Player: {InternalSettings.PlayerName}");
+                case 3: // UNLOCK
+                    if (ImGui.Button("Finish Tutorial")) Misc.UnlockTutorials();
 
-                    ImGui.Text($"PlayerId: {InternalSettings.PlayerId}");
+                    ImGui.Dummy(new Vector2(0, 20));
+
+                    ImGui.Text($"Character: {BloodwebManager.GetSelectedCharacter()}");
+                    if (ImGui.Button("Add Prestige")) BloodwebManager.AddPrestigeLevels();
+                    ImGui.SameLine(0, 10f);
+                    ImGui.SliderInt("Prestige", ref BloodwebManager.TargetPrestige, BloodwebManager.GetCurrentPrestige() + 1, 100);
+                    break;
+
+                case 4: // INFO
+                    ImGui.Text($"Player: {InfoManager.PlayerName}");
+                    ImGui.Text($"PlayerId: {InfoManager.PlayerId}");
                     ImGui.SameLine();
-                    if (ImGui.Button("Copy PlayerId")) WindowsClipboard.SetText(InternalSettings.PlayerId);
+                    if (ImGui.Button("Copy PlayerId")) WindowsClipboard.SetText(InfoManager.PlayerId);
 
-                    ImGui.Text($"KillerId: {InternalSettings.KillerId}");
+                    ImGui.Dummy(new Vector2(0, 20));
+
+                    ImGui.Text($"KillerId: {InfoManager.KillerId}");
                     ImGui.SameLine();
-                    if (ImGui.Button("Copy KillerId")) WindowsClipboard.SetText(InternalSettings.KillerId);
-
-                    ImGui.Text($"Killer Platform: {InternalSettings.KillerPlatform} [{InternalSettings.KillerPlatformId}]");
-                    if (InternalSettings.KillerPlatform == "steam")
+                    if (ImGui.Button("Copy KillerId")) WindowsClipboard.SetText(InfoManager.KillerId);
+                    ImGui.Text($"Killer Platform: {InfoManager.KillerPlatform} [{InfoManager.KillerPlatformId}]");
+                    if (InfoManager.KillerPlatform == "steam")
                     {
                         ImGui.SameLine();
-                        if (ImGui.Button("Copy Profile")) WindowsClipboard.SetText($"https://steamcommunity.com/profiles/{InternalSettings.KillerPlatformId}");
+                        if (ImGui.Button("Copy Profile")) WindowsClipboard.SetText($"https://steamcommunity.com/profiles/{InfoManager.KillerPlatformId}");
                     }
 
-                    ImGui.Text($"MatchId: {InternalSettings.MatchId}");
-                    ImGui.SameLine();
-                    if (ImGui.Button("Copy MatchId")) WindowsClipboard.SetText(InternalSettings.MatchId);
+                    ImGui.Dummy(new Vector2(0, 20));
 
-                    ImGui.Text($"Region: {InternalSettings.MatchRegion}");
+                    ImGui.Text($"Match Region: {InfoManager.MatchRegion}");
+                    ImGui.Text($"MatchId: {InfoManager.MatchId}");
+                    ImGui.SameLine();
+                    if (ImGui.Button("Copy MatchId")) WindowsClipboard.SetText(InfoManager.MatchId);
                     break;
             }
             ImGui.EndChild();
