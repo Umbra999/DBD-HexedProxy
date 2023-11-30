@@ -69,11 +69,22 @@ namespace HexedProxy.Core
                     if (ImGui.Button("Remove Friend")) Task.Run(() => RequestSender.RemoveFriend(InternalSettings.TargetFriendId));
                     ImGui.SameLine(0, 10f);
                     ImGui.InputTextWithHint("Friend", "PlayerId", ref InternalSettings.TargetFriendId, 36);
+
+                    ImGui.Checkbox("Match Snipe", ref InternalSettings.MatchSnipe);
+                    if (InternalSettings.MatchSnipe)
+                    {
+                        ImGui.SameLine(0, 10f);
+                        ImGui.Checkbox("Streamer", ref InternalSettings.OnlyStreamer);
+                        if (!InternalSettings.OnlyStreamer)
+                        {
+                            ImGui.SameLine(0, 10f);
+                            ImGui.InputTextWithHint("ID/Name", "PlayerId/SteamId/Name", ref InternalSettings.TargetSnipeParameter, 36);
+                        }
+                    }
                     break;
 
                 case 2:
-                    ImGui.Checkbox("Cosmetic Unlock", ref InternalSettings.UnlockCosmetics);
-                    ImGui.Checkbox("Item Unlock", ref InternalSettings.UnlockItems);
+                    ImGui.Checkbox("Unlock All", ref InternalSettings.UnlockAll);
                     ImGui.Checkbox("Level Unlock", ref InternalSettings.UnlockLevel);
                     ImGui.Checkbox("Currency Unlock", ref InternalSettings.UnlockCurrencies);
                     break;
@@ -97,15 +108,18 @@ namespace HexedProxy.Core
 
                     ImGui.Dummy(new Vector2(0, 20));
 
-                    ImGui.Text($"KillerId: {InfoManager.KillerId}");
+
+                    ImGui.Text($"Killer: {InfoManager.KillerName}");
                     ImGui.SameLine();
                     if (ImGui.Button("Copy KillerId")) WindowsClipboard.SetText(InfoManager.KillerId);
-                    ImGui.Text($"Killer Platform: {InfoManager.KillerPlatform} [{InfoManager.KillerPlatformId}]");
-                    if (InfoManager.KillerPlatform == "steam")
+
+                    ImGui.Text($"Killer Platform: {InfoManager.KillerPlatform}");
+                    if (InfoManager.KillerPlatformId != null)
                     {
                         ImGui.SameLine();
                         if (ImGui.Button("Copy Profile")) WindowsClipboard.SetText($"https://steamcommunity.com/profiles/{InfoManager.KillerPlatformId}");
                     }
+
 
                     ImGui.Dummy(new Vector2(0, 20));
 

@@ -6,24 +6,35 @@ namespace HexedProxy.Modules
     {
         public static string PlayerName = "NONE";
         public static string PlayerId = "NONE";
+
         public static string KillerId = "NONE";
         public static string KillerPlatform = "NONE";
-        public static string KillerPlatformId = "NONE";
+        public static string KillerName = "NONE";
+        public static string KillerPlatformId;
+
         public static string MatchRegion = "NONE";
         public static string MatchId = "NONE";
 
         public static void OnMatchInfoReceived(Match.ResponseRoot Match)
         {
-            KillerId = Match.sideA[0]; // add check for multiple killers
+            KillerId = Match.sideA.Length > 0 ? Match.sideA[0] : "NONE"; // add check for multiple killers
             MatchRegion = Match.region;
             MatchId = Match.matchId;
             Task.Run(async () =>
             {
-                var Provider = await RequestSender.GetPlayerProvider(KillerId);
-                if (Provider != null)
+                var PlayerProfile = await RequestSender.GetPlayerByCloudId(KillerId);
+                if (PlayerProfile != null) 
                 {
-                    KillerPlatform = Provider.provider;
-                    KillerPlatformId = Provider.providerId;
+                    KillerName = PlayerProfile.playerName;
+                    KillerId = PlayerProfile.userId;
+   
+                    if (PlayerProfile.providerPlayerNames?.steam != null) // provider is per platform, EG can only open EG and so on, needs to be fixed and other platforms need to be added
+                    {
+                        KillerPlatform = "Steam";
+
+                        var Provider = await RequestSender.GetPlayerProvider(KillerId);
+                        if (Provider != null) KillerPlatformId = Provider.providerId;
+                    }
                 }
             }).Wait();
         }
@@ -37,10 +48,12 @@ namespace HexedProxy.Modules
         public static void OnQueueReceived()
         {
             KillerId = "NONE";
+            KillerPlatform = "NONE";
+            KillerName = "NONE";
+            KillerPlatformId = null;
+
             MatchRegion = "NONE";
             MatchId = "NONE";
-            KillerPlatform = "NONE";
-            KillerPlatformId = "NONE";
         }
     }
 }

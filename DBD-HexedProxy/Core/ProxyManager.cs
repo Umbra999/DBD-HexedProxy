@@ -1,4 +1,5 @@
 ﻿using Fiddler;
+using HexedProxy.DBDObjects;
 using HexedProxy.Modules;
 using HexedProxy.Wrappers;
 using Newtonsoft.Json;
@@ -55,7 +56,16 @@ namespace HexedProxy.Core
 
                         InfoManager.OnQueueReceived();
 
-                        DBDObjects.Queue.RequestRoot Queue = JsonConvert.DeserializeObject<DBDObjects.Queue.RequestRoot>(e.GetRequestBodyAsString());
+                        Queue.RequestRoot Queue = JsonConvert.DeserializeObject<Queue.RequestRoot>(e.GetRequestBodyAsString());
+
+                        if (InternalSettings.MatchSnipe)
+                        {
+                            if (MatchSniper.ResetQueue)
+                            {
+                                Queue.checkOnly = false;
+                                MatchSniper.ResetQueue = false;
+                            }
+                        }
 
                         if (InternalSettings.SpoofRank)
                         {
@@ -77,7 +87,7 @@ namespace HexedProxy.Core
                         {
                             e.utilDecodeRequest();
 
-                            DBDObjects.RichPresence.RequestRoot Presence = JsonConvert.DeserializeObject<DBDObjects.RichPresence.RequestRoot>(e.GetRequestBodyAsString());
+                            RichPresence.RequestRoot Presence = JsonConvert.DeserializeObject<RichPresence.RequestRoot>(e.GetRequestBodyAsString());
 
                             Presence.online = false;
 
@@ -90,9 +100,7 @@ namespace HexedProxy.Core
                     {
                         e.utilDecodeRequest();
 
-                        DBDObjects.QuestProgress.RequestRoot Quest = JsonConvert.DeserializeObject<DBDObjects.QuestProgress.RequestRoot>(e.GetRequestBodyAsString());
-
-                        TomeManager.OnNodeProgressSend(Quest);
+                        QuestProgress.RequestRoot Quest = JsonConvert.DeserializeObject<QuestProgress.RequestRoot>(e.GetRequestBodyAsString());
 
                         if (InternalSettings.InstantTomes)
                         {
@@ -145,7 +153,7 @@ namespace HexedProxy.Core
             {
                 e.utilDecodeResponse();
 
-                DBDObjects.Match.ResponseRoot MatchInfo = JsonConvert.DeserializeObject<DBDObjects.Match.ResponseRoot>(e.GetResponseBodyAsString());
+                Match.ResponseRoot MatchInfo = JsonConvert.DeserializeObject<Match.ResponseRoot>(e.GetResponseBodyAsString());
 
                 InfoManager.OnMatchInfoReceived(MatchInfo);
             }
@@ -155,20 +163,28 @@ namespace HexedProxy.Core
                 {
                     case "/api/v1/inventories":
                         {
-                            if (InternalSettings.UnlockCosmetics)
+                            if (InternalSettings.UnlockAll)
                             {
                                 e.utilDecodeResponse();
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(InternalSettings.cachedInventory));
+                                Inventory.ResponseRoot Inventory = JsonConvert.DeserializeObject<Inventory.ResponseRoot>(e.GetResponseBodyAsString());
+
+                                SaveEditor.EditMarket(Inventory);
+
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(Inventory, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                             }
                         }
                         break;
 
                     case "/api/v1/dbd-character-data/get-all":
                         {
-                            if (InternalSettings.UnlockItems)
+                            if (InternalSettings.UnlockAll)
                             {
                                 e.utilDecodeResponse();
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(InternalSettings.cachedProfile));
+                                Profile.ResponseRoot Profile = JsonConvert.DeserializeObject<Profile.ResponseRoot>(e.GetResponseBodyAsString());
+
+                                SaveEditor.EditGetAll(Profile);
+
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(Profile, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                             }
                         }
                         break;
@@ -176,17 +192,39 @@ namespace HexedProxy.Core
                     case "/api/v1/dbd-character-data/bloodweb":
                         {
                             e.utilDecodeResponse();
-                            DBDObjects.Bloodweb.ResponseRoot Bloodweb = JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(e.GetResponseBodyAsString());
+                            Bloodweb.ResponseRoot Bloodweb = JsonConvert.DeserializeObject<Bloodweb.ResponseRoot>(e.GetResponseBodyAsString());
 
                             BloodwebManager.OnBloodwebReceived(Bloodweb);
 
-                            if (InternalSettings.UnlockItems)
+                            if (InternalSettings.UnlockAll)
                             {
-                                Bloodweb.legacyPrestigeLevel = 3;
-                                Bloodweb.prestigeLevel = 100;
-                                // add character items if needed to it?
+                                SaveEditor.EditBloodweb(Bloodweb);
 
                                 e.utilSetResponseBody(JsonConvert.SerializeObject(Bloodweb, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                            }
+                        }
+                        break;
+
+                    case "/api/v1/queue":
+                        {
+                            if (InternalSettings.MatchSnipe)
+                            {
+                                e.utilDecodeResponse();
+
+                                Queue.ResponseRoot QueueInfo = JsonConvert.DeserializeObject<Queue.ResponseRoot>(e.GetResponseBodyAsString());
+
+                                if (QueueInfo.status == "MATCHED")
+                                {
+                                    if (!MatchSniper.CheckQueueForTarget(QueueInfo))
+                                    {
+                                        MatchSniper.ResetQueue = true;
+                                        e.utilSetResponseBody(JsonConvert.SerializeObject(new { status = "QUEUED", queueData = new { ETA = 10, position = 1, stable = true } }));
+                                    }
+                                }
+                                else
+                                {
+                                    e.utilSetResponseBody(JsonConvert.SerializeObject(new { status = "QUEUED", queueData = new { ETA = 10, position = 1, stable = true } }));
+                                }
                             }
                         }
                         break;
@@ -195,11 +233,10 @@ namespace HexedProxy.Core
                         {
                             e.utilDecodeResponse();
 
-                            DBDObjects.PlayerName.ResponseRoot PlayerName = JsonConvert.DeserializeObject<DBDObjects.PlayerName.ResponseRoot>(e.GetResponseBodyAsString());
+                            PlayerName.ResponseRoot PlayerName = JsonConvert.DeserializeObject<PlayerName.ResponseRoot>(e.GetResponseBodyAsString());
 
                             RequestSender.OnDefaultHeadersReceived(e.RequestHeaders);
                             InfoManager.OnPlayerInfoReceived(PlayerName);
-                            InternalSettings.cachedInventory.data.playerId = PlayerName.userId; // add saveeditor module for this
                         }
                         break;
 
@@ -208,7 +245,7 @@ namespace HexedProxy.Core
                             if (InternalSettings.UnlockLevel)
                             {
                                 e.utilDecodeResponse();
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.PlayerLevel.ResponseRoot() { currentXp = 999, currentXpUpperBound = 999, level = 99, levelVersion = 1, prestigeLevel = 999, totalXp = 99999 }));
+                                e.utilSetResponseBody(JsonConvert.SerializeObject(new PlayerLevel.ResponseRoot() { currentXp = 999, currentXpUpperBound = 999, level = 99, levelVersion = 1, prestigeLevel = 999, totalXp = 99999 }));
                             }
                         }
                         break;
@@ -219,7 +256,7 @@ namespace HexedProxy.Core
                             {
                                 e.utilDecodeResponse();
 
-                                DBDObjects.Currencies.ResponseRoot Currencies = JsonConvert.DeserializeObject<DBDObjects.Currencies.ResponseRoot>(e.GetResponseBodyAsString());
+                                Currencies.ResponseRoot Currencies = JsonConvert.DeserializeObject<Currencies.ResponseRoot>(e.GetResponseBodyAsString());
 
                                 foreach (var Currency in Currencies.list)
                                 {
@@ -231,28 +268,10 @@ namespace HexedProxy.Core
                         }
                         break;
 
-                    case "/api/v1/ranks/reset-get-pips-v2": // maybe remove and make queue only spoof
-                        {
-                            if (InternalSettings.SpoofRank)
-                            {
-                                e.utilDecodeResponse();
-
-                                DBDObjects.PipReset.ResponseRoot PipReset = JsonConvert.DeserializeObject<DBDObjects.PipReset.ResponseRoot>(e.GetResponseBodyAsString());
-
-                                int Pips = Utils.GetPipsForRank(InternalSettings.TargetRank);
-
-                                PipReset.pips.survivorPips = Pips;
-                                PipReset.pips.killerPips = Pips;
-
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(PipReset, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
-                            }
-                        }
-                        break;
-
                     case "api/v1/players/ban/status":
                         {
                             e.utilDecodeResponse();
-                            e.utilSetResponseBody(JsonConvert.SerializeObject(new DBDObjects.BanStatus.ResponseRoot() { isBanned = false }));
+                            e.utilSetResponseBody(JsonConvert.SerializeObject(new BanStatus.ResponseRoot() { isBanned = false }));
                         }
                         break;
 
@@ -260,9 +279,9 @@ namespace HexedProxy.Core
                         {
                             e.utilDecodeResponse();
 
-                            DBDObjects.ActiveNode.ResponseRoot Node = JsonConvert.DeserializeObject<DBDObjects.ActiveNode.ResponseRoot>(e.GetResponseBodyAsString());
+                            ActiveNode.ResponseRoot Node = JsonConvert.DeserializeObject<ActiveNode.ResponseRoot>(e.GetResponseBodyAsString());
 
-                            TomeManager.OnActiveNodeReceived(Node);
+                            TomeManager.OnActiveNodeReceived(Node); // Modify node to have no conditions, so its always being send so i can edit it up
                         }
                         break;
                 }

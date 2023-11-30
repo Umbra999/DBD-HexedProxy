@@ -1,7 +1,4 @@
-﻿using HexedProxy.Wrappers;
-using Newtonsoft.Json;
-
-namespace HexedProxy.Core
+﻿namespace HexedProxy.Core
 {
     internal class InternalSettings
     {
@@ -32,15 +29,14 @@ namespace HexedProxy.Core
 
         public static string TargetFriendId = "";
 
-        public static bool UnlockCosmetics = false;
-        public static bool UnlockItems = false;
+        public static bool MatchSnipe = false;
+        public static bool OnlyStreamer = false;
+        public static string TargetSnipeParameter = "";
+
+        public static bool UnlockAll = false;
         public static bool UnlockLevel = false;
         public static bool UnlockCurrencies = false;
 
         public static int SelectedGuiCategory = 0;
-
-        public static DBDObjects.Bloodweb.ResponseRoot cachedBloodweb = JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(Utils.GetFromResource("Bloodweb.json"));
-        public static DBDObjects.Inventory.ResponseRoot cachedInventory = JsonConvert.DeserializeObject<DBDObjects.Inventory.ResponseRoot>(Utils.GetFromResource("Market.json"));
-        public static DBDObjects.Profile.ResponseRoot cachedProfile = JsonConvert.DeserializeObject<DBDObjects.Profile.ResponseRoot>(Utils.GetFromResource("GetAll.json"));
     }
 }

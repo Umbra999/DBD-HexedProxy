@@ -66,7 +66,7 @@ namespace HexedProxy.Modules
             return Response.IsSuccessStatusCode;
         }
 
-        public static async Task<DBDObjects.PlayerProvider.ResponseRoot> GetPlayerProvider(string uid)
+        public static async Task<DBDObjects.PlayerNameProvider.ResponseRoot> GetPlayerProvider(string uid)
         {
             if (headers == null) return null;
 
@@ -90,7 +90,37 @@ namespace HexedProxy.Modules
             if (Response.IsSuccessStatusCode)
             {
                 string respBody = await Response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<DBDObjects.PlayerProvider.ResponseRoot>(respBody);
+                return JsonConvert.DeserializeObject<DBDObjects.PlayerNameProvider.ResponseRoot>(respBody);
+            }
+
+            return null;
+        }
+
+        public static async Task<DBDObjects.PlayerNameById.ResponseRoot> GetPlayerByCloudId(string uid)
+        {
+            if (headers == null) return null;
+
+            HttpClient Client = new(new HttpClientHandler { UseCookies = false, AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }, true);
+
+            foreach (var ogHeader in headers)
+            {
+                if (!ogHeader.Name.StartsWith("x-") && ogHeader.Name != "Host" && ogHeader.Name != "User-Agent" && ogHeader.Name != "Cookie") continue;
+
+                Client.DefaultRequestHeaders.Add(ogHeader.Name, ogHeader.Value);
+            }
+
+            HttpRequestMessage Payload = new(HttpMethod.Get, $"https://{headers["Host"]}/api/v1/playername/byId/{uid}")
+            {
+                Content = new StringContent("", Encoding.UTF8, "application/json")
+            };
+            Payload.Content.Headers.ContentType.CharSet = "";
+
+            HttpResponseMessage Response = await Client.SendAsync(Payload);
+
+            if (Response.IsSuccessStatusCode)
+            {
+                string respBody = await Response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<DBDObjects.PlayerNameById.ResponseRoot>(respBody);
             }
 
             return null;
@@ -182,32 +212,6 @@ namespace HexedProxy.Modules
             }
 
             return null;
-        }
-
-        public static async Task<bool> FinishNodeChallenge(string krakenMatch, string match, DBDObjects.QuestProgress.QuestEvent[] events, string playerrole)
-        {
-            if (headers == null) return false;
-
-            HttpClient Client = new(new HttpClientHandler { UseCookies = false, AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }, true);
-
-            foreach (var ogHeader in headers)
-            {
-                if (!ogHeader.Name.StartsWith("x-") && ogHeader.Name != "Host" && ogHeader.Name != "User-Agent" && ogHeader.Name != "Cookie") continue;
-
-                Client.DefaultRequestHeaders.Add(ogHeader.Name, ogHeader.Value);
-            }
-
-            string Body = JsonConvert.SerializeObject(new { krakenMatchId = krakenMatch, matchId = match, questEvents = events, role = playerrole }, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-
-            HttpRequestMessage Payload = new(HttpMethod.Post, $"https://{headers["Host"]}/api/v1/archives/stories/update/quest-progress-v3")
-            {
-                Content = new StringContent(Body, Encoding.UTF8, "application/json")
-            };
-            Payload.Content.Headers.ContentType.CharSet = "";
-
-            HttpResponseMessage Response = await Client.SendAsync(Payload);
-
-            return Response.IsSuccessStatusCode;
         }
     }
 }
