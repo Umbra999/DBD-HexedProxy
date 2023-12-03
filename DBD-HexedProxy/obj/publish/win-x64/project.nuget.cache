@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wGu8Vre6K0AS7wvuoSW7z2WamwVtREIAxYVtmbri/0f8uXAivdo+wRlUH5o7IzEqFZcnzP3oqYxCiyDKlH7ldw==",
+  "dgSpecHash": "ejH5/4cXSTC/+wuUof/wU8PJQaGZ/h+WSERVhf8BB7/LtTarT/0/7cNCDfwuttu7A46poDBbf7t0IaBEPhANmQ==",
   "success": true,
-  "projectFilePath": "D:\\Github Repos\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
+  "projectFilePath": "C:\\Users\\Umbra\\Documents\\Temp Github Repos\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Umbra\\.nuget\\packages\\bcmakecert\\2.0.9\\bcmakecert.2.0.9.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\dotnetzip\\1.13.4\\dotnetzip.1.13.4.nupkg.sha512",
@@ -18,7 +18,7 @@
     "C:\\Users\\Umbra\\.nuget\\packages\\runtime.any.system.text.encoding.extensions\\4.3.0\\runtime.any.system.text.encoding.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\sharpgen.runtime\\2.1.2-beta\\sharpgen.runtime.2.1.2-beta.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\sharpgen.runtime.com\\2.1.2-beta\\sharpgen.runtime.com.2.1.2-beta.nupkg.sha512",
-    "C:\\Users\\Umbra\\.nuget\\packages\\sixlabors.imagesharp\\3.0.2\\sixlabors.imagesharp.3.0.2.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\sixlabors.imagesharp\\3.1.0\\sixlabors.imagesharp.3.1.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.componentmodel.composition\\4.6.0\\system.componentmodel.composition.4.6.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.0\\system.configuration.configurationmanager.4.4.0.nupkg.sha512",

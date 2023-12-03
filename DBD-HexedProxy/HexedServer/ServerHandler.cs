@@ -18,7 +18,9 @@ namespace HexedServer
                 File.WriteAllText("Key.Hexed", Encryption.ToBase64(NewKey));
             }
 
-            Encryption.ServerThumbprint = await FetchCert();
+            Encryption.ServerThumbprint = Encryption.FromBase64(await FetchCert());
+            Encryption.PublicEncryptionKey = Encryption.FromBase64(await FetchPublicKey());
+
             UserData = await Login(Encryption.FromBase64(File.ReadAllText("Key.Hexed")));
 
             if (UserData == null || !UserData.KeyAccess.Contains(ServerObjects.KeyPermissionType.DeadByDaylightUnlocker))
@@ -43,12 +45,12 @@ namespace HexedServer
             return null;
         }
 
-        private static async Task<string> FetchTime()
+        private static async Task<string> FetchPublicKey()
         {
             HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = Encryption.ValidateServerCertificate });
             Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Hexed)");
 
-            HttpRequestMessage Payload = new(HttpMethod.Get, "https://api.logout.rip/Server/Time");
+            HttpRequestMessage Payload = new(HttpMethod.Get, "https://api.logout.rip/Server/PublicKey");
             HttpResponseMessage Response = await Client.SendAsync(Payload);
             if (Response.IsSuccessStatusCode) return await Response.Content.ReadAsStringAsync();
             return null;
@@ -61,7 +63,7 @@ namespace HexedServer
 
             HttpRequestMessage Payload = new(HttpMethod.Post, "https://api.logout.rip/Server/Login")
             {
-                Content = new StringContent(JsonConvert.SerializeObject(new { Auth = Encryption.EncryptAuthKey(Key, await FetchTime(), Encryption.GetHWID()) }), Encoding.UTF8, "application/json")
+                Content = new StringContent(Encryption.EncryptData(JsonConvert.SerializeObject(new { Key = Key, HWID = Encryption.GetHWID(), ServerTime = Encryption.GetUnixTime() })), Encoding.UTF8, "application/json")
             };
 
             HttpResponseMessage Response = await Client.SendAsync(Payload);

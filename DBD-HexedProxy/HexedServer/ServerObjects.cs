@@ -4,7 +4,7 @@
     {
         public enum KeyPermissionType
         {
-            DeadByDaylightUnlocker = 8,
+            DeadByDaylightUnlocker = 4,
         }
 
         public class UserData
