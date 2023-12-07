@@ -11,7 +11,6 @@ namespace HexedProxy.Modules
 
         public static int PrestigeLevel = 100;
         public static int LegacyPrestigeLevel = 3;
-        public static int BloodwebLevel = 49;
 
         public static void EditBloodweb(DBDObjects.Bloodweb.ResponseRoot Bloodweb)
         {

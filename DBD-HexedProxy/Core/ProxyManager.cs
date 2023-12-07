@@ -218,12 +218,12 @@ namespace HexedProxy.Core
                                     if (!MatchSniper.CheckQueueForTarget(QueueInfo))
                                     {
                                         MatchSniper.ResetQueue = true;
-                                        e.utilSetResponseBody(JsonConvert.SerializeObject(new { status = "QUEUED", queueData = new { ETA = 10, position = 1, stable = true } }));
+                                        e.utilSetResponseBody(JsonConvert.SerializeObject(new { status = "QUEUED", queueData = new { ETA = 0, position = 0, stable = true } }));
                                     }
                                 }
                                 else
                                 {
-                                    e.utilSetResponseBody(JsonConvert.SerializeObject(new { status = "QUEUED", queueData = new { ETA = 10, position = 1, stable = true } }));
+                                    e.utilSetResponseBody(JsonConvert.SerializeObject(new { status = "QUEUED", queueData = new { ETA = 0, position = 0, stable = true } }));
                                 }
                             }
                         }

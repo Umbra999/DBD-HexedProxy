@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NtHW9iXICYVBFUS9/lkir+YzTYi39EVmGJ+n/gsGpQsMMLfCQjqOyZrZAonETQruDiI847bD+pf+Wdr+41HyuQ==",
+  "dgSpecHash": "NcIII9ToEiiY7Fp6JoQ7083d6xl6KnVUGuzJVP401sM2you2zyt1xIXUXAckijtbnFGc/+FGGAST9QmGKO64lw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Umbra\\Documents\\Temp Github Repos\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
+  "projectFilePath": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Umbra\\.nuget\\packages\\bcmakecert\\2.0.9\\bcmakecert.2.0.9.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\dotnetzip\\1.13.4\\dotnetzip.1.13.4.nupkg.sha512",

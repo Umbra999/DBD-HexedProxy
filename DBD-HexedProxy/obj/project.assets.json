@@ -1485,11 +1485,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Umbra\\Documents\\Temp Github Repos\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
+      "projectUniqueName": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
       "projectName": "DBD-HexedProxy",
-      "projectPath": "C:\\Users\\Umbra\\Documents\\Temp Github Repos\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
+      "projectPath": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
       "packagesPath": "C:\\Users\\Umbra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Umbra\\Documents\\Temp Github Repos\\DBD-HexedProxy\\DBD-HexedProxy\\obj\\",
+      "outputPath": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
