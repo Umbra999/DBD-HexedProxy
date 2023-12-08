@@ -270,7 +270,7 @@ namespace HexedProxy.Core
 
                             JObject Node = JObject.Parse(e.GetResponseBodyAsString());
 
-                            TomeManager.OnActiveNodeReceived(Node); // Modify node to have no conditions, so its always being send so i can edit it up
+                            TomeManager.OnActiveNodeReceived(Node);
 
                             if (InternalSettings.InstantTomes)
                             {

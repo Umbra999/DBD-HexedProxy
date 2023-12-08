@@ -16,82 +16,53 @@ namespace HexedProxy.Modules
 
         private static bool isLeaving = false;
 
-        public static void OnMatchInfoReceived(JObject Match) // unreliable list adding cuz its async
+        public static void OnMatchInfoReceived(JObject match)
         {
-            isLeaving = false;
+            isLeaving = false; // idk if needed, need to check without 
 
-            MatchRegion = Match["region"] == null ? "NONE" : Match["region"].Value<string>();
-            MatchId = Match["matchId"] == null ? "NONE" : Match["matchId"].Value<string>();
+            MatchRegion = match["region"]?.Value<string>() ?? "NONE";
+            MatchId = match["matchId"]?.Value<string>() ?? "NONE";
 
             List<CustomObjects.CustomPlayer> currentPlayers = new();
 
-            if (Match["sideA"] != null)
+            void ProcessSide(JToken side, string role)
             {
-                foreach (var uid in Match["sideA"].Values<string>())
-                {
-                    //if (Players.Any(x => x.userId == uid)) continue;
+                if (side == null) return;
 
-                    CustomObjects.CustomPlayer customPlayer = new()
+                foreach (var uid in side.Values<string>())
+                {
+                    var customPlayer = new CustomObjects.CustomPlayer
                     {
                         userId = uid,
-                        role = "Killer"
+                        role = role
                     };
 
-                    var PlayerProfile = RequestSender.GetPlayerByCloudId(uid).Result;
-                    if (PlayerProfile == null) continue;
-
-                    customPlayer.name = PlayerProfile.playerName;
-
-                    switch (Platform)
+                    if (Players.Any(x => x.userId == uid))
                     {
-                        case "steam":
-                            if (PlayerProfile.providerPlayerNames?.steam != null)
-                            {
-                                var Provider = RequestSender.GetPlayerProvider(uid).Result;
-                                if (Provider != null) customPlayer.providerUrl = $"https://steamcommunity.com/profiles/{Provider.providerId}";
-                            }
-                            break;
+                        currentPlayers.Add(customPlayer);
+                        continue;
+                    }
 
-                            // Add other platfomrms here
+                    var playerProfile = RequestSender.GetPlayerByCloudId(uid).Result;
+                    if (playerProfile == null) continue;
+
+                    customPlayer.name = playerProfile.playerName;
+
+                    if (Platform == "steam")
+                    {
+                        if (playerProfile.providerPlayerNames?.steam != null)
+                        {
+                            var provider = RequestSender.GetPlayerProvider(uid).Result;
+                            if (provider != null) customPlayer.providerUrl = $"https://steamcommunity.com/profiles/{provider.providerId}";
+                        }
                     }
 
                     currentPlayers.Add(customPlayer);
                 }
             }
 
-            if (Match["sideB"] != null)
-            {
-                foreach (var uid in Match["sideB"].Values<string>())
-                {
-                    //if (Players.Any(x => x.userId == uid)) continue;
-
-                    CustomObjects.CustomPlayer customPlayer = new()
-                    {
-                        userId = uid,
-                        role = "Survivor"
-                    };
-
-                    var PlayerProfile = RequestSender.GetPlayerByCloudId(uid).Result;
-                    if (PlayerProfile == null) continue;
-
-                    customPlayer.name = PlayerProfile.playerName;
-
-                    switch (Platform)
-                    {
-                        case "steam":
-                            if (PlayerProfile.providerPlayerNames?.steam != null)
-                            {
-                                var Provider = RequestSender.GetPlayerProvider(uid).Result;
-                                if (Provider != null) customPlayer.providerUrl = $"https://steamcommunity.com/profiles/{Provider.providerId}";
-                            }
-                            break;
-
-                            // Add other platfomrms here
-                    }
-
-                    currentPlayers.Add(customPlayer);
-                }
-            }
+            ProcessSide(match["sideA"], "Killer");
+            ProcessSide(match["sideB"], "Survivor");
 
             Players.RemoveAll(player => currentPlayers.All(cp => cp.userId != player.userId));
 
