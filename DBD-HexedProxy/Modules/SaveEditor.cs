@@ -1,39 +1,47 @@
 ﻿using HexedProxy.Wrappers;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace HexedProxy.Modules
 {
     internal class SaveEditor
     {
-        private static DBDObjects.Bloodweb.ResponseRoot cachedBloodweb = JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(Utils.GetFromResource("Bloodweb.json"));
-        private static DBDObjects.Inventory.ResponseRoot cachedInventory = JsonConvert.DeserializeObject<DBDObjects.Inventory.ResponseRoot>(Utils.GetFromResource("Market.json"));
-        private static DBDObjects.Profile.ResponseRoot cachedProfile = JsonConvert.DeserializeObject<DBDObjects.Profile.ResponseRoot>(Utils.GetFromResource("GetAll.json"));
+        private static JObject cachedBloodweb = JObject.Parse(Utils.GetFromResource("Bloodweb.json"));
+        private static JObject cachedInventory = JObject.Parse(Utils.GetFromResource("Market.json"));
+        private static JObject cachedProfile = JObject.Parse(Utils.GetFromResource("GetAll.json"));
 
         public static int PrestigeLevel = 100;
         public static int LegacyPrestigeLevel = 3;
 
-        public static void EditBloodweb(DBDObjects.Bloodweb.ResponseRoot Bloodweb)
+        public static void EditBloodweb(JObject Bloodweb)
         {
-            Bloodweb.legacyPrestigeLevel = LegacyPrestigeLevel;
-            Bloodweb.prestigeLevel = PrestigeLevel;
+            Bloodweb["legacyPrestigeLevel"] = LegacyPrestigeLevel;
+            Bloodweb["prestigeLevel"] = PrestigeLevel;
 
             // add character data if needed
         }
 
-        public static void EditGetAll(DBDObjects.Profile.ResponseRoot GetAll)
+        public static void EditGetAll(JObject GetAll)
         {
-            GetAll.list = cachedProfile.list;
+            GetAll["list"] = cachedProfile["list"];
 
-            foreach (var list in GetAll.list)
+            foreach (var list in GetAll["list"])
             {
-                list.prestigeLevel = PrestigeLevel;
-                list.legacyPrestigeLevel= LegacyPrestigeLevel;
+                list["prestigeLevel"] = PrestigeLevel;
+                list["legacyPrestigeLevel"] = LegacyPrestigeLevel;
             }
         }
 
-        public static void EditMarket(DBDObjects.Inventory.ResponseRoot Market)
+        public static void EditMarket(JObject Market)
         {
-            Market.data.inventory = cachedInventory.data.inventory;
+            Market["data"]["inventory"] = cachedInventory["data"]["inventory"];
+        }
+
+        public static void EditCurrencies(JObject Currencies)
+        {
+            foreach (var Currency in Currencies["list"])
+            {
+                Currency["balance"] = 9999999;
+            }
         }
     }
 }

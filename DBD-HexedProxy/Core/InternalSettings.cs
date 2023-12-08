@@ -33,8 +33,10 @@
         public static bool OnlyStreamer = false;
         public static string TargetSnipeParameter = "";
 
+        public static bool NameSpoof = false;
+        public static string TargetCustomName = "";
+
         public static bool UnlockAll = false;
-        public static bool UnlockLevel = false;
         public static bool UnlockCurrencies = false;
 
         public static int SelectedGuiCategory = 0;

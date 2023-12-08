@@ -1,5 +1,6 @@
 ﻿using HexedProxy.Core;
 using HexedProxy.DBDObjects;
+using Newtonsoft.Json.Linq;
 
 namespace HexedProxy.Modules
 {
@@ -7,44 +8,41 @@ namespace HexedProxy.Modules
     {
         public static bool ResetQueue = false;
 
-        public static bool CheckQueueForTarget(Queue.ResponseRoot Queue)
+        public static bool CheckQueueForTarget(JObject Queue)
         {
             bool returnValue = false;
 
-            Task.Run(async () =>
+            if (Queue["status"].Value<string>() == "MATCHED")
             {
-                if (Queue.status == "MATCHED")
+                if (Queue["matchData"] != null)
                 {
-                    if (Queue.matchData != null)
+                    List<string> PlayerIds = [.. Queue["matchData"]["sideA"].Values<string>(), .. Queue["matchData"]["sideB"].Values<string>()];
+
+                    foreach (string PlayerId in PlayerIds)
                     {
-                        List<string> PlayerIds = [.. Queue.matchData.sideA, .. Queue.matchData.sideB];
-
-                        foreach (string PlayerId in PlayerIds)
+                        var PlayerProfile = RequestSender.GetPlayerByCloudId(PlayerId).Result;
+                        if (PlayerProfile != null)
                         {
-                            var PlayerProfile = await RequestSender.GetPlayerByCloudId(PlayerId);
-                            if (PlayerProfile != null)
+                            if (InternalSettings.OnlyStreamer)
                             {
-                                if (InternalSettings.OnlyStreamer)
-                                {
-                                    string lowerName = PlayerProfile.playerName.ToLower();
+                                string lowerName = PlayerProfile.playerName.ToLower();
 
-                                    if (lowerName.Contains("ttv") || lowerName.Contains("t.tv") || lowerName.Contains("t/tv")) returnValue = true;
-                                }
-                                else
-                                {
-                                    if (PlayerProfile.playerName == InternalSettings.TargetSnipeParameter || PlayerProfile.userId == InternalSettings.TargetSnipeParameter) returnValue = true;
+                                if (lowerName.Contains("ttv") || lowerName.Contains("t.tv") || lowerName.Contains("t/tv")) returnValue = true;
+                            }
+                            else
+                            {
+                                if (PlayerProfile.playerName == InternalSettings.TargetSnipeParameter || PlayerProfile.userId == InternalSettings.TargetSnipeParameter) returnValue = true;
 
-                                    else if (PlayerProfile.providerPlayerNames?.steam != null)
-                                    {
-                                        var Provider = await RequestSender.GetPlayerProvider(PlayerId);
-                                        if (Provider != null && Provider.providerId == InternalSettings.TargetSnipeParameter) returnValue = true;
-                                    }
+                                else if (PlayerProfile.providerPlayerNames?.steam != null)
+                                {
+                                    var Provider = RequestSender.GetPlayerProvider(PlayerId).Result;
+                                    if (Provider != null && Provider.providerId == InternalSettings.TargetSnipeParameter) returnValue = true;
                                 }
                             }
                         }
                     }
                 }
-            }).Wait();
+            }
 
             return returnValue;
         }

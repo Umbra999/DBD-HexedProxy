@@ -1,5 +1,6 @@
 ﻿using Fiddler;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Text;
 
@@ -182,7 +183,7 @@ namespace HexedProxy.Modules
             return null;
         }
 
-        public static async Task<DBDObjects.Bloodweb.ResponseRoot> FinishBloodweb(string Character, string[] BlockedNodes, string[] SelectedNodes)
+        public static async Task<JObject> FinishBloodweb(string Character, string[] BlockedNodes, string[] SelectedNodes)
         {
             if (headers == null) return null;
 
@@ -208,7 +209,7 @@ namespace HexedProxy.Modules
             if (Response.IsSuccessStatusCode)
             {
                 string respBody = await Response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<DBDObjects.Bloodweb.ResponseRoot>(respBody);
+                return JObject.Parse(respBody);
             }
 
             return null;

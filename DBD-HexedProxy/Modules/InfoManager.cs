@@ -1,4 +1,5 @@
 ﻿using HexedProxy.DBDObjects;
+using Newtonsoft.Json.Linq;
 
 namespace HexedProxy.Modules
 {
@@ -6,54 +7,115 @@ namespace HexedProxy.Modules
     {
         public static string PlayerName = "NONE";
         public static string PlayerId = "NONE";
+        public static string Platform = "NONE";
 
-        public static string KillerId = "NONE";
-        public static string KillerPlatform = "NONE";
-        public static string KillerName = "NONE";
-        public static string KillerPlatformId;
+        public static List<CustomObjects.CustomPlayer> Players = new();
 
         public static string MatchRegion = "NONE";
         public static string MatchId = "NONE";
 
-        public static void OnMatchInfoReceived(Match.ResponseRoot Match)
+        private static bool isLeaving = false;
+
+        public static void OnMatchInfoReceived(JObject Match) // unreliable list adding cuz its async
         {
-            KillerId = Match.sideA.Length > 0 ? Match.sideA[0] : "NONE"; // add check for multiple killers
-            MatchRegion = Match.region;
-            MatchId = Match.matchId;
-            Task.Run(async () =>
+            isLeaving = false;
+
+            MatchRegion = Match["region"] == null ? "NONE" : Match["region"].Value<string>();
+            MatchId = Match["matchId"] == null ? "NONE" : Match["matchId"].Value<string>();
+
+            List<CustomObjects.CustomPlayer> currentPlayers = new();
+
+            if (Match["sideA"] != null)
             {
-                var PlayerProfile = await RequestSender.GetPlayerByCloudId(KillerId);
-                if (PlayerProfile != null) 
+                foreach (var uid in Match["sideA"].Values<string>())
                 {
-                    KillerName = PlayerProfile.playerName;
-                    KillerId = PlayerProfile.userId;
-   
-                    if (PlayerProfile.providerPlayerNames?.steam != null) // provider is per platform, EG can only open EG and so on, needs to be fixed and other platforms need to be added
+                    //if (Players.Any(x => x.userId == uid)) continue;
+
+                    CustomObjects.CustomPlayer customPlayer = new()
                     {
-                        KillerPlatform = "Steam";
+                        userId = uid,
+                        role = "Killer"
+                    };
 
-                        var Provider = await RequestSender.GetPlayerProvider(KillerId);
-                        if (Provider != null) KillerPlatformId = Provider.providerId;
+                    var PlayerProfile = RequestSender.GetPlayerByCloudId(uid).Result;
+                    if (PlayerProfile == null) continue;
+
+                    customPlayer.name = PlayerProfile.playerName;
+
+                    switch (Platform)
+                    {
+                        case "steam":
+                            if (PlayerProfile.providerPlayerNames?.steam != null)
+                            {
+                                var Provider = RequestSender.GetPlayerProvider(uid).Result;
+                                if (Provider != null) customPlayer.providerUrl = $"https://steamcommunity.com/profiles/{Provider.providerId}";
+                            }
+                            break;
+
+                            // Add other platfomrms here
                     }
+
+                    currentPlayers.Add(customPlayer);
                 }
-            }).Wait();
+            }
+
+            if (Match["sideB"] != null)
+            {
+                foreach (var uid in Match["sideB"].Values<string>())
+                {
+                    //if (Players.Any(x => x.userId == uid)) continue;
+
+                    CustomObjects.CustomPlayer customPlayer = new()
+                    {
+                        userId = uid,
+                        role = "Survivor"
+                    };
+
+                    var PlayerProfile = RequestSender.GetPlayerByCloudId(uid).Result;
+                    if (PlayerProfile == null) continue;
+
+                    customPlayer.name = PlayerProfile.playerName;
+
+                    switch (Platform)
+                    {
+                        case "steam":
+                            if (PlayerProfile.providerPlayerNames?.steam != null)
+                            {
+                                var Provider = RequestSender.GetPlayerProvider(uid).Result;
+                                if (Provider != null) customPlayer.providerUrl = $"https://steamcommunity.com/profiles/{Provider.providerId}";
+                            }
+                            break;
+
+                            // Add other platfomrms here
+                    }
+
+                    currentPlayers.Add(customPlayer);
+                }
+            }
+
+            Players.RemoveAll(player => currentPlayers.All(cp => cp.userId != player.userId));
+
+            foreach (var player in currentPlayers)
+            {
+                if (!isLeaving && !Players.Any(p => p.userId == player.userId)) Players.Add(player);
+            }
         }
 
-        public static void OnPlayerInfoReceived(PlayerName.ResponseRoot Player)
+        public static void OnPlayerInfoReceived(JObject Player, string Provider)
         {
-            PlayerName = Player.playerName;
-            PlayerId = Player.userId;
+            PlayerName = Player["playerName"].Value<string>();
+            PlayerId = Player["userId"].Value<string>();
+            Platform = Provider;
         }
 
-        public static void OnQueueReceived()
+        public static void OnPartyStateChanged()
         {
-            KillerId = "NONE";
-            KillerPlatform = "NONE";
-            KillerName = "NONE";
-            KillerPlatformId = null;
+            Players.Clear();
 
             MatchRegion = "NONE";
             MatchId = "NONE";
+
+            isLeaving = true;
         }
     }
 }

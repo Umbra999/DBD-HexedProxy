@@ -115,7 +115,7 @@ static class WindowsClipboard
         return InnerGet();
     }
 
-    public static string? GetText()
+    public static string GetText()
     {
         if (!IsClipboardFormatAvailable(cfUnicodeText))
         {
@@ -126,7 +126,7 @@ static class WindowsClipboard
         return InnerGet();
     }
 
-    static string? InnerGet()
+    static string InnerGet()
     {
         IntPtr handle = default;
 

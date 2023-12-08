@@ -81,11 +81,18 @@ namespace HexedProxy.Core
                             ImGui.InputTextWithHint("ID/Name", "PlayerId/SteamId/Name", ref InternalSettings.TargetSnipeParameter, 36);
                         }
                     }
+
+                    ImGui.Checkbox("Name Spoof", ref InternalSettings.NameSpoof);
+                    if (InternalSettings.NameSpoof)
+                    {
+                        ImGui.SameLine(0, 10f);
+                        ImGui.InputTextWithHint("Custom Name", "Nickname", ref InternalSettings.TargetCustomName, 36);
+                    }
+
                     break;
 
                 case 2:
                     ImGui.Checkbox("Unlock All", ref InternalSettings.UnlockAll);
-                    ImGui.Checkbox("Level Unlock", ref InternalSettings.UnlockLevel);
                     ImGui.Checkbox("Currency Unlock", ref InternalSettings.UnlockCurrencies);
                     break;
 
@@ -101,25 +108,11 @@ namespace HexedProxy.Core
                     break;
 
                 case 4: // INFO
-                    ImGui.Text($"Player: {InfoManager.PlayerName}");
+                    ImGui.Text($"Name: {InfoManager.PlayerName}");
+                    ImGui.Text($"Platform: {InfoManager.Platform}");
                     ImGui.Text($"PlayerId: {InfoManager.PlayerId}");
                     ImGui.SameLine();
                     if (ImGui.Button("Copy PlayerId")) WindowsClipboard.SetText(InfoManager.PlayerId);
-
-                    ImGui.Dummy(new Vector2(0, 20));
-
-
-                    ImGui.Text($"Killer: {InfoManager.KillerName}");
-                    ImGui.SameLine();
-                    if (ImGui.Button("Copy KillerId")) WindowsClipboard.SetText(InfoManager.KillerId);
-
-                    ImGui.Text($"Killer Platform: {InfoManager.KillerPlatform}");
-                    if (InfoManager.KillerPlatformId != null)
-                    {
-                        ImGui.SameLine();
-                        if (ImGui.Button("Copy Profile")) WindowsClipboard.SetText($"https://steamcommunity.com/profiles/{InfoManager.KillerPlatformId}");
-                    }
-
 
                     ImGui.Dummy(new Vector2(0, 20));
 
@@ -127,6 +120,22 @@ namespace HexedProxy.Core
                     ImGui.Text($"MatchId: {InfoManager.MatchId}");
                     ImGui.SameLine();
                     if (ImGui.Button("Copy MatchId")) WindowsClipboard.SetText(InfoManager.MatchId);
+
+                    ImGui.Dummy(new Vector2(0, 20));
+
+                    foreach (var Player in InfoManager.Players)
+                    {
+                        ImGui.Text($"{Player.role}: {Player.name}");
+                        if (ImGui.Button("Copy CloudID")) WindowsClipboard.SetText(Player.userId);
+                        ImGui.SameLine();
+                        if (Player.providerUrl != null)
+                        {
+                            if (ImGui.Button("Copy URL")) WindowsClipboard.SetText(Player.providerUrl);
+                        }
+
+                        ImGui.Dummy(new Vector2(0, 10));
+                    }
+
                     break;
             }
             ImGui.EndChild();

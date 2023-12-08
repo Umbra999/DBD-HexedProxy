@@ -3,6 +3,7 @@ using HexedProxy.DBDObjects;
 using HexedProxy.Modules;
 using HexedProxy.Wrappers;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace HexedProxy.Core
 {
@@ -48,94 +49,102 @@ namespace HexedProxy.Core
 
             if (e.oRequest.headers["x-kraken-analytics-session-id"] != null) e.oRequest.headers.Remove("x-kraken-analytics-session-id");
 
-            switch (e.PathAndQuery)
+            if (e.PathAndQuery == $"/api/v1/party/player/{InfoManager.PlayerId}/state")
             {
-                case "/api/v1/queue": // dont work on party, add support for the party call
-                    {
-                        e.utilDecodeRequest();
+                e.utilDecodeRequest();
 
-                        InfoManager.OnQueueReceived();
+                JObject Party = JObject.Parse(e.GetRequestBodyAsString());
 
-                        Queue.RequestRoot Queue = JsonConvert.DeserializeObject<Queue.RequestRoot>(e.GetRequestBodyAsString());
+                if (Party["body"]["_postMatchmakingState"].Value<string>() == "None") InfoManager.OnPartyStateChanged(); // bad check but works for now ig?
 
-                        if (InternalSettings.MatchSnipe)
-                        {
-                            if (MatchSniper.ResetQueue)
-                            {
-                                Queue.checkOnly = false;
-                                MatchSniper.ResetQueue = false;
-                            }
-                        }
+                if (InternalSettings.NameSpoof)
+                {
+                    Party["body"]["_playerName"] = InternalSettings.NameSpoof;
+                }
 
-                        if (InternalSettings.SpoofRank)
-                        {
-                            Queue.rank = InternalSettings.TargetRank;
-                        }
+                if (InternalSettings.SpoofRank)
+                {
+                    Party["body"]["_playerRank"] = InternalSettings.TargetRank;
+                }
 
-                        if (InternalSettings.SpoofRegion)
-                        {
-                            Queue.region = InternalSettings.AvailableRegions[InternalSettings.TargetQueueRegion];
-                        }
-
-                        e.utilSetRequestBody(JsonConvert.SerializeObject(Queue, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
-                    }
-                    break;
-
-                case "/api/v1/me/richPresence":
-                    {
-                        if (InternalSettings.SpoofOffline)
+                e.utilSetRequestBody(Party.ToString());
+            }
+            else if (e.PathAndQuery == $"/api/v1/playername/steam/{InfoManager.PlayerName.Split('#')[0]}") // Fix the PlayerName to be raw on a reliable way idfk if the current way is good or bad
+            {
+                if (InternalSettings.NameSpoof)
+                {
+                    e.PathAndQuery = $"/api/v1/playername/steam/{InternalSettings.NameSpoof}";
+                }
+            }
+            else
+            {
+                switch (e.PathAndQuery)
+                {
+                    case "/api/v1/queue":
                         {
                             e.utilDecodeRequest();
 
-                            RichPresence.RequestRoot Presence = JsonConvert.DeserializeObject<RichPresence.RequestRoot>(e.GetRequestBodyAsString());
+                            JObject Queue = JObject.Parse(e.GetRequestBodyAsString());
 
-                            Presence.online = false;
-
-                            e.utilSetRequestBody(JsonConvert.SerializeObject(Presence, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
-                        }
-                    }
-                    break;
-
-                case "/api/v1/archives/stories/update/quest-progress-v3":
-                    {
-                        e.utilDecodeRequest();
-
-                        QuestProgress.RequestRoot Quest = JsonConvert.DeserializeObject<QuestProgress.RequestRoot>(e.GetRequestBodyAsString());
-
-                        if (InternalSettings.InstantTomes)
-                        {
-                            var selectedNode = TomeManager.GetSelectedNode();
-                            if (selectedNode?.activeNodesFull != null)
+                            if (InternalSettings.MatchSnipe)
                             {
-                                foreach (var QuestEvent in Quest.questEvents)
+                                if (MatchSniper.ResetQueue)
                                 {
-                                    QuestEvent.repetition = 150000;
-
-                                    foreach (var fullNode in selectedNode.activeNodesFull)
-                                    {
-                                        if (fullNode.objectives == null) continue;
-
-                                        foreach (var objective in fullNode.objectives.Where(o => o.questEvent != null))
-                                        {
-                                            var cachedEvent = objective.questEvent.FirstOrDefault(e => e.questEventId == QuestEvent.questEventId);
-                                            if (cachedEvent != null) QuestEvent.repetition = objective.neededProgression;
-                                        }
-                                    }
+                                    Queue["checkOnly"] = false;
+                                    MatchSniper.ResetQueue = false;
                                 }
                             }
 
-                            e.utilSetRequestBody(JsonConvert.SerializeObject(Quest, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
-                        }
-                        else if (InternalSettings.BlockTomes)
-                        {
-                            foreach (var QuestEvent in Quest.questEvents)
+                            if (InternalSettings.SpoofRank)
                             {
-                                QuestEvent.repetition = 0;
+                                Queue["rank"] = InternalSettings.TargetRank;
                             }
-                            e.utilSetRequestBody(JsonConvert.SerializeObject(Quest, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+
+                            if (InternalSettings.SpoofRegion)
+                            {
+                                Queue["region"] = InternalSettings.AvailableRegions[InternalSettings.TargetQueueRegion];
+                            }
+
+                            e.utilSetRequestBody(Queue.ToString());
                         }
-                    }
-                    break;
+                        break;
+
+                    case "/api/v1/me/richPresence":
+                        {
+                            if (InternalSettings.SpoofOffline)
+                            {
+                                e.utilDecodeRequest();
+
+                                JObject Presence = JObject.Parse(e.GetRequestBodyAsString());
+
+                                Presence["online"] = false;
+
+                                e.utilSetRequestBody(Presence.ToString());
+                            }
+                        }
+                        break;
+
+                    case "/api/v1/archives/stories/update/quest-progress-v3":
+                        {
+                            e.utilDecodeRequest();
+
+                            JObject Progress = JObject.Parse(e.GetRequestBodyAsString());
+
+                            if (InternalSettings.InstantTomes)
+                            {
+                                TomeManager.EditNodeProgress(Progress);
+
+                                e.utilSetRequestBody(Progress.ToString());
+                            }
+                            else if (InternalSettings.BlockTomes)
+                            {
+                                TomeManager.ResetNodeProgress(Progress);
+
+                                e.utilSetRequestBody(Progress.ToString());
+                            }
+                        }
+                        break;
+                }
             }
         }
 
@@ -149,13 +158,13 @@ namespace HexedProxy.Core
 
             e.bBufferResponse = true;
 
-            if (e.PathAndQuery.StartsWith("/api/v1/match/")) // maybe reset on CLOSE state instead queue check?
+            if (e.PathAndQuery.StartsWith("/api/v1/match/")) // maybe reset on CLOSE state instead queue check? and add better patch check holy
             {
                 e.utilDecodeResponse();
 
-                Match.ResponseRoot MatchInfo = JsonConvert.DeserializeObject<Match.ResponseRoot>(e.GetResponseBodyAsString());
+                JObject Match = JObject.Parse(e.GetResponseBodyAsString());
 
-                InfoManager.OnMatchInfoReceived(MatchInfo);
+                InfoManager.OnMatchInfoReceived(Match);
             }
             else
             {
@@ -166,11 +175,11 @@ namespace HexedProxy.Core
                             if (InternalSettings.UnlockAll)
                             {
                                 e.utilDecodeResponse();
-                                Inventory.ResponseRoot Inventory = JsonConvert.DeserializeObject<Inventory.ResponseRoot>(e.GetResponseBodyAsString());
+                                JObject Inventory = JObject.Parse(e.GetResponseBodyAsString());
 
                                 SaveEditor.EditMarket(Inventory);
 
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(Inventory, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                                e.utilSetResponseBody(Inventory.ToString());
                             }
                         }
                         break;
@@ -180,11 +189,11 @@ namespace HexedProxy.Core
                             if (InternalSettings.UnlockAll)
                             {
                                 e.utilDecodeResponse();
-                                Profile.ResponseRoot Profile = JsonConvert.DeserializeObject<Profile.ResponseRoot>(e.GetResponseBodyAsString());
+                                JObject GetAll = JObject.Parse(e.GetResponseBodyAsString());
 
-                                SaveEditor.EditGetAll(Profile);
+                                SaveEditor.EditGetAll(GetAll);
 
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(Profile, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                                e.utilSetResponseBody(GetAll.ToString());
                             }
                         }
                         break;
@@ -192,7 +201,7 @@ namespace HexedProxy.Core
                     case "/api/v1/dbd-character-data/bloodweb":
                         {
                             e.utilDecodeResponse();
-                            Bloodweb.ResponseRoot Bloodweb = JsonConvert.DeserializeObject<Bloodweb.ResponseRoot>(e.GetResponseBodyAsString());
+                            JObject Bloodweb = JObject.Parse(e.GetResponseBodyAsString());
 
                             BloodwebManager.OnBloodwebReceived(Bloodweb);
 
@@ -200,7 +209,7 @@ namespace HexedProxy.Core
                             {
                                 SaveEditor.EditBloodweb(Bloodweb);
 
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(Bloodweb, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                                e.utilSetResponseBody(Bloodweb.ToString());
                             }
                         }
                         break;
@@ -211,11 +220,11 @@ namespace HexedProxy.Core
                             {
                                 e.utilDecodeResponse();
 
-                                Queue.ResponseRoot QueueInfo = JsonConvert.DeserializeObject<Queue.ResponseRoot>(e.GetResponseBodyAsString());
+                                JObject Queue = JObject.Parse(e.GetResponseBodyAsString());
 
-                                if (QueueInfo.status == "MATCHED")
+                                if (Queue["status"].Value<string>() == "MATCHED")
                                 {
-                                    if (!MatchSniper.CheckQueueForTarget(QueueInfo))
+                                    if (!MatchSniper.CheckQueueForTarget(Queue))
                                     {
                                         MatchSniper.ResetQueue = true;
                                         e.utilSetResponseBody(JsonConvert.SerializeObject(new { status = "QUEUED", queueData = new { ETA = 0, position = 0, stable = true } }));
@@ -233,20 +242,10 @@ namespace HexedProxy.Core
                         {
                             e.utilDecodeResponse();
 
-                            PlayerName.ResponseRoot PlayerName = JsonConvert.DeserializeObject<PlayerName.ResponseRoot>(e.GetResponseBodyAsString());
+                            JObject PlayerName = JObject.Parse(e.GetResponseBodyAsString());
 
                             RequestSender.OnDefaultHeadersReceived(e.RequestHeaders);
-                            InfoManager.OnPlayerInfoReceived(PlayerName);
-                        }
-                        break;
-
-                    case "/api/v1/extensions/playerLevels/getPlayerLevel":
-                        {
-                            if (InternalSettings.UnlockLevel)
-                            {
-                                e.utilDecodeResponse();
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(new PlayerLevel.ResponseRoot() { currentXp = 999, currentXpUpperBound = 999, level = 99, levelVersion = 1, prestigeLevel = 999, totalXp = 99999 }));
-                            }
+                            InfoManager.OnPlayerInfoReceived(PlayerName, e.RequestHeaders["x-kraken-client-platform"]); // maybe use x-kraken-client-provider cuz steam using the same and idk about other ones
                         }
                         break;
 
@@ -256,22 +255,12 @@ namespace HexedProxy.Core
                             {
                                 e.utilDecodeResponse();
 
-                                Currencies.ResponseRoot Currencies = JsonConvert.DeserializeObject<Currencies.ResponseRoot>(e.GetResponseBodyAsString());
+                                JObject Currencies = JObject.Parse(e.GetResponseBodyAsString());
 
-                                foreach (var Currency in Currencies.list)
-                                {
-                                    Currency.balance = 9999999;
-                                }
+                                SaveEditor.EditCurrencies(Currencies);
 
-                                e.utilSetResponseBody(JsonConvert.SerializeObject(Currencies));
+                                e.utilSetResponseBody(Currencies.ToString());
                             }
-                        }
-                        break;
-
-                    case "api/v1/players/ban/status":
-                        {
-                            e.utilDecodeResponse();
-                            e.utilSetResponseBody(JsonConvert.SerializeObject(new BanStatus.ResponseRoot() { isBanned = false }));
                         }
                         break;
 
@@ -279,9 +268,16 @@ namespace HexedProxy.Core
                         {
                             e.utilDecodeResponse();
 
-                            ActiveNode.ResponseRoot Node = JsonConvert.DeserializeObject<ActiveNode.ResponseRoot>(e.GetResponseBodyAsString());
+                            JObject Node = JObject.Parse(e.GetResponseBodyAsString());
 
                             TomeManager.OnActiveNodeReceived(Node); // Modify node to have no conditions, so its always being send so i can edit it up
+
+                            if (InternalSettings.InstantTomes)
+                            {
+                               TomeManager.EditSelectedNode(Node);
+
+                                e.utilSetResponseBody(Node.ToString());
+                            }
                         }
                         break;
                 }
