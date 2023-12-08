@@ -1,5 +1,4 @@
-﻿using HexedProxy.DBDObjects;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 
 namespace HexedProxy.Modules
 {
@@ -24,7 +23,7 @@ namespace HexedProxy.Modules
 
                         foreach (var objective in fullNode["objectives"].Where(o => o["questEvent"] != null))
                         {
-                            var cachedEvent = objective["questEvent"].FirstOrDefault(e => e["questEventId"] == QuestEvent["questEventId"]);
+                            var cachedEvent = objective["questEvent"].FirstOrDefault(e => e["questEventId"].Value<string>() == QuestEvent["questEventId"].Value<string>());
                             if (cachedEvent != null) QuestEvent["repetition"] = objective["neededProgression"];
                         }
                     }

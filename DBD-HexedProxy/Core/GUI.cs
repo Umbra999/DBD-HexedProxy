@@ -64,12 +64,6 @@ namespace HexedProxy.Core
                         ImGui.Combo("Region", ref InternalSettings.TargetQueueRegion, InternalSettings.AvailableRegions, InternalSettings.AvailableRegions.Length);
                     }
 
-                    if (ImGui.Button("Add Friend")) Task.Run(() => RequestSender.AddFriend(InternalSettings.TargetFriendId));
-                    ImGui.SameLine(0, 10f);
-                    if (ImGui.Button("Remove Friend")) Task.Run(() => RequestSender.RemoveFriend(InternalSettings.TargetFriendId));
-                    ImGui.SameLine(0, 10f);
-                    ImGui.InputTextWithHint("Friend", "PlayerId", ref InternalSettings.TargetFriendId, 36);
-
                     ImGui.Checkbox("Match Snipe", ref InternalSettings.MatchSnipe);
                     if (InternalSettings.MatchSnipe)
                     {
@@ -88,6 +82,12 @@ namespace HexedProxy.Core
                         ImGui.SameLine(0, 10f);
                         ImGui.InputTextWithHint("Custom Name", "Nickname", ref InternalSettings.TargetCustomName, 36);
                     }
+
+                    if (ImGui.Button("Add Friend")) Task.Run(() => RequestSender.AddFriend(InternalSettings.TargetFriendId));
+                    ImGui.SameLine(0, 10f);
+                    if (ImGui.Button("Remove Friend")) Task.Run(() => RequestSender.RemoveFriend(InternalSettings.TargetFriendId));
+                    ImGui.SameLine(0, 10f);
+                    ImGui.InputTextWithHint("Friend", "PlayerId", ref InternalSettings.TargetFriendId, 36);
 
                     break;
 

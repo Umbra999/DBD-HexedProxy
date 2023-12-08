@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DBD-HexedProxy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3277311f97e9c2b36f79067606022a5a4f23fea2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3783312516e1f4db2b7ce2062095b124d744e804")]
 [assembly: System.Reflection.AssemblyProductAttribute("DBD-HexedProxy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DBD-HexedProxy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
