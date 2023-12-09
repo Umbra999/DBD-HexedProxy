@@ -1,4 +1,5 @@
-﻿using HexedProxy.Wrappers;
+﻿using HexedProxy.HexedServer;
+using HexedProxy.Wrappers;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -8,29 +9,33 @@ namespace HexedServer
     {
         private static ServerObjects.UserData UserData;
 
-        public static async Task Init()
+        public static void Init()
         {
             Logger.Log("Authenticating...");
+
             if (!File.Exists("Key.Hexed"))
             {
-                Logger.LogWarning("Enter Key:");
-                string NewKey = Console.ReadLine();
-                File.WriteAllText("Key.Hexed", Encryption.ToBase64(NewKey));
+                Logger.LogError("No Key provided");
+                Thread.Sleep(3000);
+                Environment.Exit(0);
             }
 
-            Encryption.ServerThumbprint = Encryption.FromBase64(await FetchCert());
-            Encryption.PublicEncryptionKey = Encryption.FromBase64(await FetchPublicKey());
+            Encryption.ServerThumbprint = EncryptUtils.FromBase64(FetchCert().Result);
+            Encryption.EncryptionKey = EncryptUtils.FromBase64(FetchEncryptionKey().Result);
+            Encryption.DecryptionKey = EncryptUtils.FromBase64(FetchDecryptionKey().Result);
 
-            UserData = await Login(Encryption.FromBase64(File.ReadAllText("Key.Hexed")));
+            UserData = Login(EncryptUtils.FromBase64(File.ReadAllText("Key.Hexed"))).Result;
 
             if (UserData == null || !UserData.KeyAccess.Contains(ServerObjects.KeyPermissionType.DeadByDaylightUnlocker))
             {
                 Logger.LogError("Key is not Valid");
-                await Task.Delay(3000);
+                Thread.Sleep(3000);
                 Environment.Exit(0);
             }
 
-            string EncodedAsset = await DownloadAsset("cimgui.dll");
+            Logger.Log($"Authenticated as {UserData.Username}");
+
+            string EncodedAsset = DownloadAsset("cimgui.dll").Result;
             File.WriteAllBytes("cimgui.dll", Convert.FromBase64String(EncodedAsset));
         }
 
@@ -45,12 +50,23 @@ namespace HexedServer
             return null;
         }
 
-        private static async Task<string> FetchPublicKey()
+        private static async Task<string> FetchEncryptionKey()
         {
             HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = Encryption.ValidateServerCertificate });
             Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Hexed)");
 
-            HttpRequestMessage Payload = new(HttpMethod.Get, "https://api.logout.rip/Server/PublicKey");
+            HttpRequestMessage Payload = new(HttpMethod.Get, "https://api.logout.rip/Server/EncryptKey");
+            HttpResponseMessage Response = await Client.SendAsync(Payload);
+            if (Response.IsSuccessStatusCode) return await Response.Content.ReadAsStringAsync();
+            return null;
+        }
+
+        private static async Task<string> FetchDecryptionKey()
+        {
+            HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = Encryption.ValidateServerCertificate });
+            Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Hexed)");
+
+            HttpRequestMessage Payload = new(HttpMethod.Get, "https://api.logout.rip/Server/DecryptKey");
             HttpResponseMessage Response = await Client.SendAsync(Payload);
             if (Response.IsSuccessStatusCode) return await Response.Content.ReadAsStringAsync();
             return null;
@@ -63,14 +79,15 @@ namespace HexedServer
 
             HttpRequestMessage Payload = new(HttpMethod.Post, "https://api.logout.rip/Server/Login")
             {
-                Content = new StringContent(Encryption.EncryptData(JsonConvert.SerializeObject(new { Key = Key, HWID = Encryption.GetHWID(), ServerTime = Encryption.GetUnixTime() })), Encoding.UTF8, "application/json")
+                Content = new StringContent(DataEncryptBase.EncryptData(JsonConvert.SerializeObject(new { Key = Key, HWID = Encryption.GetHWID(), ServerTime = EncryptUtils.GetUnixTime() }), Encryption.EncryptionKey), Encoding.UTF8, "application/json")
             };
 
             HttpResponseMessage Response = await Client.SendAsync(Payload);
 
             if (Response.IsSuccessStatusCode)
             {
-                string RawData = await Response.Content.ReadAsStringAsync();
+                string EncryptedData = await Response.Content.ReadAsStringAsync();
+                string RawData = DataEncryptBase.DecryptData(EncryptedData, Encryption.DecryptionKey);
                 return JsonConvert.DeserializeObject<ServerObjects.UserData>(RawData);
             }
 

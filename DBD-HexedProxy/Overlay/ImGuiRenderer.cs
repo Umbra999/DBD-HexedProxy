@@ -361,7 +361,7 @@
             return imguiID;
         }
 
-        ID3D11ShaderResourceView? DeRegisterTexture(IntPtr texturePtr)
+        ID3D11ShaderResourceView DeRegisterTexture(IntPtr texturePtr)
         {
             if (textureResources.Remove(texturePtr, out var texture))
             {
