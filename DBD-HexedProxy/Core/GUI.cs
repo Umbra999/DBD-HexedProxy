@@ -104,7 +104,7 @@ namespace HexedProxy.Core
                     ImGui.Text($"Character: {BloodwebManager.GetSelectedCharacter()}");
                     if (ImGui.Button("Add Prestige")) BloodwebManager.AddPrestigeLevels();
                     ImGui.SameLine(0, 10f);
-                    ImGui.SliderInt("Prestige", ref BloodwebManager.TargetPrestige, BloodwebManager.GetCurrentPrestige() + 1, 100);
+                    ImGui.SliderInt("Prestige", ref BloodwebManager.TargetPrestige, BloodwebManager.GetCurrentPrestige() == 100 ? BloodwebManager.GetCurrentPrestige() : BloodwebManager.GetCurrentPrestige() + 1, 100);
                     break;
 
                 case 4: // INFO
