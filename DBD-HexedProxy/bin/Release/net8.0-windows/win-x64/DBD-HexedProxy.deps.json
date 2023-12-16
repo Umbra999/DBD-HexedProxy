@@ -11,7 +11,6 @@
         "dependencies": {
           "FiddlerCore.Trial": "5.0.2",
           "ImGui.NET": "1.90.0.1",
-          "Microsoft.NET.ILLink.Tasks": "8.0.0",
           "Newtonsoft.Json": "13.0.3",
           "SixLabors.ImageSharp": "3.1.0",
           "Vortice.D3DCompiler": "3.4.1-beta",
@@ -75,7 +74,6 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.0": {},
       "Microsoft.NETCore.Platforms/2.0.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
       "Microsoft.Win32.Registry/4.5.0": {
@@ -324,13 +322,6 @@
       "sha512": "sha512-ZhEN7SKx5e9bbWY5BR2tNdbl7W4cJXaESwFRGo6p2pUSM9Y8yxtWq2zM4Qf8a8HYCmblHuFWtp8YcZiWlcJ3ZQ==",
       "path": "imgui.net/1.90.0.1",
       "hashPath": "imgui.net.1.90.0.1.nupkg.sha512"
-    },
-    "Microsoft.NET.ILLink.Tasks/8.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-B3etT5XQ2nlWkZGO2m/ytDYrOmSsQG1XNBaM6ZYlX5Ch/tDrMFadr0/mK6gjZwaQc55g+5+WZMw4Cz3m8VEF7g==",
-      "path": "microsoft.net.illink.tasks/8.0.0",
-      "hashPath": "microsoft.net.illink.tasks.8.0.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/2.0.0": {
       "type": "package",

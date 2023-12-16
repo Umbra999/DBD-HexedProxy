@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "l1aA58oSkQB604Q/ODv8PDA+HbRndVzDuFsbeu1NUnfGHkXGwVwxaT5OiCuk4EdArgsDSyshknUfwiPcrq2Ikg==",
+  "dgSpecHash": "fy7M9WStbkrz3QW34a3p0hS1SqNVhu3HcU4uWBtqy13XrcD8+OM1POTPPI6ICA4Qje9XvqFGJMJyRktgJLIzcg==",
   "success": true,
   "projectFilePath": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,6 @@
     "C:\\Users\\Umbra\\.nuget\\packages\\dotnetzip\\1.13.4\\dotnetzip.1.13.4.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\fiddlercore.trial\\5.0.2\\fiddlercore.trial.5.0.2.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\imgui.net\\1.90.0.1\\imgui.net.1.90.0.1.nupkg.sha512",
-    "C:\\Users\\Umbra\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.0\\microsoft.net.illink.tasks.8.0.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
