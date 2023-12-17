@@ -1,5 +1,4 @@
 ﻿using HexedProxy.Core;
-using HexedProxy.HexedServer;
 using HexedServer;
 using System.Runtime.InteropServices;
 
@@ -10,9 +9,12 @@ namespace HexedProxy
         [DllImport("kernel32.dll")]
         private static extern bool FreeConsole();
 
-        public static void Main()
+        public sealed class HexedEntry : Attribute { }
+
+        [HexedEntry]
+        public static void Main(string[] args)
         {
-            Console.Title = EncryptUtils.RandomString(20);
+            if (!File.Exists("Key.Hexed")) return;
 
             ServerHandler.Init();
 

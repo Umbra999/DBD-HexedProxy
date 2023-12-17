@@ -22,7 +22,7 @@ namespace HexedProxy.Modules
 
         public static void EditGetAll(JObject GetAll)
         {
-            GetAll["list"] = cachedProfile["list"];
+            GetAll["list"] = cachedProfile["list"]; // edit to not fuck the bloddweb and item stuff, only get char data and add non existing char data
 
             foreach (var list in GetAll["list"])
             {
