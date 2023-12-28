@@ -14,8 +14,6 @@ namespace HexedProxy
         [HexedEntry]
         public static void Main(string[] args)
         {
-            if (!File.Exists("Key.Hexed")) return;
-
             ServerHandler.Init();
 
             FreeConsole();

@@ -1,5 +1,5 @@
 ﻿using HexedProxy.HexedServer;
-using System.Text;
+using HexedProxy.Wrappers;
 
 namespace HexedServer
 {
@@ -7,7 +7,7 @@ namespace HexedServer
     {
         public static void Init()
         {
-            Encryption.ServerThumbprint = FromBase64(FetchCert().Result);
+            Encryption.ServerThumbprint = Utils.FromBase64(FetchCert().Result);
             string EncodedAsset = DownloadAsset("cimgui.dll").Result;
             File.WriteAllBytes("cimgui.dll", Convert.FromBase64String(EncodedAsset));
         }
@@ -33,12 +33,6 @@ namespace HexedServer
 
             if (Response.IsSuccessStatusCode) return await Response.Content.ReadAsStringAsync();
             return null;
-        }
-
-        public static string FromBase64(string Data)
-        {
-            var base64EncodedBytes = Convert.FromBase64String(Data);
-            return Encoding.UTF8.GetString(base64EncodedBytes);
         }
     }
 }

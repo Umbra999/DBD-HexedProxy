@@ -1,69 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Document Version="2">
-    <Protection InputFileName="DBD-HexedProxy.dll" Options="466688" VMCodeSectionName=".HEXED" VMComplexity="20">
+    <Protection InputFileName="DBD-HexedProxy.dll" Options="466688" VMCodeSectionName=".HEXED" VMComplexity="100">
         <Messages />
         <Folders />
-        <Procedures>
-            <Procedure MapAddress="HexedServer.ServerHandler::Init()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedServer.ServerHandler::FetchCert()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedServer.ServerHandler::DownloadAsset(string)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedServer.ServerHandler::.ctor()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedServer.ServerHandler/&lt;FetchCert&gt;d__1::MoveNext()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedServer.ServerHandler/&lt;FetchCert&gt;d__1::SetStateMachine(class System.Runtime.CompilerServices.IAsyncStateMachine)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Load::.ctor()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Load::Main()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.TomeManager::OnActiveNodeReceived(class Newtonsoft.Json.Linq.JObject)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.TomeManager::EditNodeProgress(class Newtonsoft.Json.Linq.JObject)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.TomeManager::ResetNodeProgress(class Newtonsoft.Json.Linq.JObject)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.TomeManager::EditSelectedNode(class Newtonsoft.Json.Linq.JObject)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.TomeManager::.ctor()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.SaveEditor::EditBloodweb(class Newtonsoft.Json.Linq.JObject)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.SaveEditor::EditGetAll(class Newtonsoft.Json.Linq.JObject)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.SaveEditor::EditMarket(class Newtonsoft.Json.Linq.JObject)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.SaveEditor::EditCurrencies(class Newtonsoft.Json.Linq.JObject)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.SaveEditor::.ctor()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.SaveEditor::.cctor()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender::OnDefaultHeadersReceived(class Fiddler.HTTPRequestHeaders)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender::AddFriend(string)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender::RemoveFriend(string)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender::GetPlayerProvider(string)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender::GetPlayerByCloudId(string)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender::FinishTutorial(string, string)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender::GetOnboardingChallenges()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender::FinishBloodweb(string, string[], string[])" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender::.ctor()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.Misc::UnlockTutorials()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.Misc::.ctor()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.MatchSniper::CheckQueueForTarget(class Newtonsoft.Json.Linq.JObject)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.MatchSniper::.ctor()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.InfoManager::OnMatchInfoReceived(class Newtonsoft.Json.Linq.JObject)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.InfoManager::OnPlayerInfoReceived(class Newtonsoft.Json.Linq.JObject, string)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.InfoManager::OnPartyStateChanged()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.InfoManager::.ctor()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.InfoManager::.cctor()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.BloodwebManager::OnBloodwebReceived(class Newtonsoft.Json.Linq.JObject)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.BloodwebManager::GetAvailablePrestiges()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.BloodwebManager::GetCurrentPrestige()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.BloodwebManager::AddPrestigeLevels()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.BloodwebManager::GetSelectedCharacter()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.BloodwebManager::LevelUntilPrestige(class Newtonsoft.Json.Linq.JObject, int32)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.BloodwebManager::.ctor()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;FinishBloodweb&gt;d__8::MoveNext()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;FinishBloodweb&gt;d__8::SetStateMachine(class System.Runtime.CompilerServices.IAsyncStateMachine)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;FinishTutorial&gt;d__6::MoveNext()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;FinishTutorial&gt;d__6::SetStateMachine(class System.Runtime.CompilerServices.IAsyncStateMachine)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;AddFriend&gt;d__2::MoveNext()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;AddFriend&gt;d__2::SetStateMachine(class System.Runtime.CompilerServices.IAsyncStateMachine)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;GetOnboardingChallenges&gt;d__7::MoveNext()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;GetOnboardingChallenges&gt;d__7::SetStateMachine(class System.Runtime.CompilerServices.IAsyncStateMachine)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;GetPlayerByCloudId&gt;d__5::MoveNext()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;GetPlayerByCloudId&gt;d__5::SetStateMachine(class System.Runtime.CompilerServices.IAsyncStateMachine)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;GetPlayerProvider&gt;d__4::MoveNext()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;GetPlayerProvider&gt;d__4::SetStateMachine(class System.Runtime.CompilerServices.IAsyncStateMachine)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;RemoveFriend&gt;d__3::MoveNext()" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Modules.RequestSender/&lt;RemoveFriend&gt;d__3::SetStateMachine(class System.Runtime.CompilerServices.IAsyncStateMachine)" Options="0" CompilationType="1" />
-            <Procedure MapAddress="HexedProxy.Load::Main(string[])" Options="0" CompilationType="1" />
-        </Procedures>
+        <Procedures />
         <Objects />
     </Protection>
     <Script />

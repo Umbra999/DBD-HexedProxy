@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Text;
 
 namespace HexedProxy.Wrappers
 {
@@ -16,6 +17,12 @@ namespace HexedProxy.Wrappers
             using StreamReader reader = new(stream);
             string file = reader.ReadToEnd();
             return file;
+        }
+
+        public static string FromBase64(string Data)
+        {
+            var base64EncodedBytes = Convert.FromBase64String(Data);
+            return Encoding.UTF8.GetString(base64EncodedBytes);
         }
     }
 }
