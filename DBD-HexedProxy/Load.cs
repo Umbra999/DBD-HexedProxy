@@ -1,5 +1,5 @@
 ﻿using HexedProxy.Core;
-using HexedServer;
+using HexedProxy.HexedServer;
 using System.Runtime.InteropServices;
 
 namespace HexedProxy
@@ -14,7 +14,9 @@ namespace HexedProxy
         [HexedEntry]
         public static void Main(string[] args)
         {
-            ServerHandler.Init();
+            if (args.Length != 1) return;
+
+            ServerHandler.Init(args[0]);
 
             FreeConsole();
 
