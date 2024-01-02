@@ -11,6 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\Umbra\.nuget\packages\fiddlercore.trial\5.0.2\contentFiles\any\netstandard2.0\BasicFormatsForCore.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\Bloodweb.json" />
     <None Remove="Resources\GetAll.json" />
     <None Remove="Resources\Market.json" />
@@ -30,9 +34,9 @@
     <PackageReference Include="FiddlerCore.Trial" Version="5.0.2" />
     <PackageReference Include="ImGui.NET" Version="1.90.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.0" />
-    <PackageReference Include="Vortice.D3DCompiler" Version="3.4.1-beta" />
-    <PackageReference Include="Vortice.Direct3D11" Version="3.4.1-beta" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.2" />
+    <PackageReference Include="Vortice.D3DCompiler" Version="3.4.2-beta" />
+    <PackageReference Include="Vortice.Direct3D11" Version="3.4.2-beta" />
   </ItemGroup>
 
 </Project>

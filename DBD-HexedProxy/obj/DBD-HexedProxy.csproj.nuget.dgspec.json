@@ -58,15 +58,15 @@
             },
             "SixLabors.ImageSharp": {
               "target": "Package",
-              "version": "[3.1.0, )"
+              "version": "[3.1.2, )"
             },
             "Vortice.D3DCompiler": {
               "target": "Package",
-              "version": "[3.4.1-beta, )"
+              "version": "[3.4.2-beta, )"
             },
             "Vortice.Direct3D11": {
               "target": "Package",
-              "version": "[3.4.1-beta, )"
+              "version": "[3.4.2-beta, )"
             }
           },
           "imports": [

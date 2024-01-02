@@ -1,4 +1,3 @@
-D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\win-x64\BasicFormatsForCore.dll
 D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\win-x64\DBD-HexedProxy.dll
 D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\win-x64\DBD-HexedProxy.deps.json
 D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\win-x64\DBD-HexedProxy.pdb

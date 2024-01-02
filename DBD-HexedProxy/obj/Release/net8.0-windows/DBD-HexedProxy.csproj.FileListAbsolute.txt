@@ -102,7 +102,6 @@ C:\Users\Umbra\Documents\Temp Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Rel
 C:\Users\Umbra\Documents\Temp Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\DBD-HexedProxy.csproj.CopyComplete
 C:\Users\Umbra\Documents\Temp Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\DBD-HexedProxy.genruntimeconfig.cache
 C:\Users\Umbra\Documents\Temp Github Repos\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\ref\DBD-HexedProxy.dll
-D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\BasicFormatsForCore.dll
 D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\DBD-HexedProxy.deps.json
 D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\DBD-HexedProxy.dll
 D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\DBD-HexedProxy.pdb
