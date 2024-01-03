@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Document Version="2">
+    <Protection InputFileName="DBD-HexedProxy.dll" Options="204544" VMCodeSectionName=".HEXED" VMComplexity="100">
+        <Messages />
+        <Folders />
+        <Procedures />
+        <Objects />
+    </Protection>
+    <Script />
+</Document>

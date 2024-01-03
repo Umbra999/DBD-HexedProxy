@@ -1,5 +1,4 @@
-﻿using HexedProxy.DBDObjects;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 
 namespace HexedProxy.Modules
 {
@@ -48,7 +47,7 @@ namespace HexedProxy.Modules
             List<string> BlockedNodes = new();
             List<string> SelectedNodes = new();
 
-            while (currentBloodweb != null && currentBloodweb["prestigeLevel"].Value<int>() < TargetPrestige) // add check for updated wallets and add that it levels until level 50
+            while (currentBloodweb != null && (currentBloodweb["prestigeLevel"].Value<int>() < TargetPrestige || currentBloodweb["bloodWebLevel"].Value<int>() < 50)) // add check for updated wallets if i can afford the next prestige
             {
                 BlockedNodes.Clear();
                 SelectedNodes.Clear();

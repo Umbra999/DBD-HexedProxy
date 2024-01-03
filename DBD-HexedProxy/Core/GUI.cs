@@ -126,11 +126,11 @@ namespace HexedProxy.Core
                     foreach (var Player in InfoManager.Players)
                     {
                         ImGui.Text($"{Player.role}: {Player.name}");
-                        if (ImGui.Button("Copy CloudID")) WindowsClipboard.SetText(Player.userId);
+                        if (ImGui.Button($"Copy {Player.name}'s CloudID")) WindowsClipboard.SetText(Player.userId);
                         ImGui.SameLine();
                         if (Player.providerUrl != null)
                         {
-                            if (ImGui.Button("Copy URL")) WindowsClipboard.SetText(Player.providerUrl);
+                            if (ImGui.Button($"Copy {Player.name}'s URL")) WindowsClipboard.SetText(Player.providerUrl);
                         }
 
                         ImGui.Dummy(new Vector2(0, 10));
