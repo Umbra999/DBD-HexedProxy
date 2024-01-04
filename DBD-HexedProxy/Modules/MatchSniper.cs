@@ -1,5 +1,4 @@
 ﻿using HexedProxy.Core;
-using HexedProxy.DBDObjects;
 using Newtonsoft.Json.Linq;
 
 namespace HexedProxy.Modules

@@ -59,7 +59,7 @@ namespace HexedProxy.Core
 
                 if (InternalSettings.NameSpoof)
                 {
-                    Party["body"]["_playerName"] = InternalSettings.NameSpoof;
+                    Party["body"]["_playerName"] = InternalSettings.TargetCustomName;
                 }
 
                 if (InternalSettings.SpoofRank)
@@ -73,7 +73,7 @@ namespace HexedProxy.Core
             {
                 if (InternalSettings.NameSpoof)
                 {
-                    e.PathAndQuery = $"/api/v1/playername/steam/{InternalSettings.NameSpoof}";
+                    e.PathAndQuery = $"/api/v1/playername/steam/{InternalSettings.TargetCustomName}";
                 }
             }
             else
@@ -158,7 +158,18 @@ namespace HexedProxy.Core
 
             e.bBufferResponse = true;
 
-            if (e.PathAndQuery.StartsWith("/api/v1/match/")) // maybe reset on CLOSE state instead queue check? and add better patch check holy
+            if (url.Contains("cdn.live.bhvrdbd"))
+            {
+                if (e.PathAndQuery.EndsWith("/itemsKillswitch.json"))
+                {
+                    if (InternalSettings.DisableKillswitch)
+                    {
+                        e.utilDecodeResponse();
+                        e.Abort();
+                    }
+                }
+            }
+            else if (e.PathAndQuery.StartsWith("/api/v1/match/")) // maybe reset on CLOSE state instead queue check? and add better patch check holy
             {
                 e.utilDecodeResponse();
 

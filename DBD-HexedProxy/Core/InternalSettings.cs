@@ -39,6 +39,8 @@
         public static bool UnlockAll = false;
         public static bool UnlockCurrencies = false;
 
+        public static bool DisableKillswitch = false;   
+
         public static int SelectedGuiCategory = 0;
     }
 }

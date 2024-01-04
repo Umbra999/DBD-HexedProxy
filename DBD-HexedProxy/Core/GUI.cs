@@ -15,7 +15,7 @@ namespace HexedProxy.Core
             ImGui.SetNextWindowPos(new Vector2(30, 30), ImGuiCond.Appearing);
 
             bool open = true;
-            ImGui.Begin("H E X E D | U N L O C K E R", ref open, ImGuiWindowFlags.NoResize);
+            ImGui.Begin("H E X E D | U N L O C K E R", ref open, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoDocking | ImGuiWindowFlags.NoNavInputs | ImGuiWindowFlags.NoSavedSettings | ImGuiWindowFlags.NoTitleBar);
 
             ImGui.BeginChild("Categories", new Vector2(150, 0));
 
@@ -49,6 +49,7 @@ namespace HexedProxy.Core
                     ImGui.Checkbox("Instant Tomes", ref InternalSettings.InstantTomes);
                     ImGui.Checkbox("Block Tomes", ref InternalSettings.BlockTomes);
                     ImGui.Checkbox("Spoof Offline", ref InternalSettings.SpoofOffline);
+                    ImGui.Checkbox("Disable Killswitch", ref InternalSettings.DisableKillswitch);
 
                     ImGui.Checkbox("Change Rank", ref InternalSettings.SpoofRank);
                     if (InternalSettings.SpoofRank)
@@ -91,7 +92,7 @@ namespace HexedProxy.Core
 
                     break;
 
-                case 2:
+                case 2: // TEMP UNLOCK
                     ImGui.Checkbox("Unlock All", ref InternalSettings.UnlockAll);
                     ImGui.Checkbox("Currency Unlock", ref InternalSettings.UnlockCurrencies);
                     break;
