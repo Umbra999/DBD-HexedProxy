@@ -37,7 +37,6 @@
         public static string TargetCustomName = "";
 
         public static bool UnlockAll = false;
-        public static bool UnlockCurrencies = false;
 
         public static bool DisableKillswitch = false;   
 

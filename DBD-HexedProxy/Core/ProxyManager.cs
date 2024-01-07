@@ -260,21 +260,6 @@ namespace HexedProxy.Core
                         }
                         break;
 
-                    case "/api/v1/wallet/currencies":
-                        {
-                            if (InternalSettings.UnlockCurrencies)
-                            {
-                                e.utilDecodeResponse();
-
-                                JObject Currencies = JObject.Parse(e.GetResponseBodyAsString());
-
-                                SaveEditor.EditCurrencies(Currencies);
-
-                                e.utilSetResponseBody(Currencies.ToString());
-                            }
-                        }
-                        break;
-
                     case "/api/v1/archives/stories/update/active-node-v3":
                         {
                             e.utilDecodeResponse();

@@ -2,7 +2,6 @@
 using Fiddler;
 using HexedProxy.Modules;
 using ImGuiNET;
-using System.Diagnostics;
 using System.Numerics;
 
 namespace HexedProxy.Core
@@ -21,9 +20,8 @@ namespace HexedProxy.Core
 
             if (ImGui.Selectable("GENERAL", InternalSettings.SelectedGuiCategory == 0)) InternalSettings.SelectedGuiCategory = 0;
             if (ImGui.Selectable("TOOLS", InternalSettings.SelectedGuiCategory == 1)) InternalSettings.SelectedGuiCategory = 1;
-            if (ImGui.Selectable("TEMP MARKET", InternalSettings.SelectedGuiCategory == 2)) InternalSettings.SelectedGuiCategory = 2;
-            if (ImGui.Selectable("PERM UNLOCK", InternalSettings.SelectedGuiCategory == 3)) InternalSettings.SelectedGuiCategory = 3;
-            if (ImGui.Selectable("INFO", InternalSettings.SelectedGuiCategory == 4)) InternalSettings.SelectedGuiCategory = 4;
+            if (ImGui.Selectable("PERM UNLOCK", InternalSettings.SelectedGuiCategory == 2)) InternalSettings.SelectedGuiCategory = 2;
+            if (ImGui.Selectable("INFO", InternalSettings.SelectedGuiCategory == 3)) InternalSettings.SelectedGuiCategory = 3;
 
             ImGui.EndChild();
 
@@ -46,6 +44,7 @@ namespace HexedProxy.Core
                     break;
 
                 case 1: // TOOLS
+                    ImGui.Checkbox("Unlock All", ref InternalSettings.UnlockAll);
                     ImGui.Checkbox("Instant Tomes", ref InternalSettings.InstantTomes);
                     ImGui.Checkbox("Block Tomes", ref InternalSettings.BlockTomes);
                     ImGui.Checkbox("Spoof Offline", ref InternalSettings.SpoofOffline);
@@ -89,15 +88,9 @@ namespace HexedProxy.Core
                     if (ImGui.Button("Remove Friend")) Task.Run(() => RequestSender.RemoveFriend(InternalSettings.TargetFriendId));
                     ImGui.SameLine(0, 10f);
                     ImGui.InputTextWithHint("Friend", "PlayerId", ref InternalSettings.TargetFriendId, 36);
-
                     break;
 
-                case 2: // TEMP UNLOCK
-                    ImGui.Checkbox("Unlock All", ref InternalSettings.UnlockAll);
-                    ImGui.Checkbox("Currency Unlock", ref InternalSettings.UnlockCurrencies);
-                    break;
-
-                case 3: // UNLOCK
+                case 2: // UNLOCK
                     if (ImGui.Button("Finish Tutorial")) Misc.UnlockTutorials();
 
                     ImGui.Dummy(new Vector2(0, 20));
@@ -108,7 +101,7 @@ namespace HexedProxy.Core
                     ImGui.SliderInt("Prestige", ref BloodwebManager.TargetPrestige, BloodwebManager.GetCurrentPrestige() == 100 ? BloodwebManager.GetCurrentPrestige() : BloodwebManager.GetCurrentPrestige() + 1, 100);
                     break;
 
-                case 4: // INFO
+                case 3: // INFO
                     ImGui.Text($"Name: {InfoManager.PlayerName}");
                     ImGui.Text($"Platform: {InfoManager.Platform}");
                     ImGui.Text($"PlayerId: {InfoManager.PlayerId}");

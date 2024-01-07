@@ -35,13 +35,5 @@ namespace HexedProxy.Modules
         {
             Market["data"]["inventory"] = cachedInventory["data"]["inventory"];
         }
-
-        public static void EditCurrencies(JObject Currencies)
-        {
-            foreach (var Currency in Currencies["list"])
-            {
-                Currency["balance"] = 9999999;
-            }
-        }
     }
 }
