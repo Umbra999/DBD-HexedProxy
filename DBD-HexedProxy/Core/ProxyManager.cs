@@ -28,8 +28,6 @@ namespace HexedProxy.Core
 
         public static void Disconnect() 
         {
-            if (!FiddlerApplication.IsStarted()) return;
-
             FiddlerApplication.Shutdown();
             FiddlerApplication.BeforeRequest -= BeforeRequest;
             FiddlerApplication.BeforeResponse -= BeforeResponse;
@@ -57,24 +55,12 @@ namespace HexedProxy.Core
 
                 if (Party["body"]["_postMatchmakingState"].Value<string>() == "None") InfoManager.OnPartyStateChanged(); // bad check but works for now ig?
 
-                if (InternalSettings.NameSpoof)
-                {
-                    Party["body"]["_playerName"] = InternalSettings.TargetCustomName;
-                }
-
                 if (InternalSettings.SpoofRank)
                 {
                     Party["body"]["_playerRank"] = InternalSettings.TargetRank;
                 }
 
                 e.utilSetRequestBody(Party.ToString());
-            }
-            else if (e.PathAndQuery == $"/api/v1/playername/steam/{InfoManager.PlayerName.Split('#')[0]}") // Fix the PlayerName to be raw on a reliable way idfk if the current way is good or bad
-            {
-                if (InternalSettings.NameSpoof)
-                {
-                    e.PathAndQuery = $"/api/v1/playername/steam/{InternalSettings.TargetCustomName}";
-                }
             }
             else
             {

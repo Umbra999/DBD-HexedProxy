@@ -18,10 +18,15 @@ namespace HexedProxy.Core
 
             ImGui.BeginChild("Categories", new Vector2(150, 0));
 
-            if (ImGui.Selectable("GENERAL", InternalSettings.SelectedGuiCategory == 0)) InternalSettings.SelectedGuiCategory = 0;
-            if (ImGui.Selectable("TOOLS", InternalSettings.SelectedGuiCategory == 1)) InternalSettings.SelectedGuiCategory = 1;
-            if (ImGui.Selectable("PERM UNLOCK", InternalSettings.SelectedGuiCategory == 2)) InternalSettings.SelectedGuiCategory = 2;
-            if (ImGui.Selectable("INFO", InternalSettings.SelectedGuiCategory == 3)) InternalSettings.SelectedGuiCategory = 3;
+            if (ImGui.Selectable("TOOLS", InternalSettings.SelectedGuiCategory == 0)) InternalSettings.SelectedGuiCategory = 0;
+            if (ImGui.Selectable("PERM UNLOCK", InternalSettings.SelectedGuiCategory == 1)) InternalSettings.SelectedGuiCategory = 1;
+            if (ImGui.Selectable("INFO", InternalSettings.SelectedGuiCategory == 2)) InternalSettings.SelectedGuiCategory = 2;
+            ImGui.Dummy(new Vector2(0, 20));
+            if (ImGui.Button("Exit"))
+            {
+                ProxyManager.Disconnect();
+                Close();
+            }
 
             ImGui.EndChild();
 
@@ -30,20 +35,7 @@ namespace HexedProxy.Core
             ImGui.BeginChild("Options");
             switch (InternalSettings.SelectedGuiCategory)
             {
-                case 0: // GENERAL
-                    if (ImGui.Button("Start")) ProxyManager.Connect();
-                    ImGui.SameLine();
-                    if (ImGui.Button("Stop")) ProxyManager.Disconnect();
-                    ImGui.SameLine();
-                    if (ImGui.Button("Exit"))
-                    {
-                        ProxyManager.Disconnect();
-                        Close();
-                    }
-                    ImGui.Text($"Proxy is {(FiddlerApplication.IsStarted() ? "RUNNING" : "NOT RUNNING")}");
-                    break;
-
-                case 1: // TOOLS
+                case 0: // TOOLS
                     ImGui.Checkbox("Unlock All", ref InternalSettings.UnlockAll);
                     ImGui.Checkbox("Instant Tomes", ref InternalSettings.InstantTomes);
                     ImGui.Checkbox("Block Tomes", ref InternalSettings.BlockTomes);
@@ -76,13 +68,6 @@ namespace HexedProxy.Core
                         }
                     }
 
-                    ImGui.Checkbox("Name Spoof", ref InternalSettings.NameSpoof);
-                    if (InternalSettings.NameSpoof)
-                    {
-                        ImGui.SameLine(0, 10f);
-                        ImGui.InputTextWithHint("Custom Name", "Nickname", ref InternalSettings.TargetCustomName, 36);
-                    }
-
                     if (ImGui.Button("Add Friend")) Task.Run(() => RequestSender.AddFriend(InternalSettings.TargetFriendId));
                     ImGui.SameLine(0, 10f);
                     if (ImGui.Button("Remove Friend")) Task.Run(() => RequestSender.RemoveFriend(InternalSettings.TargetFriendId));
@@ -90,7 +75,7 @@ namespace HexedProxy.Core
                     ImGui.InputTextWithHint("Friend", "PlayerId", ref InternalSettings.TargetFriendId, 36);
                     break;
 
-                case 2: // UNLOCK
+                case 1: // UNLOCK
                     if (ImGui.Button("Finish Tutorial")) Misc.UnlockTutorials();
 
                     ImGui.Dummy(new Vector2(0, 20));
@@ -101,7 +86,7 @@ namespace HexedProxy.Core
                     ImGui.SliderInt("Prestige", ref BloodwebManager.TargetPrestige, BloodwebManager.GetCurrentPrestige() == 100 ? BloodwebManager.GetCurrentPrestige() : BloodwebManager.GetCurrentPrestige() + 1, 100);
                     break;
 
-                case 3: // INFO
+                case 2: // INFO
                     ImGui.Text($"Name: {InfoManager.PlayerName}");
                     ImGui.Text($"Platform: {InfoManager.Platform}");
                     ImGui.Text($"PlayerId: {InfoManager.PlayerId}");

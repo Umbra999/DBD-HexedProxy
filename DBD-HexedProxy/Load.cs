@@ -20,6 +20,9 @@ namespace HexedProxy
 
             FreeConsole();
 
+            ProxyManager.Disconnect();
+            ProxyManager.Connect();
+
             new GUI("Hexed", true).Start().Wait();
         }
     }
