@@ -1,5 +1,4 @@
 ﻿using ClickableTransparentOverlay;
-using Fiddler;
 using HexedProxy.Modules;
 using ImGuiNET;
 using System.Numerics;
@@ -25,6 +24,7 @@ namespace HexedProxy.Core
             if (ImGui.Button("Exit"))
             {
                 ProxyManager.Disconnect();
+                ProxyManager.ToggleCertificate(false);
                 Close();
             }
 

@@ -20,10 +20,40 @@ namespace HexedProxy
 
             FreeConsole();
 
-            ProxyManager.Disconnect();
-            ProxyManager.Connect();
+            ProxyManager.ToggleCertificate(false);
+            ProxyManager.ToggleCertificate(true);
+
+            Task.Run(ProcessListener);
 
             new GUI("Hexed", true).Start().Wait();
+        }
+
+        private static async Task ProcessListener()
+        {
+            while (true) 
+            {
+                string[] ProcessList = new[]
+                {
+                    "DeadByDaylight-Win64-Shipping",
+                    "DeadByDaylight-EGS-Shipping",
+                };
+
+                bool isRunning = false;
+
+                foreach (string Process in ProcessList)
+                {
+                    if (Wrappers.Utils.GetProcessByName(Process) != null)
+                    {
+                        ProxyManager.Connect();
+                        isRunning = true;
+                        break;
+                    }
+                }
+
+                if (!isRunning) ProxyManager.Disconnect();
+
+                await Task.Delay(1);
+            }
         }
     }
 }

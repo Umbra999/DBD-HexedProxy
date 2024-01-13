@@ -1,7 +1,5 @@
 ﻿using Fiddler;
-using HexedProxy.DBDObjects;
 using HexedProxy.Modules;
-using HexedProxy.Wrappers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -9,15 +7,23 @@ namespace HexedProxy.Core
 {
     internal class ProxyManager
     {
+        public static void ToggleCertificate(bool state)
+        {
+            if (state)
+            {
+                if (!CertMaker.rootCertExists())
+                {
+                    CertMaker.createRootCert();
+                    CertMaker.trustRootCert();
+                }
+            }
+            else if (CertMaker.rootCertExists()) CertMaker.removeFiddlerGeneratedCerts(true);
+
+        }
+
         public static void Connect()
         {
             if (FiddlerApplication.IsStarted()) return;
-
-            if (!CertMaker.rootCertExists())
-            {
-                CertMaker.createRootCert();
-                CertMaker.trustRootCert();
-            }
 
             FiddlerCoreStartupSettings fiddlerCoreStartupSettings = new FiddlerCoreStartupSettingsBuilder().RegisterAsSystemProxy().DecryptSSL().Build();
             FiddlerApplication.Startup(fiddlerCoreStartupSettings);
@@ -31,8 +37,6 @@ namespace HexedProxy.Core
             FiddlerApplication.Shutdown();
             FiddlerApplication.BeforeRequest -= BeforeRequest;
             FiddlerApplication.BeforeResponse -= BeforeResponse;
-
-            if (CertMaker.rootCertExists()) CertMaker.removeFiddlerGeneratedCerts(true);
         }
 
         private static void BeforeRequest(Session e)

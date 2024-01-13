@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using System.Text;
+﻿using System.Diagnostics;
+using System.Reflection;
 
 namespace HexedProxy.Wrappers
 {
@@ -19,10 +19,12 @@ namespace HexedProxy.Wrappers
             return file;
         }
 
-        public static string FromBase64(string Data)
+        public static Process GetProcessByName(string Name)
         {
-            var base64EncodedBytes = Convert.FromBase64String(Data);
-            return Encoding.UTF8.GetString(base64EncodedBytes);
+            Process[] AllProcesses = Process.GetProcessesByName(Name);
+            if (AllProcesses != null && AllProcesses.Length > 0) return AllProcesses[0];
+
+            return null;
         }
     }
 }
