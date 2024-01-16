@@ -36,7 +36,9 @@ namespace HexedProxy.Core
             switch (InternalSettings.SelectedGuiCategory)
             {
                 case 0: // TOOLS
-                    ImGui.Checkbox("Unlock All", ref InternalSettings.UnlockAll);
+                    ImGui.Checkbox("Unlock Cosmetics", ref InternalSettings.UnlockCosmetics);
+                    ImGui.Checkbox("Unlock Items", ref InternalSettings.UnlockItems);
+                    ImGui.Checkbox("Unlock Characters", ref InternalSettings.UnlockCharacters);
                     ImGui.Checkbox("Instant Tomes", ref InternalSettings.InstantTomes);
                     ImGui.Checkbox("Block Tomes", ref InternalSettings.BlockTomes);
                     ImGui.Checkbox("Spoof Offline", ref InternalSettings.SpoofOffline);

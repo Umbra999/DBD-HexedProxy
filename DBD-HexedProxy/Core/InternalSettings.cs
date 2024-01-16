@@ -33,7 +33,9 @@
         public static bool OnlyStreamer = false;
         public static string TargetSnipeParameter = "";
 
-        public static bool UnlockAll = false;
+        public static bool UnlockCosmetics = false;
+        public static bool UnlockItems = false;
+        public static bool UnlockCharacters = false;
 
         public static bool DisableKillswitch = false;   
 

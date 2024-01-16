@@ -1,4 +1,6 @@
-﻿using Fiddler;
+﻿using ClickableTransparentOverlay.Win32;
+using Fiddler;
+using HexedProxy.GameDumper;
 using HexedProxy.Modules;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -30,6 +32,8 @@ namespace HexedProxy.Core
 
             FiddlerApplication.BeforeRequest += BeforeRequest;
             FiddlerApplication.BeforeResponse += BeforeResponse;
+
+            UE4Parser.Initialize();
         }
 
         public static void Disconnect() 
@@ -173,29 +177,23 @@ namespace HexedProxy.Core
                 {
                     case "/api/v1/inventories":
                         {
-                            if (InternalSettings.UnlockAll)
-                            {
-                                e.utilDecodeResponse();
-                                JObject Inventory = JObject.Parse(e.GetResponseBodyAsString());
+                            e.utilDecodeResponse();
+                            JObject Inventory = JObject.Parse(e.GetResponseBodyAsString());
 
-                                SaveEditor.EditMarket(Inventory);
+                            SaveEditor.EditMarket(Inventory);
 
-                                e.utilSetResponseBody(Inventory.ToString());
-                            }
+                            e.utilSetResponseBody(Inventory.ToString());
                         }
                         break;
 
                     case "/api/v1/dbd-character-data/get-all":
                         {
-                            if (InternalSettings.UnlockAll)
-                            {
-                                e.utilDecodeResponse();
-                                JObject GetAll = JObject.Parse(e.GetResponseBodyAsString());
+                            e.utilDecodeResponse();
+                            JObject GetAll = JObject.Parse(e.GetResponseBodyAsString());
 
-                                SaveEditor.EditGetAll(GetAll);
+                            SaveEditor.EditGetAll(GetAll);
 
-                                e.utilSetResponseBody(GetAll.ToString());
-                            }
+                            e.utilSetResponseBody(GetAll.ToString());
                         }
                         break;
 
@@ -206,12 +204,9 @@ namespace HexedProxy.Core
 
                             BloodwebManager.OnBloodwebReceived(Bloodweb);
 
-                            if (InternalSettings.UnlockAll)
-                            {
-                                SaveEditor.EditBloodweb(Bloodweb);
+                            SaveEditor.EditBloodweb(Bloodweb);
 
-                                e.utilSetResponseBody(Bloodweb.ToString());
-                            }
+                            e.utilSetResponseBody(Bloodweb.ToString());
                         }
                         break;
 

@@ -1,5 +1,8 @@
-﻿using HexedProxy.Core;
+﻿using Fiddler;
+using HexedProxy.Core;
+using HexedProxy.GameDumper;
 using HexedProxy.HexedServer;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace HexedProxy
@@ -32,10 +35,18 @@ namespace HexedProxy
         {
             while (true) 
             {
+                try // EAC is gay idfk why it breaks without
+                {
+                    Process EACBoot = Wrappers.Utils.GetProcessByName("DeadByDaylight");
+                    if (EACBoot != null && EACBoot.MainModule != null && EACBoot.MainModule.FileName != null) UE4Parser.LastKnownDirectoryPath = EACBoot.MainModule.FileName.Replace("DeadByDaylight.exe", "");
+                }
+                catch { }
+
                 string[] ProcessList = new[]
                 {
                     "DeadByDaylight-Win64-Shipping",
                     "DeadByDaylight-EGS-Shipping",
+                    "DeadByDaylight-WinGDK-Shipping"
                 };
 
                 bool isRunning = false;

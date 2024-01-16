@@ -44,17 +44,17 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "CUE4Parse": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
             "FiddlerCore.Trial": {
               "target": "Package",
               "version": "[5.0.2, )"
             },
             "ImGui.NET": {
               "target": "Package",
-              "version": "[1.90.0.1, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.3, )"
+              "version": "[1.90.1.1, )"
             },
             "SixLabors.ImageSharp": {
               "target": "Package",

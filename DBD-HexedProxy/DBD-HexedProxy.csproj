@@ -15,25 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Bloodweb.json" />
-    <None Remove="Resources\GetAll.json" />
-    <None Remove="Resources\Market.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Resources\Kuromi.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Bloodweb.json" />
-    <EmbeddedResource Include="Resources\GetAll.json" />
-    <EmbeddedResource Include="Resources\Market.json" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="CUE4Parse" Version="1.1.0" />
     <PackageReference Include="FiddlerCore.Trial" Version="5.0.2" />
-    <PackageReference Include="ImGui.NET" Version="1.90.0.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="ImGui.NET" Version="1.90.1.1" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.2" />
     <PackageReference Include="Vortice.D3DCompiler" Version="3.4.2-beta" />
     <PackageReference Include="Vortice.Direct3D11" Version="3.4.2-beta" />
