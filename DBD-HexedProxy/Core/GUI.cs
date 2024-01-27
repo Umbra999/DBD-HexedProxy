@@ -9,7 +9,7 @@ namespace HexedProxy.Core
     {
         protected override void Render()
         {
-            ImGui.SetNextWindowSize(new Vector2(750, 400), ImGuiCond.Appearing);
+            ImGui.SetNextWindowSize(new Vector2(780, 400), ImGuiCond.Appearing);
             ImGui.SetNextWindowPos(new Vector2(30, 30), ImGuiCond.Appearing);
 
             bool open = true;
@@ -39,6 +39,11 @@ namespace HexedProxy.Core
                     ImGui.Checkbox("Unlock Cosmetics", ref InternalSettings.UnlockCosmetics);
                     ImGui.Checkbox("Unlock Items", ref InternalSettings.UnlockItems);
                     ImGui.Checkbox("Unlock Characters", ref InternalSettings.UnlockCharacters);
+                    if (InternalSettings.UnlockCharacters)
+                    {
+                        ImGui.SameLine(0, 10f);
+                        ImGui.SliderInt("Prestige", ref InternalSettings.TargetPrestige, 0, 100);
+                    }
                     ImGui.Checkbox("Instant Tomes", ref InternalSettings.InstantTomes);
                     ImGui.Checkbox("Block Tomes", ref InternalSettings.BlockTomes);
                     ImGui.Checkbox("Spoof Offline", ref InternalSettings.SpoofOffline);
@@ -73,7 +78,6 @@ namespace HexedProxy.Core
                     if (ImGui.Button("Add Friend")) Task.Run(() => RequestSender.AddFriend(InternalSettings.TargetFriendId));
                     ImGui.SameLine(0, 10f);
                     if (ImGui.Button("Remove Friend")) Task.Run(() => RequestSender.RemoveFriend(InternalSettings.TargetFriendId));
-                    ImGui.SameLine(0, 10f);
                     ImGui.InputTextWithHint("Friend", "PlayerId", ref InternalSettings.TargetFriendId, 36);
                     break;
 
@@ -85,7 +89,7 @@ namespace HexedProxy.Core
                     ImGui.Text($"Character: {BloodwebManager.GetSelectedCharacter()}");
                     if (ImGui.Button("Add Prestige")) BloodwebManager.AddPrestigeLevels();
                     ImGui.SameLine(0, 10f);
-                    ImGui.SliderInt("Prestige", ref BloodwebManager.TargetPrestige, BloodwebManager.GetCurrentPrestige() == 100 ? BloodwebManager.GetCurrentPrestige() : BloodwebManager.GetCurrentPrestige() + 1, 100);
+                    ImGui.SliderInt("Prestiges", ref BloodwebManager.TargetPrestige, BloodwebManager.GetCurrentPrestige() == 100 ? BloodwebManager.GetCurrentPrestige() : BloodwebManager.GetCurrentPrestige() + 1, 100);
                     break;
 
                 case 2: // INFO

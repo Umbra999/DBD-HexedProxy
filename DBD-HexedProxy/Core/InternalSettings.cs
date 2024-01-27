@@ -36,6 +36,7 @@
         public static bool UnlockCosmetics = false;
         public static bool UnlockItems = false;
         public static bool UnlockCharacters = false;
+        public static int TargetPrestige = 100;
 
         public static bool DisableKillswitch = false;   
 

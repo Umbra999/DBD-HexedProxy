@@ -11,7 +11,7 @@ namespace HexedProxy.Modules
             if (InternalSettings.UnlockCharacters)
             {
                 Bloodweb["legacyPrestigeLevel"] = 3;
-                Bloodweb["prestigeLevel"] = 100;
+                Bloodweb["prestigeLevel"] = InternalSettings.TargetPrestige;
             }
 
             if (InternalSettings.UnlockItems)
@@ -40,6 +40,8 @@ namespace HexedProxy.Modules
 
             if (InternalSettings.UnlockCharacters)
             {
+                var bloodWebData = characterArray.First()["bloodWebData"]; // generate bloodweb instead but this is ghetto fix for now it also seems to contain items which needs to be unlocked
+
                 foreach (string CharacterId in UE4Parser.CharacterIds)
                 {
                     JToken existingItem = characterArray.FirstOrDefault(item => item["characterName"]?.ToString() == CharacterId);
@@ -49,17 +51,18 @@ namespace HexedProxy.Modules
                         existingItem["bloodWebLevel"] = 50;
                         existingItem["isEntitled"] = true;
                         existingItem["legacyPrestigeLevel"] = 3;
-                        existingItem["prestigeLevel"] = 100;
+                        existingItem["prestigeLevel"] = InternalSettings.TargetPrestige;
                     }
                     else
                     {
-                        JObject newCharacter = new JObject(
+                        JObject newCharacter = new(
+                            new JProperty("bloodWebData", bloodWebData),
                             new JProperty("bloodWebLevel", 50),
                             new JProperty("characterItems", new JArray()),
                             new JProperty("characterName", CharacterId),
                             new JProperty("isEntitled", true),
                             new JProperty("legacyPrestigeLevel", 3),
-                            new JProperty("prestigeLevel", 100)
+                            new JProperty("prestigeLevel", InternalSettings.TargetPrestige)
                         );
 
                         characterArray.Add(newCharacter);
