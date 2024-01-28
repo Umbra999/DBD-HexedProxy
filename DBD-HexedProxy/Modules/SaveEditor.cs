@@ -40,7 +40,7 @@ namespace HexedProxy.Modules
 
             if (InternalSettings.UnlockCharacters)
             {
-                var bloodWebData = characterArray.First()["bloodWebData"]; // generate bloodweb instead but this is ghetto fix for now it also seems to contain items which needs to be unlocked
+                var bloodWebData = characterArray.First()["bloodWebData"]; // generate bloodweb instead but this is ghetto fix for now it also seems to contain items which needs to be unlocked?
 
                 foreach (string CharacterId in UE4Parser.CharacterIds)
                 {

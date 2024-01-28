@@ -49,6 +49,8 @@
             io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset;  // We can honor the ImDrawCmd::VtxOffset field, allowing for large meshes.
             io.ConfigFlags |= ImGuiConfigFlags.NavNoCaptureKeyboard;
             io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
+            io.NativePtr->LogFilename = null;
+            io.NativePtr->IniFilename = null;
             ImGui.StyleColorsDark();
 
             var style = ImGui.GetStyle();
