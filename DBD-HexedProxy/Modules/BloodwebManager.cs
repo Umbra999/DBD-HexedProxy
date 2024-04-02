@@ -35,7 +35,7 @@ namespace HexedProxy.Modules
 
         public static string GetSelectedCharacter()
         {
-            if (SelectedBloodweb == null) return "NONE";
+            if (SelectedBloodweb == null) return "OPEN BLOODWEB FOR SELECTION";
 
             return SelectedBloodweb["characterName"].Value<string>();
         }

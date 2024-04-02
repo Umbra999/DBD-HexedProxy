@@ -71,7 +71,7 @@ namespace HexedProxy.Core
                         if (!InternalSettings.OnlyStreamer)
                         {
                             ImGui.SameLine(0, 10f);
-                            ImGui.InputTextWithHint("ID/Name", "PlayerId/SteamId/Name", ref InternalSettings.TargetSnipeParameter, 36);
+                            ImGui.InputTextWithHint("ID/Name", "PlayerId/SteamId/Name", ref InternalSettings.TargetSnipeParameter, 36); // change to platform id? can epic see steamids?
                         }
                     }
 
@@ -82,7 +82,7 @@ namespace HexedProxy.Core
                     break;
 
                 case 1: // UNLOCK
-                    if (ImGui.Button("Finish Tutorial")) Misc.UnlockTutorials();
+                    ImGui.Checkbox("Complete Tutorial", ref InternalSettings.CompleteTutorial);
 
                     ImGui.Dummy(new Vector2(0, 20));
 
@@ -111,12 +111,12 @@ namespace HexedProxy.Core
                     foreach (var Player in InfoManager.Players)
                     {
                         ImGui.Text($"{Player.role}: {Player.name}");
-                        if (ImGui.Button($"Copy {Player.name}'s CloudID")) WindowsClipboard.SetText(Player.userId);
-                        ImGui.SameLine();
-                        if (Player.providerUrl != null)
-                        {
-                            if (ImGui.Button($"Copy {Player.name}'s URL")) WindowsClipboard.SetText(Player.providerUrl);
-                        }
+                        //if (ImGui.Button($"Copy {Player.name}'s CloudID")) WindowsClipboard.SetText(Player.userId);
+                        //ImGui.SameLine();
+                        //if (Player.providerUrl != null)
+                        //{
+                        //    if (ImGui.Button($"Copy {Player.name}'s URL")) WindowsClipboard.SetText(Player.providerUrl);
+                        //}
 
                         ImGui.Dummy(new Vector2(0, 10));
                     }

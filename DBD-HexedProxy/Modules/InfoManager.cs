@@ -48,14 +48,14 @@ namespace HexedProxy.Modules
 
                     customPlayer.name = playerProfile.playerName;
 
-                    if (Platform == "steam")
-                    {
-                        if (playerProfile.providerPlayerNames?.steam != null)
-                        {
-                            var provider = RequestSender.GetPlayerProvider(uid).Result;
-                            if (provider != null) customPlayer.providerUrl = $"https://steamcommunity.com/profiles/{provider.providerId}";
-                        }
-                    }
+                    //if (Platform == "steam") // fix for all platforms
+                    //{
+                    //    if (playerProfile.providerPlayerNames?.steam != null)
+                    //    {
+                    //        var provider = RequestSender.GetPlayerProvider(uid).Result;
+                    //        if (provider != null) customPlayer.providerUrl = $"https://steamcommunity.com/profiles/{provider.providerId}";
+                    //    }
+                    //}
 
                     currentPlayers.Add(customPlayer);
                 }

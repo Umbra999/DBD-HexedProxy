@@ -11,7 +11,7 @@
           "lib/netstandard2.0/BCMakeCert.dll": {}
         }
       },
-      "CUE4Parse/1.1.0": {
+      "CUE4Parse/1.1.1": {
         "type": "package",
         "dependencies": {
           "DotNetZip": "1.16.0",
@@ -316,7 +316,7 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "SixLabors.ImageSharp/3.1.2": {
+      "SixLabors.ImageSharp/3.1.3": {
         "type": "package",
         "compile": {
           "lib/net6.0/SixLabors.ImageSharp.dll": {
@@ -584,11 +584,11 @@
           }
         }
       },
-      "Vortice.D3DCompiler/3.4.2-beta": {
+      "Vortice.D3DCompiler/3.5.0": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
-          "Vortice.DirectX": "3.4.2-beta"
+          "Vortice.DirectX": "3.5.0"
         },
         "compile": {
           "lib/net8.0/Vortice.D3DCompiler.dll": {
@@ -607,11 +607,11 @@
           "buildMultiTargeting/Vortice.D3DCompiler.props": {}
         }
       },
-      "Vortice.Direct3D11/3.4.2-beta": {
+      "Vortice.Direct3D11/3.5.0": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
-          "Vortice.DXGI": "3.4.2-beta"
+          "Vortice.DXGI": "3.5.0"
         },
         "compile": {
           "lib/net8.0/Vortice.Direct3D11.dll": {
@@ -630,12 +630,12 @@
           "buildMultiTargeting/Vortice.Direct3D11.props": {}
         }
       },
-      "Vortice.DirectX/3.4.2-beta": {
+      "Vortice.DirectX/3.5.0": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
           "SharpGen.Runtime.COM": "2.1.2-beta",
-          "Vortice.Mathematics": "1.7.6"
+          "Vortice.Mathematics": "1.7.8"
         },
         "compile": {
           "lib/net8.0/Vortice.DirectX.dll": {
@@ -654,11 +654,11 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "Vortice.DXGI/3.4.2-beta": {
+      "Vortice.DXGI/3.5.0": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
-          "Vortice.DirectX": "3.4.2-beta"
+          "Vortice.DirectX": "3.5.0"
         },
         "compile": {
           "lib/net8.0/Vortice.DXGI.dll": {
@@ -677,7 +677,7 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "Vortice.Mathematics/1.7.6": {
+      "Vortice.Mathematics/1.7.8": {
         "type": "package",
         "compile": {
           "lib/net8.0/Vortice.Mathematics.dll": {
@@ -710,7 +710,7 @@
           "lib/netstandard2.0/BCMakeCert.dll": {}
         }
       },
-      "CUE4Parse/1.1.0": {
+      "CUE4Parse/1.1.1": {
         "type": "package",
         "dependencies": {
           "DotNetZip": "1.16.0",
@@ -980,7 +980,7 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "SixLabors.ImageSharp/3.1.2": {
+      "SixLabors.ImageSharp/3.1.3": {
         "type": "package",
         "compile": {
           "lib/net6.0/SixLabors.ImageSharp.dll": {
@@ -1206,11 +1206,11 @@
           }
         }
       },
-      "Vortice.D3DCompiler/3.4.2-beta": {
+      "Vortice.D3DCompiler/3.5.0": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
-          "Vortice.DirectX": "3.4.2-beta"
+          "Vortice.DirectX": "3.5.0"
         },
         "compile": {
           "lib/net8.0/Vortice.D3DCompiler.dll": {
@@ -1229,11 +1229,11 @@
           "buildMultiTargeting/Vortice.D3DCompiler.props": {}
         }
       },
-      "Vortice.Direct3D11/3.4.2-beta": {
+      "Vortice.Direct3D11/3.5.0": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
-          "Vortice.DXGI": "3.4.2-beta"
+          "Vortice.DXGI": "3.5.0"
         },
         "compile": {
           "lib/net8.0/Vortice.Direct3D11.dll": {
@@ -1252,12 +1252,12 @@
           "buildMultiTargeting/Vortice.Direct3D11.props": {}
         }
       },
-      "Vortice.DirectX/3.4.2-beta": {
+      "Vortice.DirectX/3.5.0": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
           "SharpGen.Runtime.COM": "2.1.2-beta",
-          "Vortice.Mathematics": "1.7.6"
+          "Vortice.Mathematics": "1.7.8"
         },
         "compile": {
           "lib/net8.0/Vortice.DirectX.dll": {
@@ -1276,11 +1276,11 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "Vortice.DXGI/3.4.2-beta": {
+      "Vortice.DXGI/3.5.0": {
         "type": "package",
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
-          "Vortice.DirectX": "3.4.2-beta"
+          "Vortice.DirectX": "3.5.0"
         },
         "compile": {
           "lib/net8.0/Vortice.DXGI.dll": {
@@ -1299,7 +1299,7 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "Vortice.Mathematics/1.7.6": {
+      "Vortice.Mathematics/1.7.8": {
         "type": "package",
         "compile": {
           "lib/net8.0/Vortice.Mathematics.dll": {
@@ -1340,14 +1340,14 @@
         "lib/netstandard2.0/BCMakeCert.dll"
       ]
     },
-    "CUE4Parse/1.1.0": {
-      "sha512": "BpyOJsIe9bd3Z1GcXsuCzdVdHEV4dkfEcUmco+R2K4IhltigC3zR0QYQYf6RHnvEOBq/RCk/uU156Nu2OcwcXg==",
+    "CUE4Parse/1.1.1": {
+      "sha512": "ZHAvpsQLW2TZwTPi9Avzo5Vm3Odf//SAlnjZFD44+TGonlI8i69i8+lmw8JuYdySoXLVtZbjZ9o95kxdCynlEA==",
       "type": "package",
-      "path": "cue4parse/1.1.0",
+      "path": "cue4parse/1.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "cue4parse.1.1.0.nupkg.sha512",
+        "cue4parse.1.1.1.nupkg.sha512",
         "cue4parse.nuspec",
         "lib/net8.0/CUE4Parse-Natives.dll",
         "lib/net8.0/CUE4Parse.dll"
@@ -1722,10 +1722,10 @@
         "sharpgen.runtime.com.nuspec"
       ]
     },
-    "SixLabors.ImageSharp/3.1.2": {
-      "sha512": "PYdR6GUI+gW6LBaAQKTik0Ai8oLpFAz3a/KrVusxoTg3kf7F3cuIqKMhJGsuQcmDHCF+iD81Pyn4cexyHrb1ZA==",
+    "SixLabors.ImageSharp/3.1.3": {
+      "sha512": "wybtaqZQ1ZRZ4ZeU+9h+PaSeV14nyiGKIy7qRbDfSHzHq4ybqyOcjoifeaYbiKLO1u+PVxLBuy7MF/DMmwwbfg==",
       "type": "package",
-      "path": "sixlabors.imagesharp/3.1.2",
+      "path": "sixlabors.imagesharp/3.1.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1734,7 +1734,7 @@
         "lib/net6.0/SixLabors.ImageSharp.dll",
         "lib/net6.0/SixLabors.ImageSharp.xml",
         "sixlabors.imagesharp.128.png",
-        "sixlabors.imagesharp.3.1.2.nupkg.sha512",
+        "sixlabors.imagesharp.3.1.3.nupkg.sha512",
         "sixlabors.imagesharp.nuspec"
       ]
     },
@@ -2224,10 +2224,10 @@
         "telerik.networkconnections.nuspec"
       ]
     },
-    "Vortice.D3DCompiler/3.4.2-beta": {
-      "sha512": "YzRukHHwt7SCEuvxFoBBEt+dX89axDjhbL9CdEhwnQTZcNzC36eLoTel9aZZOPuV/Q6B2xXw1J+b4Fovy2p2og==",
+    "Vortice.D3DCompiler/3.5.0": {
+      "sha512": "zPo545NXqrKbQf0EDK4jKmxe1KS4v9c+04eycFrfsokX/h0sZKkfmqcluXYzUh/F+5dv6kN9kUf7OTRO2mLqqQ==",
       "type": "package",
-      "path": "vortice.d3dcompiler/3.4.2-beta",
+      "path": "vortice.d3dcompiler/3.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2238,14 +2238,14 @@
         "lib/net7.0/Vortice.D3DCompiler.xml",
         "lib/net8.0/Vortice.D3DCompiler.dll",
         "lib/net8.0/Vortice.D3DCompiler.xml",
-        "vortice.d3dcompiler.3.4.2-beta.nupkg.sha512",
+        "vortice.d3dcompiler.3.5.0.nupkg.sha512",
         "vortice.d3dcompiler.nuspec"
       ]
     },
-    "Vortice.Direct3D11/3.4.2-beta": {
-      "sha512": "CWVMTF7ebylzzXbQXVp5C9UpBB/L+EpX2OxSdb2wlzcsdEmrev/Ith8wVs0WjZ6DbA0WiiybnYAWqB5v0nOO/A==",
+    "Vortice.Direct3D11/3.5.0": {
+      "sha512": "TUVz5tml5tTlk1UpQgh/0cj74ehmlyzvQeGdVkdQGACth2v2t1d+/f84dqT/Trs/5O2WdIvXfYQe2yxALLR5mQ==",
       "type": "package",
-      "path": "vortice.direct3d11/3.4.2-beta",
+      "path": "vortice.direct3d11/3.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2256,14 +2256,14 @@
         "lib/net7.0/Vortice.Direct3D11.xml",
         "lib/net8.0/Vortice.Direct3D11.dll",
         "lib/net8.0/Vortice.Direct3D11.xml",
-        "vortice.direct3d11.3.4.2-beta.nupkg.sha512",
+        "vortice.direct3d11.3.5.0.nupkg.sha512",
         "vortice.direct3d11.nuspec"
       ]
     },
-    "Vortice.DirectX/3.4.2-beta": {
-      "sha512": "EwDbemXkmEiDGZVDem25uiEcZBYOMb+wzePuta+M/k2LXrQVGPknZhZUK56+QlHhI+Ducf/d+J75wgBzEjKi2g==",
+    "Vortice.DirectX/3.5.0": {
+      "sha512": "LwyojEqRCaYgMoEqKsLnHWJ85wM237wFzZy/w57kvQPDsEd+zcqdwDYswOCEdizcLtDBzX/Xt4bbUPgFi8Kp4w==",
       "type": "package",
-      "path": "vortice.directx/3.4.2-beta",
+      "path": "vortice.directx/3.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2276,14 +2276,14 @@
         "lib/net8.0-windows10.0.19041/Vortice.DirectX.xml",
         "lib/net8.0/Vortice.DirectX.dll",
         "lib/net8.0/Vortice.DirectX.xml",
-        "vortice.directx.3.4.2-beta.nupkg.sha512",
+        "vortice.directx.3.5.0.nupkg.sha512",
         "vortice.directx.nuspec"
       ]
     },
-    "Vortice.DXGI/3.4.2-beta": {
-      "sha512": "T4S3pp6l/SGJ6SH3ebCbodN/bimGOkIBiIYKeBpVEis7+/ac1XIjyzgSTJ5XsH3o3hSH7DqSbP6Yo6mL9nyFQA==",
+    "Vortice.DXGI/3.5.0": {
+      "sha512": "W1dHY13DbitLJDVAAD8+YiGddqzBP1m3wN3pfEmxYrrE+dGEV/31aaw8EV74GXYnJQZ2vWJCnc7LCFPR2YkBnw==",
       "type": "package",
-      "path": "vortice.dxgi/3.4.2-beta",
+      "path": "vortice.dxgi/3.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2296,27 +2296,25 @@
         "lib/net8.0-windows10.0.19041/Vortice.DXGI.xml",
         "lib/net8.0/Vortice.DXGI.dll",
         "lib/net8.0/Vortice.DXGI.xml",
-        "vortice.dxgi.3.4.2-beta.nupkg.sha512",
+        "vortice.dxgi.3.5.0.nupkg.sha512",
         "vortice.dxgi.nuspec"
       ]
     },
-    "Vortice.Mathematics/1.7.6": {
-      "sha512": "W8FNv850lPGxmHphwLyi1qnUlQHZBxh/62EenFJTaY6acPP29Fk0xMQJI60G+YNlsVJb3fSoriuW+ong5sM5UQ==",
+    "Vortice.Mathematics/1.7.8": {
+      "sha512": "hpVlfej54yC6Qaq9AYXWgTgF8SDz2dtKbDNZGO8msjn3NjdkUBnFcIzYfOWyvwvpr3aqZPKh4WSSnJ78GxyIWg==",
       "type": "package",
-      "path": "vortice.mathematics/1.7.6",
+      "path": "vortice.mathematics/1.7.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "README.md",
         "lib/net7.0/Vortice.Mathematics.dll",
         "lib/net7.0/Vortice.Mathematics.pdb",
         "lib/net7.0/Vortice.Mathematics.xml",
-        "lib/net8.0-windows10.0.19041/Vortice.Mathematics.dll",
-        "lib/net8.0-windows10.0.19041/Vortice.Mathematics.pdb",
-        "lib/net8.0-windows10.0.19041/Vortice.Mathematics.xml",
         "lib/net8.0/Vortice.Mathematics.dll",
         "lib/net8.0/Vortice.Mathematics.pdb",
         "lib/net8.0/Vortice.Mathematics.xml",
-        "vortice.mathematics.1.7.6.nupkg.sha512",
+        "vortice.mathematics.1.7.8.nupkg.sha512",
         "vortice.mathematics.nuspec"
       ]
     },
@@ -2341,12 +2339,12 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "CUE4Parse >= 1.1.0",
+      "CUE4Parse >= 1.1.1",
       "FiddlerCore.Trial >= 5.0.2",
       "ImGui.NET >= 1.90.1.1",
-      "SixLabors.ImageSharp >= 3.1.2",
-      "Vortice.D3DCompiler >= 3.4.2-beta",
-      "Vortice.Direct3D11 >= 3.4.2-beta"
+      "SixLabors.ImageSharp >= 3.1.3",
+      "Vortice.D3DCompiler >= 3.5.0",
+      "Vortice.Direct3D11 >= 3.5.0"
     ]
   },
   "packageFolders": {
@@ -2375,6 +2373,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "D:\\Coding\\Github\\DBD-HexedProxy\\FiddlerCore": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2387,6 +2387,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2395,7 +2400,7 @@
         "dependencies": {
           "CUE4Parse": {
             "target": "Package",
-            "version": "[1.1.0, )"
+            "version": "[1.1.1, )"
           },
           "FiddlerCore.Trial": {
             "target": "Package",
@@ -2407,15 +2412,15 @@
           },
           "SixLabors.ImageSharp": {
             "target": "Package",
-            "version": "[3.1.2, )"
+            "version": "[3.1.3, )"
           },
           "Vortice.D3DCompiler": {
             "target": "Package",
-            "version": "[3.4.2-beta, )"
+            "version": "[3.5.0, )"
           },
           "Vortice.Direct3D11": {
             "target": "Package",
-            "version": "[3.4.2-beta, )"
+            "version": "[3.5.0, )"
           }
         },
         "imports": [
@@ -2434,7 +2439,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

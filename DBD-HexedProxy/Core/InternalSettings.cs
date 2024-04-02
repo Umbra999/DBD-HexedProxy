@@ -38,6 +38,8 @@
         public static bool UnlockCharacters = false;
         public static int TargetPrestige = 100;
 
+        public static bool CompleteTutorial = false;
+
         public static bool DisableKillswitch = false;   
 
         public static int SelectedGuiCategory = 0;

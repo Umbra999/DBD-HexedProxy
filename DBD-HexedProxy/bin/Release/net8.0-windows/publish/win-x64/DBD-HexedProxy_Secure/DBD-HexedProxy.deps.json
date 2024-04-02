@@ -9,12 +9,12 @@
     ".NETCoreApp,Version=v8.0\/win-x64": {
       "DBD-HexedProxy\/1.0.0": {
         "dependencies": {
-          "CUE4Parse": "1.1.0",
+          "CUE4Parse": "1.1.1",
           "FiddlerCore.Trial": "5.0.2",
           "ImGui.NET": "1.90.1.1",
-          "SixLabors.ImageSharp": "3.1.2",
-          "Vortice.D3DCompiler": "3.4.2-beta",
-          "Vortice.Direct3D11": "3.4.2-beta"
+          "SixLabors.ImageSharp": "3.1.3",
+          "Vortice.D3DCompiler": "3.5.0",
+          "Vortice.Direct3D11": "3.5.0"
         },
         "runtime": {
           "DBD-HexedProxy.dll": {}
@@ -28,7 +28,7 @@
           }
         }
       },
-      "CUE4Parse\/1.1.0": {
+      "CUE4Parse\/1.1.1": {
         "dependencies": {
           "DotNetZip": "1.16.0",
           "Infrablack.UE4Config": "0.7.2.97",
@@ -46,8 +46,8 @@
             "fileVersion": "0.0.0.0"
           },
           "lib\/net8.0\/CUE4Parse.dll": {
-            "assemblyVersion": "1.1.0.0",
-            "fileVersion": "1.1.0.0"
+            "assemblyVersion": "1.1.1.0",
+            "fileVersion": "1.1.1.0"
           }
         }
       },
@@ -205,11 +205,11 @@
           }
         }
       },
-      "SixLabors.ImageSharp\/3.1.2": {
+      "SixLabors.ImageSharp\/3.1.3": {
         "runtime": {
           "lib\/net6.0\/SixLabors.ImageSharp.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.1.2.0"
+            "fileVersion": "3.1.3.0"
           }
         }
       },
@@ -311,60 +311,60 @@
           }
         }
       },
-      "Vortice.D3DCompiler\/3.4.2-beta": {
+      "Vortice.D3DCompiler\/3.5.0": {
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
-          "Vortice.DirectX": "3.4.2-beta"
+          "Vortice.DirectX": "3.5.0"
         },
         "runtime": {
           "lib\/net8.0\/Vortice.D3DCompiler.dll": {
-            "assemblyVersion": "3.4.2.0",
-            "fileVersion": "3.4.2.0"
+            "assemblyVersion": "3.5.0.0",
+            "fileVersion": "3.5.0.0"
           }
         }
       },
-      "Vortice.Direct3D11\/3.4.2-beta": {
+      "Vortice.Direct3D11\/3.5.0": {
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
-          "Vortice.DXGI": "3.4.2-beta"
+          "Vortice.DXGI": "3.5.0"
         },
         "runtime": {
           "lib\/net8.0\/Vortice.Direct3D11.dll": {
-            "assemblyVersion": "3.4.2.0",
-            "fileVersion": "3.4.2.0"
+            "assemblyVersion": "3.5.0.0",
+            "fileVersion": "3.5.0.0"
           }
         }
       },
-      "Vortice.DirectX\/3.4.2-beta": {
+      "Vortice.DirectX\/3.5.0": {
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
           "SharpGen.Runtime.COM": "2.1.2-beta",
-          "Vortice.Mathematics": "1.7.6"
+          "Vortice.Mathematics": "1.7.8"
         },
         "runtime": {
           "lib\/net8.0\/Vortice.DirectX.dll": {
-            "assemblyVersion": "3.4.2.0",
-            "fileVersion": "3.4.2.0"
+            "assemblyVersion": "3.5.0.0",
+            "fileVersion": "3.5.0.0"
           }
         }
       },
-      "Vortice.DXGI\/3.4.2-beta": {
+      "Vortice.DXGI\/3.5.0": {
         "dependencies": {
           "SharpGen.Runtime": "2.1.2-beta",
-          "Vortice.DirectX": "3.4.2-beta"
+          "Vortice.DirectX": "3.5.0"
         },
         "runtime": {
           "lib\/net8.0\/Vortice.DXGI.dll": {
-            "assemblyVersion": "3.4.2.0",
-            "fileVersion": "3.4.2.0"
+            "assemblyVersion": "3.5.0.0",
+            "fileVersion": "3.5.0.0"
           }
         }
       },
-      "Vortice.Mathematics\/1.7.6": {
+      "Vortice.Mathematics\/1.7.8": {
         "runtime": {
           "lib\/net8.0\/Vortice.Mathematics.dll": {
-            "assemblyVersion": "1.7.6.0",
-            "fileVersion": "1.7.6.0"
+            "assemblyVersion": "1.7.8.0",
+            "fileVersion": "1.7.8.0"
           }
         }
       },
@@ -391,12 +391,12 @@
       "path": "bcmakecert\/2.0.9",
       "hashPath": "bcmakecert.2.0.9.nupkg.sha512"
     },
-    "CUE4Parse\/1.1.0": {
+    "CUE4Parse\/1.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BpyOJsIe9bd3Z1GcXsuCzdVdHEV4dkfEcUmco+R2K4IhltigC3zR0QYQYf6RHnvEOBq\/RCk\/uU156Nu2OcwcXg==",
-      "path": "cue4parse\/1.1.0",
-      "hashPath": "cue4parse.1.1.0.nupkg.sha512"
+      "sha512": "sha512-ZHAvpsQLW2TZwTPi9Avzo5Vm3Odf\/\/SAlnjZFD44+TGonlI8i69i8+lmw8JuYdySoXLVtZbjZ9o95kxdCynlEA==",
+      "path": "cue4parse\/1.1.1",
+      "hashPath": "cue4parse.1.1.1.nupkg.sha512"
     },
     "DotNetZip\/1.16.0": {
       "type": "package",
@@ -510,12 +510,12 @@
       "path": "sharpgen.runtime.com\/2.1.2-beta",
       "hashPath": "sharpgen.runtime.com.2.1.2-beta.nupkg.sha512"
     },
-    "SixLabors.ImageSharp\/3.1.2": {
+    "SixLabors.ImageSharp\/3.1.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PYdR6GUI+gW6LBaAQKTik0Ai8oLpFAz3a\/KrVusxoTg3kf7F3cuIqKMhJGsuQcmDHCF+iD81Pyn4cexyHrb1ZA==",
-      "path": "sixlabors.imagesharp\/3.1.2",
-      "hashPath": "sixlabors.imagesharp.3.1.2.nupkg.sha512"
+      "sha512": "sha512-wybtaqZQ1ZRZ4ZeU+9h+PaSeV14nyiGKIy7qRbDfSHzHq4ybqyOcjoifeaYbiKLO1u+PVxLBuy7MF\/DMmwwbfg==",
+      "path": "sixlabors.imagesharp\/3.1.3",
+      "hashPath": "sixlabors.imagesharp.3.1.3.nupkg.sha512"
     },
     "System.Buffers\/4.4.0": {
       "type": "package",
@@ -622,40 +622,40 @@
       "path": "telerik.networkconnections\/0.2.0",
       "hashPath": "telerik.networkconnections.0.2.0.nupkg.sha512"
     },
-    "Vortice.D3DCompiler\/3.4.2-beta": {
+    "Vortice.D3DCompiler\/3.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YzRukHHwt7SCEuvxFoBBEt+dX89axDjhbL9CdEhwnQTZcNzC36eLoTel9aZZOPuV\/Q6B2xXw1J+b4Fovy2p2og==",
-      "path": "vortice.d3dcompiler\/3.4.2-beta",
-      "hashPath": "vortice.d3dcompiler.3.4.2-beta.nupkg.sha512"
+      "sha512": "sha512-zPo545NXqrKbQf0EDK4jKmxe1KS4v9c+04eycFrfsokX\/h0sZKkfmqcluXYzUh\/F+5dv6kN9kUf7OTRO2mLqqQ==",
+      "path": "vortice.d3dcompiler\/3.5.0",
+      "hashPath": "vortice.d3dcompiler.3.5.0.nupkg.sha512"
     },
-    "Vortice.Direct3D11\/3.4.2-beta": {
+    "Vortice.Direct3D11\/3.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-CWVMTF7ebylzzXbQXVp5C9UpBB\/L+EpX2OxSdb2wlzcsdEmrev\/Ith8wVs0WjZ6DbA0WiiybnYAWqB5v0nOO\/A==",
-      "path": "vortice.direct3d11\/3.4.2-beta",
-      "hashPath": "vortice.direct3d11.3.4.2-beta.nupkg.sha512"
+      "sha512": "sha512-TUVz5tml5tTlk1UpQgh\/0cj74ehmlyzvQeGdVkdQGACth2v2t1d+\/f84dqT\/Trs\/5O2WdIvXfYQe2yxALLR5mQ==",
+      "path": "vortice.direct3d11\/3.5.0",
+      "hashPath": "vortice.direct3d11.3.5.0.nupkg.sha512"
     },
-    "Vortice.DirectX\/3.4.2-beta": {
+    "Vortice.DirectX\/3.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-EwDbemXkmEiDGZVDem25uiEcZBYOMb+wzePuta+M\/k2LXrQVGPknZhZUK56+QlHhI+Ducf\/d+J75wgBzEjKi2g==",
-      "path": "vortice.directx\/3.4.2-beta",
-      "hashPath": "vortice.directx.3.4.2-beta.nupkg.sha512"
+      "sha512": "sha512-LwyojEqRCaYgMoEqKsLnHWJ85wM237wFzZy\/w57kvQPDsEd+zcqdwDYswOCEdizcLtDBzX\/Xt4bbUPgFi8Kp4w==",
+      "path": "vortice.directx\/3.5.0",
+      "hashPath": "vortice.directx.3.5.0.nupkg.sha512"
     },
-    "Vortice.DXGI\/3.4.2-beta": {
+    "Vortice.DXGI\/3.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-T4S3pp6l\/SGJ6SH3ebCbodN\/bimGOkIBiIYKeBpVEis7+\/ac1XIjyzgSTJ5XsH3o3hSH7DqSbP6Yo6mL9nyFQA==",
-      "path": "vortice.dxgi\/3.4.2-beta",
-      "hashPath": "vortice.dxgi.3.4.2-beta.nupkg.sha512"
+      "sha512": "sha512-W1dHY13DbitLJDVAAD8+YiGddqzBP1m3wN3pfEmxYrrE+dGEV\/31aaw8EV74GXYnJQZ2vWJCnc7LCFPR2YkBnw==",
+      "path": "vortice.dxgi\/3.5.0",
+      "hashPath": "vortice.dxgi.3.5.0.nupkg.sha512"
     },
-    "Vortice.Mathematics\/1.7.6": {
+    "Vortice.Mathematics\/1.7.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-W8FNv850lPGxmHphwLyi1qnUlQHZBxh\/62EenFJTaY6acPP29Fk0xMQJI60G+YNlsVJb3fSoriuW+ong5sM5UQ==",
-      "path": "vortice.mathematics\/1.7.6",
-      "hashPath": "vortice.mathematics.1.7.6.nupkg.sha512"
+      "sha512": "sha512-hpVlfej54yC6Qaq9AYXWgTgF8SDz2dtKbDNZGO8msjn3NjdkUBnFcIzYfOWyvwvpr3aqZPKh4WSSnJ78GxyIWg==",
+      "path": "vortice.mathematics\/1.7.8",
+      "hashPath": "vortice.mathematics.1.7.8.nupkg.sha512"
     },
     "ZstdSharp.Port\/0.7.3": {
       "type": "package",

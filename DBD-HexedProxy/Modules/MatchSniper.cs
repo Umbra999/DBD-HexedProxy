@@ -26,7 +26,7 @@ namespace HexedProxy.Modules
                             {
                                 string lowerName = PlayerProfile.playerName.ToLower();
 
-                                if (lowerName.Contains("ttv") || lowerName.Contains("t.tv") || lowerName.Contains("t/tv")) returnValue = true;
+                                if (lowerName.Contains("ttv") || lowerName.Contains("t.tv") || lowerName.Contains("t/tv") || lowerName.Contains("twitch.tv")) returnValue = true;
                             }
                             else
                             {

@@ -23,11 +23,10 @@ namespace HexedProxy.Modules
 
             foreach (var ogHeader in headers)
             {
-                if (!ogHeader.Name.StartsWith("x-") && ogHeader.Name != "Host" && ogHeader.Name != "User-Agent" && ogHeader.Name != "Cookie") continue;
+                if (ogHeader.Name == "Content-Length" || ogHeader.Name == "Content-Type") continue;
 
                 Client.DefaultRequestHeaders.Add(ogHeader.Name, ogHeader.Value);
             }
-
             string Body = JsonConvert.SerializeObject(new { ids = new string[] { uid }, platform = "kraken" } );
 
             HttpRequestMessage Payload = new(HttpMethod.Post, $"https://{headers["Host"]}/api/v1/players/friends/add")
@@ -49,7 +48,7 @@ namespace HexedProxy.Modules
 
             foreach (var ogHeader in headers)
             {
-                if (!ogHeader.Name.StartsWith("x-") && ogHeader.Name != "Host" && ogHeader.Name != "User-Agent" && ogHeader.Name != "Cookie") continue;
+                if (ogHeader.Name == "Content-Length" || ogHeader.Name == "Content-Type") continue;
 
                 Client.DefaultRequestHeaders.Add(ogHeader.Name, ogHeader.Value);
             }
@@ -75,7 +74,7 @@ namespace HexedProxy.Modules
 
             foreach (var ogHeader in headers)
             {
-                if (!ogHeader.Name.StartsWith("x-") && ogHeader.Name != "Host" && ogHeader.Name != "User-Agent" && ogHeader.Name != "Cookie") continue;
+                if (ogHeader.Name == "Content-Length" || ogHeader.Name == "Content-Type") continue;
 
                 Client.DefaultRequestHeaders.Add(ogHeader.Name, ogHeader.Value);
             }
@@ -105,7 +104,7 @@ namespace HexedProxy.Modules
 
             foreach (var ogHeader in headers)
             {
-                if (!ogHeader.Name.StartsWith("x-") && ogHeader.Name != "Host" && ogHeader.Name != "User-Agent" && ogHeader.Name != "Cookie") continue;
+                if (ogHeader.Name == "Content-Length" || ogHeader.Name == "Content-Type") continue;
 
                 Client.DefaultRequestHeaders.Add(ogHeader.Name, ogHeader.Value);
             }
@@ -135,12 +134,12 @@ namespace HexedProxy.Modules
 
             foreach (var ogHeader in headers)
             {
-                if (!ogHeader.Name.StartsWith("x-") && ogHeader.Name != "Host" && ogHeader.Name != "User-Agent" && ogHeader.Name != "Cookie") continue;
+                if (ogHeader.Name == "Content-Length" || ogHeader.Name == "Content-Type") continue;
 
                 Client.DefaultRequestHeaders.Add(ogHeader.Name, ogHeader.Value);
             }
 
-            string Body = JsonConvert.SerializeObject(new { clientTutorialId = "FA46EF074B8F42DFA9955B932526871C", stepId = step, tutorialId = Id });
+            string Body = JsonConvert.SerializeObject(new { clientTutorialId = "FA46EF074B8F42DFA9955B932526871C", stepId = step, tutorialId = Id }); // idk if tutorial id is risky aka changes tbh
 
             HttpRequestMessage Payload = new(HttpMethod.Post, $"https://{headers["Host"]}/api/v1/onboarding/update-player-progress")
             {
@@ -153,36 +152,6 @@ namespace HexedProxy.Modules
             return Response.IsSuccessStatusCode;
         }
 
-        public static async Task<DBDObjects.OnboardingChallanges.ResponseRoot> GetOnboardingChallenges()
-        {
-            if (headers == null) return null;
-
-            HttpClient Client = new(new HttpClientHandler { UseCookies = false, AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }, true);
-
-            foreach (var ogHeader in headers)
-            {
-                if (!ogHeader.Name.StartsWith("x-") && ogHeader.Name != "Host" && ogHeader.Name != "User-Agent" && ogHeader.Name != "Cookie") continue;
-
-                Client.DefaultRequestHeaders.Add(ogHeader.Name, ogHeader.Value);
-            }
-
-            HttpRequestMessage Payload = new(HttpMethod.Get, $"https://{headers["Host"]}/api/v1/onboarding")
-            {
-                Content = new StringContent("", Encoding.UTF8, "application/json")
-            };
-            Payload.Content.Headers.ContentType.CharSet = "";
-
-            HttpResponseMessage Response = await Client.SendAsync(Payload);
-
-            if (Response.IsSuccessStatusCode)
-            {
-                string respBody = await Response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<DBDObjects.OnboardingChallanges.ResponseRoot>(respBody);
-            }
-
-            return null;
-        }
-
         public static async Task<JObject> FinishBloodweb(string Character, string[] BlockedNodes, string[] SelectedNodes)
         {
             if (headers == null) return null;
@@ -191,7 +160,7 @@ namespace HexedProxy.Modules
 
             foreach (var ogHeader in headers)
             {
-                if (!ogHeader.Name.StartsWith("x-") && ogHeader.Name != "Host" && ogHeader.Name != "User-Agent" && ogHeader.Name != "Cookie") continue;
+                if (ogHeader.Name == "Content-Length" || ogHeader.Name == "Content-Type") continue;
 
                 Client.DefaultRequestHeaders.Add(ogHeader.Name, ogHeader.Value);
             }
