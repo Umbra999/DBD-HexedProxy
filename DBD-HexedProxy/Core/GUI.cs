@@ -48,6 +48,8 @@ namespace HexedProxy.Core
                     ImGui.Checkbox("Block Tomes", ref InternalSettings.BlockTomes);
                     ImGui.Checkbox("Spoof Offline", ref InternalSettings.SpoofOffline);
                     ImGui.Checkbox("Disable Killswitch", ref InternalSettings.DisableKillswitch);
+                    ImGui.Checkbox("Reveal Ranks", ref InternalSettings.RevealRanks);
+                    ImGui.Checkbox("Boost Bloodpoints", ref InternalSettings.BoostBloodpoints);
 
                     ImGui.Checkbox("Change Rank", ref InternalSettings.SpoofRank);
                     if (InternalSettings.SpoofRank)
@@ -61,6 +63,13 @@ namespace HexedProxy.Core
                     {
                         ImGui.SameLine(0, 10f);
                         ImGui.Combo("Region", ref InternalSettings.TargetQueueRegion, InternalSettings.AvailableRegions, InternalSettings.AvailableRegions.Length);
+                    }
+
+                    ImGui.Checkbox("Spoof Party Name", ref InternalSettings.SpoofPartyName);
+                    if (InternalSettings.SpoofPartyName)
+                    {
+                        ImGui.SameLine(0, 10f);
+                        ImGui.InputTextWithHint("Name", "Party Name", ref InternalSettings.TargetPartyName, 36);
                     }
 
                     ImGui.Checkbox("Match Snipe", ref InternalSettings.MatchSnipe);

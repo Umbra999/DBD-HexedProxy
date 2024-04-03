@@ -1,4 +1,5 @@
-﻿using HexedProxy.DBDObjects;
+﻿using Fiddler;
+using HexedProxy.DBDObjects;
 using Newtonsoft.Json.Linq;
 
 namespace HexedProxy.Modules
@@ -13,6 +14,7 @@ namespace HexedProxy.Modules
 
         public static string MatchRegion = "NONE";
         public static string MatchId = "NONE";
+        public static bool isDedicated = false;
 
         private static bool isLeaving = false;
 
@@ -22,6 +24,7 @@ namespace HexedProxy.Modules
 
             MatchRegion = match["region"]?.Value<string>() ?? "NONE";
             MatchId = match["matchId"]?.Value<string>() ?? "NONE";
+            isDedicated = match["props"]?["isDedicated"]?.Value<bool>() ?? false;
 
             List<CustomObjects.CustomPlayer> currentPlayers = new();
 

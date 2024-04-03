@@ -3,6 +3,7 @@ using HexedProxy.GameDumper;
 using HexedProxy.Modules;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.IO;
 using System.Security.Policy;
 
 namespace HexedProxy.Core
@@ -144,6 +145,13 @@ namespace HexedProxy.Core
                                 Party["body"]["_playerRank"] = InternalSettings.TargetRank;
                             }
 
+                            if (InternalSettings.SpoofPartyName)
+                            {
+                                Party["body"]["_playerName"] = InternalSettings.SpoofPartyName;
+                            }
+
+                            // add unique playerid spoof?
+
                             e.utilSetRequestBody(Party.ToString());
                         }
                     }
@@ -227,6 +235,16 @@ namespace HexedProxy.Core
                                         }
                                     }
                                     break;
+
+                                case "/api/v1/config/DISPLAY_RANK_ON_TALLY/raw":
+                                    {
+                                        if (InternalSettings.RevealRanks)
+                                        {
+                                            e.utilDecodeResponse();
+                                            e.utilSetRequestBody("true");
+                                        }
+                                    }
+                                    break;
                             }
                             break;
                         }
@@ -299,6 +317,22 @@ namespace HexedProxy.Core
                                         TomeManager.EditSelectedNode(Node);
 
                                         e.utilSetResponseBody(Node.ToString());
+                                    }
+                                }
+                                break;
+
+                            case "/api/v1/matchIncentives":
+                                {
+                                    if (InternalSettings.BoostBloodpoints)
+                                    {
+                                        e.utilDecodeResponse();
+
+                                        JObject Incentives = JObject.Parse(e.GetResponseBodyAsString());
+
+                                        Incentives["killerPercentageIncentive"] = 100;
+                                        Incentives["survivorPercentageIncentive"] = 100;
+
+                                        e.utilSetRequestBody(Incentives.ToString());
                                     }
                                 }
                                 break;

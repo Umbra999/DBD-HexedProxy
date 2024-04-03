@@ -21,27 +21,23 @@
 
         public static bool SpoofRank = false;
         public static int TargetRank = 1;
-
+        public static bool SpoofPartyName = false;
+        public static string TargetPartyName = "";
         public static bool SpoofOffline = false;
-
+        public static bool RevealRanks = false;
         public static bool InstantTomes = false;
         public static bool BlockTomes = false;
-
+        public static bool BoostBloodpoints = false;
         public static string TargetFriendId = "";
-
         public static bool MatchSnipe = false;
         public static bool OnlyStreamer = false;
         public static string TargetSnipeParameter = "";
-
         public static bool UnlockCosmetics = false;
         public static bool UnlockItems = false;
         public static bool UnlockCharacters = false;
         public static int TargetPrestige = 100;
-
         public static bool CompleteTutorial = false;
-
         public static bool DisableKillswitch = false;   
-
         public static int SelectedGuiCategory = 0;
     }
 }
