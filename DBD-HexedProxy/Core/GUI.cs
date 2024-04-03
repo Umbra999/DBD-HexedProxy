@@ -112,6 +112,7 @@ namespace HexedProxy.Core
 
                     ImGui.Text($"Match Region: {InfoManager.MatchRegion}");
                     ImGui.Text($"MatchId: {InfoManager.MatchId}");
+                    ImGui.Text($"Match Server: {(InfoManager.isDedicated ? "Dedicated" : "Local")}");
                     ImGui.SameLine();
                     if (ImGui.Button("Copy MatchId")) WindowsClipboard.SetText(InfoManager.MatchId);
 

@@ -3,6 +3,42 @@
   "WorkspaceRootPath": "D:\\Coding\\Github\\DBD-HexedProxy\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\core\\gui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\core\\gui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\modules\\saveeditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\modules\\saveeditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\wrappers\\windowsclipboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\wrappers\\windowsclipboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\wrappers\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\wrappers\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\modules\\requestsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\modules\\requestsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\modules\\matchsniper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\modules\\matchsniper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\modules\\infomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\modules\\infomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\modules\\tomemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\modules\\tomemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\load.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\load.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\core\\proxymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\core\\proxymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,32 +47,8 @@
       "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\dbdobjects\\playernameprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\core\\gui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\core\\gui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\load.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\load.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\modules\\matchsniper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\modules\\matchsniper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\core\\internalsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\core\\internalsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\modules\\infomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\modules\\infomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\wrappers\\windowsclipboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\wrappers\\windowsclipboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\modules\\saveeditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\modules\\saveeditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\overlay\\win32\\kernel32.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,16 +67,8 @@
       "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\dbdobjects\\playernamebyid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\modules\\requestsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\modules\\requestsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\modules\\bloodwebmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\modules\\bloodwebmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\modules\\tomemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\modules\\tomemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\dbdobjects\\customobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -73,10 +77,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\gamedumper\\ue4parser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\gamedumper\\ue4parser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\wrappers\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|solutionrelative:dbd-hexedproxy\\wrappers\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FE553D07-9036-4AE4-97D5-976658968E01}|DBD-HexedProxy\\DBD-HexedProxy.csproj|d:\\coding\\github\\dbd-hexedproxy\\dbd-hexedproxy\\overlay\\overlay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -118,11 +118,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "ProxyManager.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Core\\ProxyManager.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\Core\\ProxyManager.cs",
@@ -135,43 +135,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GUI.cs",
-              "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Core\\GUI.cs",
-              "RelativeDocumentMoniker": "DBD-HexedProxy\\Core\\GUI.cs",
-              "ToolTip": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Core\\GUI.cs",
-              "RelativeToolTip": "DBD-HexedProxy\\Core\\GUI.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAQwDMAAABdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-16T19:31:12.191Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "BloodwebManager.cs",
-              "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Modules\\BloodwebManager.cs",
-              "RelativeDocumentMoniker": "DBD-HexedProxy\\Modules\\BloodwebManager.cs",
-              "ToolTip": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Modules\\BloodwebManager.cs",
-              "RelativeToolTip": "DBD-HexedProxy\\Modules\\BloodwebManager.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAWwCcAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-16T19:37:18.452Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "InternalSettings.cs",
-              "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Core\\InternalSettings.cs",
-              "RelativeDocumentMoniker": "DBD-HexedProxy\\Core\\InternalSettings.cs",
-              "ToolTip": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Core\\InternalSettings.cs",
-              "RelativeToolTip": "DBD-HexedProxy\\Core\\InternalSettings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-16T19:23:14.542Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
               "Title": "InfoManager.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Modules\\InfoManager.cs",
@@ -180,23 +143,12 @@
               "RelativeToolTip": "DBD-HexedProxy\\Modules\\InfoManager.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAAAqwBcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-16T21:32:40.768Z"
+              "WhenOpened": "2024-01-16T21:32:40.768Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "PlayerNameById.cs",
-              "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBDObjects\\PlayerNameById.cs",
-              "RelativeDocumentMoniker": "DBD-HexedProxy\\DBDObjects\\PlayerNameById.cs",
-              "ToolTip": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBDObjects\\PlayerNameById.cs",
-              "RelativeToolTip": "DBD-HexedProxy\\DBDObjects\\PlayerNameById.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-29T00:08:58.01Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "OnboardingChallanges.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBDObjects\\OnboardingChallanges.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\DBDObjects\\OnboardingChallanges.cs",
@@ -208,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "WindowsClipboard.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Wrappers\\WindowsClipboard.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\Wrappers\\WindowsClipboard.cs",
@@ -216,11 +168,12 @@
               "RelativeToolTip": "DBD-HexedProxy\\Wrappers\\WindowsClipboard.cs",
               "ViewState": "AQIAABoAAAAAAAAAAAAwwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-16T15:35:46.29Z"
+              "WhenOpened": "2024-01-16T15:35:46.29Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 3,
               "Title": "Utils.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Wrappers\\Utils.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\Wrappers\\Utils.cs",
@@ -228,11 +181,12 @@
               "RelativeToolTip": "DBD-HexedProxy\\Wrappers\\Utils.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-16T15:34:50.663Z"
+              "WhenOpened": "2024-01-16T15:34:50.663Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "DBD-HexedProxy",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\DBD-HexedProxy.csproj",
@@ -243,7 +197,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Kernel32.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Overlay\\Win32\\Kernel32.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\Overlay\\Win32\\Kernel32.cs",
@@ -255,7 +209,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "MatchSniper.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Modules\\MatchSniper.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\Modules\\MatchSniper.cs",
@@ -263,11 +217,12 @@
               "RelativeToolTip": "DBD-HexedProxy\\Modules\\MatchSniper.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-27T21:01:42.544Z"
+              "WhenOpened": "2024-01-27T21:01:42.544Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "PlayerNameProvider.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBDObjects\\PlayerNameProvider.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\DBDObjects\\PlayerNameProvider.cs",
@@ -275,12 +230,11 @@
               "RelativeToolTip": "DBD-HexedProxy\\DBDObjects\\PlayerNameProvider.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-29T00:18:37.82Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-29T00:18:37.82Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "Load.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Load.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\Load.cs",
@@ -293,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 7,
               "Title": "TomeManager.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Modules\\TomeManager.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\Modules\\TomeManager.cs",
@@ -301,11 +255,12 @@
               "RelativeToolTip": "DBD-HexedProxy\\Modules\\TomeManager.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAArwCkAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-19T03:47:37.142Z"
+              "WhenOpened": "2024-01-19T03:47:37.142Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "SaveEditor.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Modules\\SaveEditor.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\Modules\\SaveEditor.cs",
@@ -313,11 +268,12 @@
               "RelativeToolTip": "DBD-HexedProxy\\Modules\\SaveEditor.cs",
               "ViewState": "AQIAAGEAAAAAAAAAAAASwHwAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-16T19:03:02.429Z"
+              "WhenOpened": "2024-01-16T19:03:02.429Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 4,
               "Title": "RequestSender.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Modules\\RequestSender.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\Modules\\RequestSender.cs",
@@ -325,11 +281,61 @@
               "RelativeToolTip": "DBD-HexedProxy\\Modules\\RequestSender.cs",
               "ViewState": "AQIAAFAAAAAAAAAAAAAIwI0AAADAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-27T21:01:36.746Z"
+              "WhenOpened": "2024-01-27T21:01:36.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GUI.cs",
+              "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Core\\GUI.cs",
+              "RelativeDocumentMoniker": "DBD-HexedProxy\\Core\\GUI.cs",
+              "ToolTip": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Core\\GUI.cs",
+              "RelativeToolTip": "DBD-HexedProxy\\Core\\GUI.cs",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAQwFEAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-16T19:31:12.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PlayerNameById.cs",
+              "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBDObjects\\PlayerNameById.cs",
+              "RelativeDocumentMoniker": "DBD-HexedProxy\\DBDObjects\\PlayerNameById.cs",
+              "ToolTip": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBDObjects\\PlayerNameById.cs",
+              "RelativeToolTip": "DBD-HexedProxy\\DBDObjects\\PlayerNameById.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-29T00:08:58.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "InternalSettings.cs",
+              "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Core\\InternalSettings.cs",
+              "RelativeDocumentMoniker": "DBD-HexedProxy\\Core\\InternalSettings.cs",
+              "ToolTip": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Core\\InternalSettings.cs",
+              "RelativeToolTip": "DBD-HexedProxy\\Core\\InternalSettings.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-16T19:23:14.542Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
+              "Title": "BloodwebManager.cs",
+              "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Modules\\BloodwebManager.cs",
+              "RelativeDocumentMoniker": "DBD-HexedProxy\\Modules\\BloodwebManager.cs",
+              "ToolTip": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\Modules\\BloodwebManager.cs",
+              "RelativeToolTip": "DBD-HexedProxy\\Modules\\BloodwebManager.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAWwCcAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-16T19:37:18.452Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "CustomObjects.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBDObjects\\CustomObjects.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\DBDObjects\\CustomObjects.cs",
@@ -341,7 +347,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "UE4Parser.cs",
               "DocumentMoniker": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\GameDumper\\UE4Parser.cs",
               "RelativeDocumentMoniker": "DBD-HexedProxy\\GameDumper\\UE4Parser.cs",
