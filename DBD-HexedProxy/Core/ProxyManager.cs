@@ -241,7 +241,7 @@ namespace HexedProxy.Core
                                         if (InternalSettings.RevealRanks)
                                         {
                                             e.utilDecodeResponse();
-                                            e.utilSetRequestBody("true");
+                                            e.utilSetResponseBody("true");
                                         }
                                     }
                                     break;
@@ -332,7 +332,7 @@ namespace HexedProxy.Core
                                         Incentives["killerPercentageIncentive"] = 100;
                                         Incentives["survivorPercentageIncentive"] = 100;
 
-                                        e.utilSetRequestBody(Incentives.ToString());
+                                        e.utilSetResponseBody(Incentives.ToString());
                                     }
                                 }
                                 break;
