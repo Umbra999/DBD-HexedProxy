@@ -33,10 +33,12 @@ namespace HexedProxy.HexedServer
             HWID += GetProcessorName();
             HWID += GetProcessorVendor();
             HWID += GetBIOSManufacturer();
+            HWID += GetBIOSVendor();
             HWID += GetBIOSProduct();
+            HWID += GetBIOSSystemManufacturer();
+            HWID += GetBIOSSystemName();
             HWID += GetDriveName();
             HWID += GetDriveID();
-            HWID += GetHWIDProfile();
             return "H" + GenerateHash(HWID) + "EX";
         }
 
@@ -80,6 +82,31 @@ namespace HexedProxy.HexedServer
             return "";
         }
 
+
+        private static string GetBIOSVendor()
+        {
+            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\BIOS");
+            if (key != null) return key.GetValue("BIOSVendor")?.ToString();
+
+            return "";
+        }
+
+        private static string GetBIOSSystemManufacturer()
+        {
+            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\BIOS");
+            if (key != null) return key.GetValue("SystemManufacturer")?.ToString();
+
+            return "";
+        }
+
+        private static string GetBIOSSystemName()
+        {
+            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\BIOS");
+            if (key != null) return key.GetValue("SystemProductName")?.ToString();
+
+            return "";
+        }
+
         private static string GetDriveName()
         {
             using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DEVICEMAP\Scsi\Scsi Port 0\Scsi Bus 0\Target Id 0\Logical Unit Id 0");
@@ -92,14 +119,6 @@ namespace HexedProxy.HexedServer
         {
             using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DEVICEMAP\Scsi\Scsi Port 0\Scsi Bus 0\Target Id 0\Logical Unit Id 0");
             if (key != null) return key.GetValue("SerialNumber")?.ToString();
-
-            return "";
-        }
-
-        private static string GetHWIDProfile()
-        {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001");
-            if (key != null) return key.GetValue("HwProfileGuid")?.ToString();
 
             return "";
         }

@@ -28,6 +28,6 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)vortice.direct3d11\3.5.0\build\Vortice.Direct3D11.props" Condition="Exists('$(NuGetPackageRoot)vortice.direct3d11\3.5.0\build\Vortice.Direct3D11.props')" />
     <Import Project="$(NuGetPackageRoot)vortice.d3dcompiler\3.5.0\build\Vortice.D3DCompiler.props" Condition="Exists('$(NuGetPackageRoot)vortice.d3dcompiler\3.5.0\build\Vortice.D3DCompiler.props')" />
-    <Import Project="$(NuGetPackageRoot)sixlabors.imagesharp\3.1.3\build\SixLabors.ImageSharp.props" Condition="Exists('$(NuGetPackageRoot)sixlabors.imagesharp\3.1.3\build\SixLabors.ImageSharp.props')" />
+    <Import Project="$(NuGetPackageRoot)sixlabors.imagesharp\3.1.4\build\SixLabors.ImageSharp.props" Condition="Exists('$(NuGetPackageRoot)sixlabors.imagesharp\3.1.4\build\SixLabors.ImageSharp.props')" />
   </ImportGroup>
 </Project>

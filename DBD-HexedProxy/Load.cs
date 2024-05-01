@@ -20,7 +20,11 @@ namespace HexedProxy
         {
             if (args.Length != 1) return;
 
-            ServerHandler.Init(args[0]);
+            if (!ServerHandler.Init(args[0]))
+            {
+                Process.GetCurrentProcess().Kill();
+                return;
+            }
 
             FreeConsole();
 

@@ -8,7 +8,7 @@ namespace HexedProxy.HexedServer
     {
         private static string Token;
 
-        public static void Init(string Key)
+        public static bool Init(string Key)
         {
             Token = Key;
 
@@ -16,10 +16,12 @@ namespace HexedProxy.HexedServer
             Encryption.EncryptionKey = EncryptUtils.FromBase64(FetchEncryptionKey().Result);
             Encryption.DecryptionKey = EncryptUtils.FromBase64(FetchDecryptionKey().Result);
 
-            if (!IsValidToken().Result) Process.GetCurrentProcess().Kill();
+            if (!IsValidToken().Result) return false;
 
             string EncodedAsset = DownloadAsset("cimgui.dll").Result;
             File.WriteAllBytes("cimgui.dll", Convert.FromBase64String(EncodedAsset));
+
+            return true;
         }
 
         private static async Task<string> FetchCert()

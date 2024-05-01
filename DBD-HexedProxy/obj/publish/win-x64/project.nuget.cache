@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "I3bIZeiXVyy9H4wYD6rEmlDFMwXtgJatjtYKS04dmGZzeUgI+v05fasQkD2y3b3hUuSYvCka6LjoJURpsUt/Iw==",
+  "dgSpecHash": "UeWNw5E3TQml9AErEvIouWZSal5ndwM/qbqju6gjd7tqwlPvKMaow2o5DuLyCKaPKXpQhJGyKnbym0HWxOYpSw==",
   "success": true,
   "projectFilePath": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
   "expectedPackageFiles": [
@@ -22,7 +22,7 @@
     "C:\\Users\\Umbra\\.nuget\\packages\\serilog.sinks.console\\5.0.0\\serilog.sinks.console.5.0.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\sharpgen.runtime\\2.1.2-beta\\sharpgen.runtime.2.1.2-beta.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\sharpgen.runtime.com\\2.1.2-beta\\sharpgen.runtime.com.2.1.2-beta.nupkg.sha512",
-    "C:\\Users\\Umbra\\.nuget\\packages\\sixlabors.imagesharp\\3.1.3\\sixlabors.imagesharp.3.1.3.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\sixlabors.imagesharp\\3.1.4\\sixlabors.imagesharp.3.1.4.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.componentmodel.composition\\4.6.0\\system.componentmodel.composition.4.6.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.0\\system.configuration.configurationmanager.4.4.0.nupkg.sha512",
