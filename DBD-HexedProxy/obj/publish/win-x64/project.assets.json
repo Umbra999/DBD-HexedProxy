@@ -79,7 +79,7 @@
           }
         }
       },
-      "ImGui.NET/1.90.1.1": {
+      "ImGui.NET/1.90.5.1": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.4.0",
@@ -778,7 +778,7 @@
           }
         }
       },
-      "ImGui.NET/1.90.1.1": {
+      "ImGui.NET/1.90.5.1": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.4.0",
@@ -1396,15 +1396,15 @@
         "lib/netstandard2.0/FiddlerCore.xml"
       ]
     },
-    "ImGui.NET/1.90.1.1": {
-      "sha512": "/VNgkRywtXV72cpxtBj09nZX9Yx+xG3NxiwEEXPVcK+pHKHA31cPJKy425tDGj68tgRbCS+C+DG8puBj3iJ4zA==",
+    "ImGui.NET/1.90.5.1": {
+      "sha512": "rHm+a4tZbqjoIYP7bqA9uHTgDEH7I8eQDbTYo00L2Iq3644juR7M8mg+H3WPhrB+kfUO41dQfQeJJ4f+llBqNA==",
       "type": "package",
-      "path": "imgui.net/1.90.1.1",
+      "path": "imgui.net/1.90.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/net40/ImGui.NET.targets",
-        "imgui.net.1.90.1.1.nupkg.sha512",
+        "imgui.net.1.90.5.1.nupkg.sha512",
         "imgui.net.nuspec",
         "lib/net6.0/ImGui.NET.dll",
         "lib/net6.0/ImGui.NET.xml",
@@ -2341,7 +2341,7 @@
     "net8.0-windows7.0": [
       "CUE4Parse >= 1.1.1",
       "FiddlerCore.Trial >= 5.0.2",
-      "ImGui.NET >= 1.90.1.1",
+      "ImGui.NET >= 1.90.5.1",
       "SixLabors.ImageSharp >= 3.1.4",
       "Vortice.D3DCompiler >= 3.5.0",
       "Vortice.Direct3D11 >= 3.5.0"
@@ -2408,7 +2408,7 @@
           },
           "ImGui.NET": {
             "target": "Package",
-            "version": "[1.90.1.1, )"
+            "version": "[1.90.5.1, )"
           },
           "SixLabors.ImageSharp": {
             "target": "Package",

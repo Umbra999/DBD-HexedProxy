@@ -1,6 +1,7 @@
 ﻿using CUE4Parse.FileProvider;
 using CUE4Parse.FileProvider.Objects;
 using CUE4Parse.UE4.Assets;
+using CUE4Parse.UE4.Versions;
 using HexedProxy.Wrappers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -19,7 +20,7 @@ namespace HexedProxy.GameDumper
 
             string paksPath = LastKnownDirectoryPath + "DeadByDaylight\\Content\\Paks";
 
-            Provider = new DefaultFileProvider(paksPath, SearchOption.AllDirectories, true, null);
+            Provider = new DefaultFileProvider(paksPath, SearchOption.AllDirectories, true, new VersionContainer((EGame)536870945, 0, default, null, null, null));
             Provider.Initialize();
             Provider.Mount();
 

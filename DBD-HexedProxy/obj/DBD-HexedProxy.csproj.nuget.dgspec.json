@@ -61,7 +61,7 @@
             },
             "ImGui.NET": {
               "target": "Package",
-              "version": "[1.90.1.1, )"
+              "version": "[1.90.5.1, )"
             },
             "SixLabors.ImageSharp": {
               "target": "Package",

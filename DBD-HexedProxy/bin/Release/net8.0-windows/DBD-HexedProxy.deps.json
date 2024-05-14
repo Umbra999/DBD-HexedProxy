@@ -10,7 +10,7 @@
         "dependencies": {
           "CUE4Parse": "1.1.1",
           "FiddlerCore.Trial": "5.0.2",
-          "ImGui.NET": "1.90.1.1",
+          "ImGui.NET": "1.90.5.1",
           "SixLabors.ImageSharp": "3.1.4",
           "Vortice.D3DCompiler": "3.5.0",
           "Vortice.Direct3D11": "3.5.0"
@@ -77,7 +77,7 @@
           }
         }
       },
-      "ImGui.NET/1.90.1.1": {
+      "ImGui.NET/1.90.5.1": {
         "dependencies": {
           "System.Buffers": "4.4.0",
           "System.Numerics.Vectors": "4.4.0",
@@ -85,8 +85,8 @@
         },
         "runtime": {
           "lib/net6.0/ImGui.NET.dll": {
-            "assemblyVersion": "1.90.1.1",
-            "fileVersion": "1.90.1.1"
+            "assemblyVersion": "1.90.5.1",
+            "fileVersion": "1.90.5.1"
           }
         },
         "runtimeTargets": {
@@ -471,12 +471,12 @@
       "path": "fiddlercore.trial/5.0.2",
       "hashPath": "fiddlercore.trial.5.0.2.nupkg.sha512"
     },
-    "ImGui.NET/1.90.1.1": {
+    "ImGui.NET/1.90.5.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/VNgkRywtXV72cpxtBj09nZX9Yx+xG3NxiwEEXPVcK+pHKHA31cPJKy425tDGj68tgRbCS+C+DG8puBj3iJ4zA==",
-      "path": "imgui.net/1.90.1.1",
-      "hashPath": "imgui.net.1.90.1.1.nupkg.sha512"
+      "sha512": "sha512-rHm+a4tZbqjoIYP7bqA9uHTgDEH7I8eQDbTYo00L2Iq3644juR7M8mg+H3WPhrB+kfUO41dQfQeJJ4f+llBqNA==",
+      "path": "imgui.net/1.90.5.1",
+      "hashPath": "imgui.net.1.90.5.1.nupkg.sha512"
     },
     "Infrablack.UE4Config/0.7.2.97": {
       "type": "package",

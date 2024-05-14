@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nc7JOrUdw4pdQHsYNQ37CekblcYD6OV4XZmey4AYkN9jBy5vuHNoz6BqmyQv8mtA+ExqQgRM95R0GJvE/hMqUA==",
+  "dgSpecHash": "OYHH+NCXEA0M2m8Ju61xMi1NuEqIMWT4aGTnLy+PKBuiPESFb2Syj68kJfAurxmMkfXak/uK6WtFP6EEB9opnQ==",
   "success": true,
   "projectFilePath": "D:\\Coding\\Github\\DBD-HexedProxy\\DBD-HexedProxy\\DBD-HexedProxy.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,7 @@
     "C:\\Users\\Umbra\\.nuget\\packages\\cue4parse\\1.1.1\\cue4parse.1.1.1.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\dotnetzip\\1.16.0\\dotnetzip.1.16.0.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\fiddlercore.trial\\5.0.2\\fiddlercore.trial.5.0.2.nupkg.sha512",
-    "C:\\Users\\Umbra\\.nuget\\packages\\imgui.net\\1.90.1.1\\imgui.net.1.90.1.1.nupkg.sha512",
+    "C:\\Users\\Umbra\\.nuget\\packages\\imgui.net\\1.90.5.1\\imgui.net.1.90.5.1.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\infrablack.ue4config\\0.7.2.97\\infrablack.ue4config.0.7.2.97.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\k4os.compression.lz4\\1.3.6\\k4os.compression.lz4.1.3.6.nupkg.sha512",
     "C:\\Users\\Umbra\\.nuget\\packages\\k4os.compression.lz4.streams\\1.3.6\\k4os.compression.lz4.streams.1.3.6.nupkg.sha512",

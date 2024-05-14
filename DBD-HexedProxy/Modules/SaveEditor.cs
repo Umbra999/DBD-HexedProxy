@@ -128,7 +128,7 @@ namespace HexedProxy.Modules
                     JToken existingItem = inventoryArray.FirstOrDefault(item => item["objectId"]?.ToString() == CosmeticId);
                     if (existingItem != null) inventoryArray.Remove(existingItem);
 
-                    JObject newInventoryItem = new JObject(
+                    JObject newInventoryItem = new(
                         new JProperty("lastUpdateAt", DateTimeOffset.Now.ToUnixTimeSeconds()),
                         new JProperty("objectId", CosmeticId),
                         new JProperty("quantity", 1)
