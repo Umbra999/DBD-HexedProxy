@@ -1,5 +1,4 @@
-﻿using Fiddler;
-using HexedProxy.Core;
+﻿using HexedProxy.Core;
 using HexedProxy.GameDumper;
 using HexedProxy.HexedServer;
 using HexedProxy.Wrappers;

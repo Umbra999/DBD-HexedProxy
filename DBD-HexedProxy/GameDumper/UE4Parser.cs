@@ -1,11 +1,12 @@
-﻿using CUE4Parse.FileProvider;
+﻿using CUE4Parse.Encryption.Aes;
+using CUE4Parse.FileProvider;
 using CUE4Parse.FileProvider.Objects;
+using CUE4Parse.MappingsProvider;
 using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Versions;
 using HexedProxy.Wrappers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Text.RegularExpressions;
 
 namespace HexedProxy.GameDumper
 {
@@ -20,30 +21,14 @@ namespace HexedProxy.GameDumper
 
             string paksPath = LastKnownDirectoryPath + "DeadByDaylight\\Content\\Paks";
 
-            Provider = new DefaultFileProvider(paksPath, SearchOption.AllDirectories, true, new VersionContainer((EGame)536870945, 0, default, null, null, null));
+            Provider = new DefaultFileProvider(paksPath, SearchOption.AllDirectories, false, new VersionContainer(EGame.GAME_DeadbyDaylight));
             Provider.Initialize();
-            Provider.Mount();
+
+            Provider.SubmitKey(default, new FAesKey("0x22B1639B548124925CF7B9CBAA09F9AC295FCF0324586D6B37EE1D42670B39B3"));
+            Provider.LoadLocalization(ELanguage.English);
+            Provider.MappingsContainer = new FileUsmapTypeMappingsProvider("DBDMap.usmap");
 
             DumpDatabase();
-        }
-
-        private static string GetAccessKey()
-        {
-            Provider.TrySaveAsset("DeadByDaylight/Config/DefaultGame.ini", out byte[] data);
-
-            string key = "";
-
-            using (MemoryStream memoryStream = new(data))
-            {
-                using StreamReader streamReader = new(memoryStream);
-                string line;
-                while ((line = streamReader.ReadLine()) != null)
-                {
-                    if (line.Contains("_live")) key = line;
-                }
-            }
-
-            return Regex.Match(key, "Key=\"(.*?)\"").Groups[1].Value;
         }
 
         private static void DumpDatabase()
@@ -53,10 +38,9 @@ namespace HexedProxy.GameDumper
             ItemIds.Clear();
             ItemAddonIds.Clear();
             OutfitIds.Clear();
-            CosmeticIds.Clear();
             PerkIds.Clear();
 
-            foreach (KeyValuePair<string, GameFile> keyValuePair in Provider.Files.Where((KeyValuePair<string, GameFile> val) => val.Value.Path.Contains("DeadByDaylight/Content/Data")))
+            foreach (KeyValuePair<string, GameFile> keyValuePair in Provider.Files)
             {
                 string name = keyValuePair.Value.Name;
 
@@ -138,28 +122,11 @@ namespace HexedProxy.GameDumper
 
                             JArray jsonArray = JsonConvert.DeserializeObject<JArray>(packageJson);
 
-                            List<object> foundIds = Utils.FindJsonFields(jsonArray, "ID");
+                            List<object> foundIds = Utils.FindJsonFields(jsonArray, "Id");
 
                             foreach (object id in foundIds)
                             {
                                 if (!OutfitIds.Contains(id.ToString())) OutfitIds.Add(id.ToString());
-                            }
-                        }
-                        break;
-
-                    case "CustomizationItemDB.uasset":
-                        {
-                            IPackage package = Provider.LoadPackage(keyValuePair.Value.Path);
-
-                            string packageJson = JsonConvert.SerializeObject(package.GetExports());
-
-                            JArray jsonArray = JsonConvert.DeserializeObject<JArray>(packageJson);
-
-                            List<object> foundIds = Utils.FindJsonFields(jsonArray, "CustomizationId");
-
-                            foreach (object id in foundIds)
-                            {
-                                if (!CosmeticIds.Contains(id.ToString())) CosmeticIds.Add(id.ToString());
                             }
                         }
                         break;
@@ -189,7 +156,6 @@ namespace HexedProxy.GameDumper
         public static List<string> ItemIds = new();
         public static List<string> ItemAddonIds = new();
         public static List<string> OutfitIds = new();
-        public static List<string> CosmeticIds = new();
         public static List<string> PerkIds = new();
     }
 }

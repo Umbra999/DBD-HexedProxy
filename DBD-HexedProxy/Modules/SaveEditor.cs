@@ -61,6 +61,7 @@ namespace HexedProxy.Modules
                             new JProperty("characterItems", new JArray()),
                             new JProperty("characterName", CharacterId),
                             new JProperty("isEntitled", true),
+                            new JProperty("isScopesValid", true),
                             new JProperty("legacyPrestigeLevel", 3),
                             new JProperty("prestigeLevel", InternalSettings.TargetPrestige)
                         );
@@ -123,7 +124,7 @@ namespace HexedProxy.Modules
 
             if (InternalSettings.UnlockCosmetics)
             {
-                foreach (string CosmeticId in UE4Parser.CosmeticIds.Concat(UE4Parser.OutfitIds))
+                foreach (string CosmeticId in UE4Parser.OutfitIds)
                 {
                     JToken existingItem = inventoryArray.FirstOrDefault(item => item["objectId"]?.ToString() == CosmeticId);
                     if (existingItem != null) inventoryArray.Remove(existingItem);

@@ -3,8 +3,6 @@ using HexedProxy.GameDumper;
 using HexedProxy.Modules;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.IO;
-using System.Security.Policy;
 
 namespace HexedProxy.Core
 {
@@ -329,8 +327,8 @@ namespace HexedProxy.Core
 
                                         JObject Incentives = JObject.Parse(e.GetResponseBodyAsString());
 
-                                        Incentives["killerPercentageIncentive"] = 100;
-                                        Incentives["survivorPercentageIncentive"] = 100;
+                                        Incentives["killerPercentageIncentive"] = 1000;
+                                        Incentives["survivorPercentageIncentive"] = 1000;
 
                                         e.utilSetResponseBody(Incentives.ToString());
                                     }

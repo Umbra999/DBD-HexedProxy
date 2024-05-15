@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 
 namespace HexedProxy.HexedServer
@@ -18,8 +17,11 @@ namespace HexedProxy.HexedServer
 
             if (!IsValidToken().Result) return false;
 
-            string EncodedAsset = DownloadAsset("cimgui.dll").Result;
-            File.WriteAllBytes("cimgui.dll", Convert.FromBase64String(EncodedAsset));
+            string EncodedImguiLib = DownloadAsset("cimgui.dll").Result;
+            File.WriteAllBytes("cimgui.dll", Convert.FromBase64String(EncodedImguiLib));
+
+            string EncodedUEMap = DownloadAsset("DBDMap.usmap").Result;
+            File.WriteAllBytes("DBDMap.usmap", Convert.FromBase64String(EncodedUEMap));
 
             return true;
         }

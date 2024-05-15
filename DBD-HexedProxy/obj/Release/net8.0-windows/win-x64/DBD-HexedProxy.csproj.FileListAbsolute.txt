@@ -105,3 +105,5 @@ D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x6
 D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\refint\DBD-HexedProxy.dll
 D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-HexedProxy.pdb
 D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\ref\DBD-HexedProxy.dll
+D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\win-x64\CUE4Parse.dll
+D:\Coding\Github\DBD-HexedProxy\DBD-HexedProxy\obj\Release\net8.0-windows\win-x64\DBD-Hexe.FEA74B51.Up2Date
