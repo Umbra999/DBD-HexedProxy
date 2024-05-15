@@ -49,8 +49,8 @@ namespace HexedProxy.Modules
                     if (existingItem != null)
                     {
                         existingItem["bloodWebLevel"] = 50;
-                        existingItem["isEntitled"] = true;
-                        existingItem["legacyPrestigeLevel"] = 3;
+                        //existingItem["isEntitled"] = true;
+                        existingItem["legacyPrestigeLevel"] = 3; // make legacy savegame option?
                         existingItem["prestigeLevel"] = InternalSettings.TargetPrestige;
                     }
                     else
@@ -62,7 +62,7 @@ namespace HexedProxy.Modules
                             new JProperty("characterName", CharacterId),
                             new JProperty("isEntitled", true),
                             new JProperty("isScopesValid", true),
-                            new JProperty("legacyPrestigeLevel", 3),
+                            new JProperty("legacyPrestigeLevel", 3), // make legacy savegame option?
                             new JProperty("prestigeLevel", InternalSettings.TargetPrestige)
                         );
 
@@ -122,22 +122,22 @@ namespace HexedProxy.Modules
                 }
             }
 
-            if (InternalSettings.UnlockCosmetics)
-            {
-                foreach (string CosmeticId in UE4Parser.OutfitIds)
-                {
-                    JToken existingItem = inventoryArray.FirstOrDefault(item => item["objectId"]?.ToString() == CosmeticId);
-                    if (existingItem != null) inventoryArray.Remove(existingItem);
+            //if (InternalSettings.UnlockCosmetics)
+            //{
+            //    foreach (string CosmeticId in UE4Parser.OutfitIds) // outfit ids are not in there anymore?
+            //    {
+            //        JToken existingItem = inventoryArray.FirstOrDefault(item => item["objectId"]?.ToString() == CosmeticId);
+            //        if (existingItem != null) inventoryArray.Remove(existingItem);
 
-                    JObject newInventoryItem = new(
-                        new JProperty("lastUpdateAt", DateTimeOffset.Now.ToUnixTimeSeconds()),
-                        new JProperty("objectId", CosmeticId),
-                        new JProperty("quantity", 1)
-                    );
+            //        JObject newInventoryItem = new(
+            //            new JProperty("lastUpdateAt", DateTimeOffset.Now.ToUnixTimeSeconds()),
+            //            new JProperty("objectId", CosmeticId),
+            //            new JProperty("quantity", 1)
+            //        );
 
-                    inventoryArray.Add(newInventoryItem);
-                }
-            }
+            //        inventoryArray.Add(newInventoryItem);
+            //    }
+            //}
 
             Market["data"]["inventory"] = inventoryArray;
         }

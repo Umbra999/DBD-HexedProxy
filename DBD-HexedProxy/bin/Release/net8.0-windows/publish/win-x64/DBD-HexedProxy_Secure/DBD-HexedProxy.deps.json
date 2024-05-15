@@ -9,12 +9,19 @@
     ".NETCoreApp,Version=v8.0\/win-x64": {
       "DBD-HexedProxy\/1.0.0": {
         "dependencies": {
-          "CUE4Parse": "1.1.1",
+          "DotNetZip": "1.16.0",
           "FiddlerCore.Trial": "5.0.2",
-          "ImGui.NET": "1.90.1.1",
+          "ImGui.NET": "1.90.5.1",
+          "Infrablack.UE4Config": "0.7.2.97",
+          "K4os.Compression.LZ4": "1.3.8",
+          "LZMA-SDK": "22.1.1",
+          "Newtonsoft.Json": "13.0.3",
+          "Serilog": "4.0.0-dev-02167",
           "SixLabors.ImageSharp": "3.1.4",
           "Vortice.D3DCompiler": "3.5.0",
-          "Vortice.Direct3D11": "3.5.0"
+          "Vortice.Direct3D11": "3.5.0",
+          "ZstdSharp.Port": "0.8.0",
+          "CUE4Parse": "1.1.1.0"
         },
         "runtime": {
           "DBD-HexedProxy.dll": {}
@@ -25,29 +32,6 @@
           "lib\/netstandard2.0\/BCMakeCert.dll": {
             "assemblyVersion": "2.0.9.0",
             "fileVersion": "2.0.9.0"
-          }
-        }
-      },
-      "CUE4Parse\/1.1.1": {
-        "dependencies": {
-          "DotNetZip": "1.16.0",
-          "Infrablack.UE4Config": "0.7.2.97",
-          "K4os.Compression.LZ4.Streams": "1.3.6",
-          "LZMA-SDK": "22.1.1",
-          "Newtonsoft.Json": "13.0.3",
-          "Serilog": "3.1.1",
-          "Serilog.Sinks.Console": "5.0.0",
-          "System.Memory": "4.5.5",
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "ZstdSharp.Port": "0.7.3"
-        },
-        "runtime": {
-          "lib\/net8.0\/CUE4Parse-Natives.dll": {
-            "fileVersion": "0.0.0.0"
-          },
-          "lib\/net8.0\/CUE4Parse.dll": {
-            "assemblyVersion": "1.1.1.0",
-            "fileVersion": "1.1.1.0"
           }
         }
       },
@@ -78,16 +62,16 @@
           }
         }
       },
-      "ImGui.NET\/1.90.1.1": {
+      "ImGui.NET\/1.90.5.1": {
         "dependencies": {
           "System.Buffers": "4.4.0",
           "System.Numerics.Vectors": "4.4.0",
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+          "System.Runtime.CompilerServices.Unsafe": "4.4.0"
         },
         "runtime": {
           "lib\/net6.0\/ImGui.NET.dll": {
-            "assemblyVersion": "1.90.1.1",
-            "fileVersion": "1.90.1.1"
+            "assemblyVersion": "1.90.5.1",
+            "fileVersion": "1.90.5.1"
           }
         },
         "native": {
@@ -104,32 +88,11 @@
           }
         }
       },
-      "K4os.Compression.LZ4\/1.3.6": {
+      "K4os.Compression.LZ4\/1.3.8": {
         "runtime": {
           "lib\/net6.0\/K4os.Compression.LZ4.dll": {
-            "assemblyVersion": "1.3.6.0",
-            "fileVersion": "1.3.6.0"
-          }
-        }
-      },
-      "K4os.Compression.LZ4.Streams\/1.3.6": {
-        "dependencies": {
-          "K4os.Compression.LZ4": "1.3.6",
-          "K4os.Hash.xxHash": "1.0.8",
-          "System.IO.Pipelines": "6.0.3"
-        },
-        "runtime": {
-          "lib\/net6.0\/K4os.Compression.LZ4.Streams.dll": {
-            "assemblyVersion": "1.3.6.0",
-            "fileVersion": "1.3.6.0"
-          }
-        }
-      },
-      "K4os.Hash.xxHash\/1.0.8": {
-        "runtime": {
-          "lib\/net6.0\/K4os.Hash.xxHash.dll": {
-            "assemblyVersion": "1.0.8.0",
-            "fileVersion": "1.0.8.0"
+            "assemblyVersion": "1.3.8.0",
+            "fileVersion": "1.3.8.0"
           }
         }
       },
@@ -167,22 +130,11 @@
           }
         }
       },
-      "Serilog\/3.1.1": {
+      "Serilog\/4.0.0-dev-02167": {
         "runtime": {
-          "lib\/net7.0\/Serilog.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "3.1.1.0"
-          }
-        }
-      },
-      "Serilog.Sinks.Console\/5.0.0": {
-        "dependencies": {
-          "Serilog": "3.1.1"
-        },
-        "runtime": {
-          "lib\/net7.0\/Serilog.Sinks.Console.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.0.0"
+          "lib\/net8.0\/Serilog.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
           }
         }
       },
@@ -245,17 +197,8 @@
           }
         }
       },
-      "System.IO.Pipelines\/6.0.3": {
-        "runtime": {
-          "lib\/net6.0\/System.IO.Pipelines.dll": {
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.522.21309"
-          }
-        }
-      },
-      "System.Memory\/4.5.5": {},
       "System.Numerics.Vectors\/4.4.0": {},
-      "System.Runtime.CompilerServices.Unsafe\/6.0.0": {},
+      "System.Runtime.CompilerServices.Unsafe\/4.4.0": {},
       "System.Security.AccessControl\/4.7.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.1",
@@ -368,11 +311,19 @@
           }
         }
       },
-      "ZstdSharp.Port\/0.7.3": {
+      "ZstdSharp.Port\/0.8.0": {
         "runtime": {
-          "lib\/net7.0\/ZstdSharp.dll": {
-            "assemblyVersion": "0.7.3.0",
-            "fileVersion": "0.7.3.0"
+          "lib\/net8.0\/ZstdSharp.dll": {
+            "assemblyVersion": "0.8.0.0",
+            "fileVersion": "0.8.0.0"
+          }
+        }
+      },
+      "CUE4Parse\/1.1.1.0": {
+        "runtime": {
+          "CUE4Parse.dll": {
+            "assemblyVersion": "1.1.1.0",
+            "fileVersion": "1.1.1.0"
           }
         }
       }
@@ -391,13 +342,6 @@
       "path": "bcmakecert\/2.0.9",
       "hashPath": "bcmakecert.2.0.9.nupkg.sha512"
     },
-    "CUE4Parse\/1.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ZHAvpsQLW2TZwTPi9Avzo5Vm3Odf\/\/SAlnjZFD44+TGonlI8i69i8+lmw8JuYdySoXLVtZbjZ9o95kxdCynlEA==",
-      "path": "cue4parse\/1.1.1",
-      "hashPath": "cue4parse.1.1.1.nupkg.sha512"
-    },
     "DotNetZip\/1.16.0": {
       "type": "package",
       "serviceable": true,
@@ -412,12 +356,12 @@
       "path": "fiddlercore.trial\/5.0.2",
       "hashPath": "fiddlercore.trial.5.0.2.nupkg.sha512"
     },
-    "ImGui.NET\/1.90.1.1": {
+    "ImGui.NET\/1.90.5.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-\/VNgkRywtXV72cpxtBj09nZX9Yx+xG3NxiwEEXPVcK+pHKHA31cPJKy425tDGj68tgRbCS+C+DG8puBj3iJ4zA==",
-      "path": "imgui.net\/1.90.1.1",
-      "hashPath": "imgui.net.1.90.1.1.nupkg.sha512"
+      "sha512": "sha512-rHm+a4tZbqjoIYP7bqA9uHTgDEH7I8eQDbTYo00L2Iq3644juR7M8mg+H3WPhrB+kfUO41dQfQeJJ4f+llBqNA==",
+      "path": "imgui.net\/1.90.5.1",
+      "hashPath": "imgui.net.1.90.5.1.nupkg.sha512"
     },
     "Infrablack.UE4Config\/0.7.2.97": {
       "type": "package",
@@ -426,26 +370,12 @@
       "path": "infrablack.ue4config\/0.7.2.97",
       "hashPath": "infrablack.ue4config.0.7.2.97.nupkg.sha512"
     },
-    "K4os.Compression.LZ4\/1.3.6": {
+    "K4os.Compression.LZ4\/1.3.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RxGhoJBjZCgGeZgDqOP4Krs1cR9PHInbz6d2N19Dic0Y6ZACzVKbR3uSpqfEZf4RiUbHk9aiog2eS22nQPTc2A==",
-      "path": "k4os.compression.lz4\/1.3.6",
-      "hashPath": "k4os.compression.lz4.1.3.6.nupkg.sha512"
-    },
-    "K4os.Compression.LZ4.Streams\/1.3.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-lMvHa2cP7WfWxR\/vREnwBmZZK\/w29AnUZ\/95Q91X7wcDdmlf\/E8iLnkk8ahFKArHf\/4FqTqZSCIUonA6tSFjgQ==",
-      "path": "k4os.compression.lz4.streams\/1.3.6",
-      "hashPath": "k4os.compression.lz4.streams.1.3.6.nupkg.sha512"
-    },
-    "K4os.Hash.xxHash\/1.0.8": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Wp2F7BamQ2Q\/7Hk834nV9vRQapgcr8kgv9Jvfm8J3D0IhDqZMMl+a2yxUq5ltJitvXvQfB8W6K4F4fCbw\/P6YQ==",
-      "path": "k4os.hash.xxhash\/1.0.8",
-      "hashPath": "k4os.hash.xxhash.1.0.8.nupkg.sha512"
+      "sha512": "sha512-LhwlPa7c1zs1OV2XadMtAWdImjLIsqFJPoRcIWAadSRn0Ri1DepK65UbWLPmt4riLqx2d40xjXRk0ogpqNtK7g==",
+      "path": "k4os.compression.lz4\/1.3.8",
+      "hashPath": "k4os.compression.lz4.1.3.8.nupkg.sha512"
     },
     "LZMA-SDK\/22.1.1": {
       "type": "package",
@@ -482,19 +412,12 @@
       "path": "newtonsoft.json\/13.0.3",
       "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
-    "Serilog\/3.1.1": {
+    "Serilog\/4.0.0-dev-02167": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-P6G4\/4Kt9bT635bhuwdXlJ2SCqqn2nhh4gqFqQueCOr9bK\/e7W9ll\/IoX1Ter948cV2Z\/5+5v8pAfJYUISY03A==",
-      "path": "serilog\/3.1.1",
-      "hashPath": "serilog.3.1.1.nupkg.sha512"
-    },
-    "Serilog.Sinks.Console\/5.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-IZ6bn79k+3SRXOBpwSOClUHikSkp2toGPCZ0teUkscv4dpDg9E2R2xVsNkLmwddE4OpNVO3N0xiYsAH556vN8Q==",
-      "path": "serilog.sinks.console\/5.0.0",
-      "hashPath": "serilog.sinks.console.5.0.0.nupkg.sha512"
+      "sha512": "sha512-i24CvucCorJgwWT+6u0lE2e\/lSIZaSri\/FdCom2TCRDX+drYiLh\/SEHGgQDD78Vs+sKpOEZB4LUNYNS\/dZyMpA==",
+      "path": "serilog\/4.0.0-dev-02167",
+      "hashPath": "serilog.4.0.0-dev-02167.nupkg.sha512"
     },
     "SharpGen.Runtime\/2.1.2-beta": {
       "type": "package",
@@ -545,20 +468,6 @@
       "path": "system.drawing.common\/4.7.0",
       "hashPath": "system.drawing.common.4.7.0.nupkg.sha512"
     },
-    "System.IO.Pipelines\/6.0.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ryTgF+iFkpGZY1vRQhfCzX0xTdlV3pyaTTqRu2ETbEv+HlV7O6y7hyQURnghNIXvctl5DuZ\/\/Dpks6HdL\/Txgw==",
-      "path": "system.io.pipelines\/6.0.3",
-      "hashPath": "system.io.pipelines.6.0.3.nupkg.sha512"
-    },
-    "System.Memory\/4.5.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge\/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
-      "path": "system.memory\/4.5.5",
-      "hashPath": "system.memory.4.5.5.nupkg.sha512"
-    },
     "System.Numerics.Vectors\/4.4.0": {
       "type": "package",
       "serviceable": true,
@@ -566,12 +475,12 @@
       "path": "system.numerics.vectors\/4.4.0",
       "hashPath": "system.numerics.vectors.4.4.0.nupkg.sha512"
     },
-    "System.Runtime.CompilerServices.Unsafe\/6.0.0": {
+    "System.Runtime.CompilerServices.Unsafe\/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-\/iUeP3tq1S0XdNNoMz5C9twLSrM\/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
-      "path": "system.runtime.compilerservices.unsafe\/6.0.0",
-      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+      "sha512": "sha512-9dLLuBxr5GNmOfl2jSMcsHuteEg32BEfUotmmUkmZjpR3RpVHE8YQwt0ow3p6prwA1ME8WqDVZqrr8z6H8G+Kw==",
+      "path": "system.runtime.compilerservices.unsafe\/4.4.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512"
     },
     "System.Security.AccessControl\/4.7.0": {
       "type": "package",
@@ -657,12 +566,17 @@
       "path": "vortice.mathematics\/1.7.8",
       "hashPath": "vortice.mathematics.1.7.8.nupkg.sha512"
     },
-    "ZstdSharp.Port\/0.7.3": {
+    "ZstdSharp.Port\/0.8.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-U9Ix4l4cl58Kzz1rJzj5hoVTjmbx1qGMwzAcbv1j\/d3NzrFaESIurQyg+ow4mivCgkE3S413y+U9k4WdnEIkRA==",
-      "path": "zstdsharp.port\/0.7.3",
-      "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
+      "sha512": "sha512-Z62eNBIu8E8YtbqlMy57tK3dV1+m2b9NhPeaYovB5exmLKvrGCqOhJTzrEUH5VyUWU6vwX3c1XHJGhW5HVs8dA==",
+      "path": "zstdsharp.port\/0.8.0",
+      "hashPath": "zstdsharp.port.0.8.0.nupkg.sha512"
+    },
+    "CUE4Parse\/1.1.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -36,7 +36,7 @@ namespace HexedProxy.Core
             switch (InternalSettings.SelectedGuiCategory)
             {
                 case 0: // TOOLS
-                    ImGui.Checkbox("Unlock Cosmetics", ref InternalSettings.UnlockCosmetics);
+                    //ImGui.Checkbox("Unlock Cosmetics", ref InternalSettings.UnlockCosmetics);
                     ImGui.Checkbox("Unlock Items", ref InternalSettings.UnlockItems);
                     ImGui.Checkbox("Unlock Characters", ref InternalSettings.UnlockCharacters);
                     if (InternalSettings.UnlockCharacters)
@@ -112,7 +112,7 @@ namespace HexedProxy.Core
 
                     ImGui.Text($"Match Region: {InfoManager.MatchRegion}");
                     ImGui.Text($"Match Server: {(InfoManager.isDedicated ? "Dedicated" : "Local")}");
-                    ImGui.Text($"MatchId: {InfoManager.MatchId}");
+
                     ImGui.SameLine();
                     if (ImGui.Button("Copy MatchId")) WindowsClipboard.SetText(InfoManager.MatchId);
 
