@@ -27,8 +27,8 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "D:\\Coding\\Github\\DBD-HexedProxy\\FiddlerCore": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
@@ -61,7 +61,7 @@
             },
             "ImGui.NET": {
               "target": "Package",
-              "version": "[1.90.5.1, )"
+              "version": "[1.90.8.1, )"
             },
             "Infrablack.UE4Config": {
               "target": "Package",
@@ -81,7 +81,7 @@
             },
             "Serilog": {
               "target": "Package",
-              "version": "[4.0.0-dev-02167, )"
+              "version": "[4.0.0, )"
             },
             "SixLabors.ImageSharp": {
               "target": "Package",
@@ -89,15 +89,15 @@
             },
             "Vortice.D3DCompiler": {
               "target": "Package",
-              "version": "[3.5.0, )"
+              "version": "[3.5.7-beta, )"
             },
             "Vortice.Direct3D11": {
               "target": "Package",
-              "version": "[3.5.0, )"
+              "version": "[3.5.7-beta, )"
             },
             "ZstdSharp.Port": {
               "target": "Package",
-              "version": "[0.8.0, )"
+              "version": "[0.8.1, )"
             }
           },
           "imports": [
@@ -116,7 +116,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

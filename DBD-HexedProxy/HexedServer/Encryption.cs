@@ -1,7 +1,5 @@
 ﻿using Microsoft.Win32;
-using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace HexedProxy.HexedServer
 {
@@ -18,109 +16,128 @@ namespace HexedProxy.HexedServer
         }
 
         // HWID 
-        public static string GenerateHash(string Text)
+        public static ServerObjects.HWID GetHWID()
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(Text);
-            byte[] hash = SHA256.HashData(bytes);
-            string ComputeHash = string.Join("", from it in hash select it.ToString("x2"));
-            return ComputeHash;
-        }
+            List<string> unique = new();
+            string DriveID = GetDriveID();
+            if (DriveID != null && DriveID.Length > 1) unique.Add(DriveID);
+            string BiosID = GetBiosID();
+            if (BiosID != null && BiosID.Length > 1) unique.Add(BiosID);
 
-        public static string GetHWID()
-        {
-            string HWID = Environment.MachineName;
-            HWID += GetProcessorID();
-            HWID += GetProcessorName();
-            HWID += GetProcessorVendor();
-            HWID += GetBIOSManufacturer();
-            HWID += GetBIOSVendor();
-            HWID += GetBIOSProduct();
-            HWID += GetBIOSSystemManufacturer();
-            HWID += GetBIOSSystemName();
-            HWID += GetDriveName();
-            HWID += GetDriveID();
-            return "H" + GenerateHash(HWID) + "EX";
+            List<string> common = new();
+            string DriveName = GetDriveName();
+            if (DriveName != null && DriveName.Length > 1) common.Add(DriveName);
+            string ProcessorID = GetProcessorID();
+            if (ProcessorID != null && ProcessorID.Length > 1) common.Add(ProcessorID);
+            string ProcessorName = GetProcessorName();
+            if (ProcessorName != null && ProcessorName.Length > 1) common.Add(ProcessorName);
+            string ProcessorVendor = GetProcessorVendor();
+            if (ProcessorVendor != null && ProcessorVendor.Length > 1) common.Add(ProcessorVendor);
+            string BiosManufacturer = GetBiosManufacturer();
+            if (BiosManufacturer != null && BiosManufacturer.Length > 1) common.Add(BiosManufacturer);
+            string BiosVendor = GetBiosVendor();
+            if (BiosVendor != null && BiosVendor.Length > 1) common.Add(BiosVendor);
+            string BiosProduct = GetBiosProduct();
+            if (BiosProduct != null && BiosProduct.Length > 1) common.Add(BiosProduct);
+            string BiosSystemManufacturer = GetBiosSystemManufacturer();
+            if (BiosSystemManufacturer != null && BiosSystemManufacturer.Length > 1) common.Add(BiosSystemManufacturer);
+            string BiosSystemName = GetBiosSystemName();
+            if (BiosSystemName != null && BiosSystemName.Length > 1) common.Add(BiosSystemName);
+
+            ServerObjects.HWID HWID = new()
+            {
+                Unique = unique.ToArray(),
+                Common = common.ToArray()
+            };
+
+            return HWID;
         }
 
         private static string GetProcessorID()
         {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\CentralProcessor\0");
+            RegistryKey key = Registry.LocalMachine?.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0");
             if (key != null) return key.GetValue("Identifier")?.ToString();
 
-            return "";
-        }
-
-        private static string GetProcessorVendor()
-        {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\CentralProcessor\0");
-            if (key != null) return key.GetValue("VendorIdentifier")?.ToString();
-
-            return "";
+            return null;
         }
 
         private static string GetProcessorName()
         {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\CentralProcessor\0");
+            RegistryKey key = Registry.LocalMachine?.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0");
             if (key != null) return key.GetValue("ProcessorNameString")?.ToString();
 
-            return "";
+            return null;
         }
 
-        private static string GetBIOSManufacturer()
+        private static string GetProcessorVendor()
         {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\BIOS");
+            RegistryKey key = Registry.LocalMachine?.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0");
+            if (key != null) return key.GetValue("VendorIdentifier")?.ToString();
+
+            return null;
+        }
+
+        private static string GetBiosManufacturer()
+        {
+            RegistryKey key = Registry.LocalMachine?.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\BIOS");
             if (key != null) return key.GetValue("BaseBoardManufacturer")?.ToString();
 
-            return "";
+            return null;
         }
 
-        private static string GetBIOSProduct()
+        private static string GetBiosProduct()
         {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\BIOS");
+            RegistryKey key = Registry.LocalMachine?.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\BIOS");
             if (key != null) return key.GetValue("BaseBoardProduct")?.ToString();
 
-            return "";
+            return null;
         }
 
-
-        private static string GetBIOSVendor()
+        private static string GetBiosVendor()
         {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\BIOS");
+            RegistryKey key = Registry.LocalMachine?.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\BIOS");
             if (key != null) return key.GetValue("BIOSVendor")?.ToString();
 
-            return "";
+            return null;
         }
 
-        private static string GetBIOSSystemManufacturer()
+        private static string GetBiosSystemManufacturer()
         {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\BIOS");
+            RegistryKey key = Registry.LocalMachine?.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\BIOS");
             if (key != null) return key.GetValue("SystemManufacturer")?.ToString();
 
-            return "";
+            return null;
         }
 
-        private static string GetBIOSSystemName()
+        private static string GetBiosSystemName()
         {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DESCRIPTION\System\BIOS");
+            RegistryKey key = Registry.LocalMachine?.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\BIOS");
             if (key != null) return key.GetValue("SystemProductName")?.ToString();
 
-            return "";
+            return null;
+        }
+        private static string GetBiosID()
+        {
+            RegistryKey key = Registry.LocalMachine?.OpenSubKey("SYSTEM\\HardwareConfig");
+            if (key != null) return key.GetValue("LastConfig")?.ToString();
+
+            return null;
         }
 
         private static string GetDriveName()
         {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DEVICEMAP\Scsi\Scsi Port 0\Scsi Bus 0\Target Id 0\Logical Unit Id 0");
+            RegistryKey key = Registry.LocalMachine.OpenSubKey("HARDWARE\\DEVICEMAP\\Scsi\\Scsi Port 0\\Scsi Bus 0\\Target Id 0\\Logical Unit Id 0");
             if (key != null) return key.GetValue("Identifier")?.ToString();
 
-            return "";
+            return null;
         }
 
         private static string GetDriveID()
         {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"HARDWARE\DEVICEMAP\Scsi\Scsi Port 0\Scsi Bus 0\Target Id 0\Logical Unit Id 0");
+            RegistryKey key = Registry.LocalMachine?.OpenSubKey("HARDWARE\\DEVICEMAP\\Scsi\\Scsi Port 0\\Scsi Bus 0\\Target Id 0\\Logical Unit Id 0");
             if (key != null) return key.GetValue("SerialNumber")?.ToString();
 
-            return "";
+            return null;
         }
     }
 }
