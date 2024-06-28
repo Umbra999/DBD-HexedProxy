@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Text.Json;
 
 namespace HexedProxy.HexedServer
@@ -6,14 +7,23 @@ namespace HexedProxy.HexedServer
     internal class ServerHandler
     {
         private static string Token;
+        private static string ServerThumbprint;
+        private static string EncryptionKey;
+        private static string DecryptionKey;
+
+        // CLIENT SIDE VALIDATION
+        private static bool ValidateServerCertificate(HttpRequestMessage request, X509Certificate2 certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
+        {
+            return certificate.Thumbprint == ServerThumbprint;
+        }
 
         public static bool Init(string Key)
         {
             Token = Key;
 
-            Encryption.ServerThumbprint = EncryptUtils.FromBase64(FetchCert().Result);
-            Encryption.EncryptionKey = EncryptUtils.FromBase64(FetchEncryptionKey().Result);
-            Encryption.DecryptionKey = EncryptUtils.FromBase64(FetchDecryptionKey().Result);
+            ServerThumbprint = EncryptUtils.FromBase64(FetchCert().Result);
+            EncryptionKey = EncryptUtils.FromBase64(FetchEncryptionKey().Result);
+            DecryptionKey = EncryptUtils.FromBase64(FetchDecryptionKey().Result);
 
             if (!IsValidToken().Result) return false;
 
@@ -39,7 +49,7 @@ namespace HexedProxy.HexedServer
 
         private static async Task<string> FetchEncryptionKey()
         {
-            HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = Encryption.ValidateServerCertificate });
+            HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = ValidateServerCertificate });
             Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Hexed)");
 
             HttpRequestMessage Payload = new(HttpMethod.Get, "https://api.logout.rip/Server/EncryptKey");
@@ -50,7 +60,7 @@ namespace HexedProxy.HexedServer
 
         private static async Task<string> FetchDecryptionKey()
         {
-            HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = Encryption.ValidateServerCertificate });
+            HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = ValidateServerCertificate });
             Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Hexed)");
 
             HttpRequestMessage Payload = new(HttpMethod.Get, "https://api.logout.rip/Server/DecryptKey");
@@ -61,12 +71,12 @@ namespace HexedProxy.HexedServer
 
         public static async Task<bool> IsValidToken()
         {
-            HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = Encryption.ValidateServerCertificate });
+            HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = ValidateServerCertificate });
             Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Hexed)");
 
             HttpRequestMessage Payload = new(HttpMethod.Post, "https://api.logout.rip/Server/IsValidToken")
             {
-                Content = new StringContent(DataEncryptBase.EncryptData(JsonSerializer.Serialize(new { Key = Token, HWID = Encryption.GetHWID(), ServerTime = EncryptUtils.GetUnixTime() }), Encryption.EncryptionKey), Encoding.UTF8, "application/json")
+                Content = new StringContent(DataEncryptBase.EncryptData(JsonSerializer.Serialize(new { Key = Token, HWID = SerialHandler.GetHWID(), ServerTime = EncryptUtils.GetUnixTime() }), EncryptionKey), Encoding.UTF8, "application/json")
             };
 
             HttpResponseMessage Response = await Client.SendAsync(Payload);
@@ -76,7 +86,7 @@ namespace HexedProxy.HexedServer
 
         public static async Task<string> DownloadAsset(string Asset)
         {
-            HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = Encryption.ValidateServerCertificate });
+            HttpClient Client = new(new HttpClientHandler { UseCookies = false, ServerCertificateCustomValidationCallback = ValidateServerCertificate });
             Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Hexed)");
 
             HttpRequestMessage Payload = new(HttpMethod.Get, $"https://api.logout.rip/Server/GetAsset/{Asset}");
