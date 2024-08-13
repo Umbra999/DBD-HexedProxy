@@ -1,9 +1,0 @@
-C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\DBD-HexedProxy.exe
-C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\DBD-HexedProxy.dll
-C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\DBD-HexedProxy.deps.json
-C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\DBD-HexedProxy.runtimeconfig.json
-C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\DBD-HexedProxy.pdb
-C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\BouncyCastle.Cryptography.dll
-C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\BrotliSharpLib.dll
-C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\Newtonsoft.Json.dll
-C:\Users\Umbra\source\repos\DBD-HexedProxy\DBD-HexedProxy\bin\Release\net8.0-windows\publish\Titanium.Web.Proxy.dll
